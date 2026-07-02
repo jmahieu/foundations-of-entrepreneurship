@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecture 01 — Entrepreneurship: (so) what?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* === VIEWPORT FITTING: MANDATORY BASE STYLES === */
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide { width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; position: relative; }
+.slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-height: 100%; overflow: hidden; padding: var(--slide-padding); }
+:root {
+  --title-size: clamp(1.5rem, 5vw, 4rem);
+  --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+  --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+  --body-size: clamp(1rem, 1.8vw, 1.35rem);
+  --small-size: clamp(0.65rem, 1vw, 0.875rem);
+  --slide-padding: clamp(1rem, 4vw, 4rem);
+  --content-gap: clamp(0.5rem, 2vw, 2rem);
+  --element-gap: clamp(0.25rem, 1vw, 1rem);
+  --bg-dark: #0a0a0a;
+  --bg-white: #ffffff;
+  --accent-blue: #4361ee;
+  --accent-orange: #e69f00; /* Okabe–Ito orange — pairs colour-blind-safely with the brand blue */
+  --text-dark: #0a0a0a;
+  --text-light: #ffffff;
+}
+.card, .container, .content-box { max-width: min(90vw, 1000px); max-height: min(80vh, 700px); }
+.feature-list, .bullet-list { gap: clamp(0.4rem, 1vh, 1rem); }
+.feature-list li, .bullet-list li { font-size: var(--body-size); line-height: 1.4; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: clamp(0.5rem, 1.5vw, 1rem); }
+img, .image-container { max-width: 100%; max-height: min(50vh, 400px); object-fit: contain; }
+@media (max-height: 700px) { :root { --slide-padding: clamp(0.75rem, 3vw, 2rem); --content-gap: clamp(0.4rem, 1.5vw, 1rem); --title-size: clamp(1.25rem, 4.5vw, 2.5rem); --h2-size: clamp(1rem, 3vw, 1.75rem); } }
+@media (max-height: 600px) { :root { --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem); --content-gap: clamp(0.3rem, 1vw, 0.75rem); --title-size: clamp(1.1rem, 4vw, 2rem); --body-size: clamp(0.8rem, 1.4vw, 1.1rem); } .nav-dots, .keyboard-hint, .decorative { display: none; } }
+@media (max-height: 500px) { :root { --slide-padding: clamp(0.4rem, 2vw, 1rem); --title-size: clamp(1rem, 3.5vw, 1.5rem); --h2-size: clamp(0.9rem, 2.5vw, 1.25rem); --body-size: clamp(0.75rem, 1.2vw, 1rem); } }
+@media (max-width: 600px) { :root { --title-size: clamp(1.25rem, 7vw, 2.5rem); } .grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; } html { scroll-behavior: auto; } }
+
+/* === SECTION: Global Styles === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: var(--bg-dark); color: var(--text-dark); }
+h1, h2, h3, .display-heading { font-family: 'Archivo Black', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; }
+h1 { font-size: var(--title-size); line-height: 1.1; }
+h2 { font-size: var(--h2-size); line-height: 1.15; }
+h3 { font-size: var(--h3-size); line-height: 1.2; }
+p, li { font-size: var(--body-size); line-height: 1.5; }
+.small { font-size: var(--small-size); }
+a { color: var(--accent-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* === SECTION: Slide Layout Patterns === */
+
+/* Full blue (section dividers / discussion prompts) */
+.slide--full-blue {
+  background: var(--accent-blue); color: var(--text-light);
+}
+.slide--full-blue .slide-content {
+  justify-content: center; align-items: center; text-align: center;
+}
+
+/* Full dark (quotes) */
+.slide--full-dark {
+  background: var(--bg-dark); color: var(--text-light);
+}
+.slide--full-dark .slide-content {
+  justify-content: center; align-items: center;
+}
+
+/* Full white */
+.slide--full-white {
+  background: var(--bg-white); color: var(--text-dark);
+}
+
+/* === SECTION: Components === */
+.tag {
+  display: inline-block; padding: 0.2em 0.8em;
+  border-radius: 100px; font-size: var(--small-size);
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.tag--blue { background: var(--accent-blue); color: var(--text-light); }
+.tag--white { background: var(--bg-white); color: var(--accent-blue); }
+.tag--dark { background: var(--bg-dark); color: var(--text-light); }
+.tag--outline { background: transparent; border: 2px solid currentColor; }
+
+.source {
+  font-size: var(--small-size); opacity: 0.6;
+  margin-top: var(--element-gap); font-style: italic;
+}
+
+/* === SECTION: Animations === */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.slide.visible .reveal { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+.reveal-d5 { transition-delay: 0.5s; }
+.reveal-d6 { transition-delay: 0.6s; }
+
+/* === SECTION: Progress & Navigation === */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: var(--accent-blue); z-index: 1000;
+  transition: width 0.3s ease; width: 0%;
+}
+.slide-counter {
+  position: fixed; bottom: clamp(0.5rem, 2vh, 1.5rem); right: clamp(0.5rem, 2vw, 1.5rem);
+  font-family: 'Manrope', sans-serif; font-size: var(--small-size);
+  font-weight: 700; color: rgba(120,120,120,0.8); z-index: 1000;
+  background: rgba(255,255,255,0.7); padding: 0.3em 0.8em; border-radius: 100px;
+  backdrop-filter: blur(10px);
+}
+.nav-dots {
+  position: fixed; right: clamp(0.3rem, 1vw, 0.8rem); top: 50%;
+  transform: translateY(-50%); display: flex; flex-direction: column;
+  gap: 6px; z-index: 1000;
+}
+.nav-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(67,97,238,0.25); cursor: pointer;
+  transition: all 0.3s ease; border: none; padding: 0;
+}
+.nav-dot.active { background: var(--accent-blue); transform: scale(1.3); }
+.nav-dot:hover { background: rgba(67,97,238,0.55); }
+
+/* === SECTION: Keyboard hint === */
+.keyboard-hint {
+  position: fixed; bottom: clamp(0.5rem, 2vh, 1.5rem); left: 50%;
+  transform: translateX(-50%); font-size: var(--small-size);
+  color: rgba(120,120,120,0.7); z-index: 1000;
+  animation: fadeOut 3s 5s forwards;
+}
+@keyframes fadeOut { to { opacity: 0; pointer-events: none; } }
+
+/* === SECTION: Edit Mode === */
+.edit-hotzone {
+  position: fixed; top: 0; left: 0; width: 60px; height: 60px; z-index: 2000;
+  cursor: pointer; opacity: 0; transition: opacity 0.3s ease;
+}
+.edit-hotzone.show { opacity: 1; }
+.edit-hotzone-indicator {
+  position: absolute; top: 10px; left: 10px; width: 36px; height: 36px;
+  background: var(--accent-blue); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 14px; font-weight: 700;
+  box-shadow: 0 2px 10px rgba(67,97,238,0.5);
+}
+.edit-toolbar {
+  position: fixed; top: 10px; left: 70px; z-index: 2000;
+  background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px; padding: 8px 12px; display: none;
+  gap: 8px; align-items: center;
+}
+.edit-toolbar.active { display: flex; }
+.edit-toolbar button {
+  background: var(--accent-blue); color: white; border: none;
+  padding: 4px 12px; border-radius: 4px; cursor: pointer;
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 600;
+}
+.edit-toolbar button:hover { filter: brightness(1.2); }
+.edit-toolbar .edit-status { color: rgba(255,255,255,0.7); font-size: 11px; }
+body.edit-mode [contenteditable="true"] {
+  outline: 2px dashed var(--accent-blue); outline-offset: 2px;
+  cursor: text; border-radius: 4px;
+}
+
+/* === SECTION: Slide 1 — Title === */
+.title-slide { background: var(--bg-white); color: var(--text-dark); }
+.title-bar {
+  padding: clamp(0.9rem, 3vh, 2.2rem) var(--slide-padding);
+  text-align: center; position: relative; z-index: 2;
+}
+.title-bar--top {
+  font-size: var(--small-size); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--accent-blue);
+}
+.title-bar--bottom { border-top: 2px solid rgba(10,10,10,0.08); }
+.title-name {
+  font-family: 'Archivo Black', sans-serif; font-size: var(--body-size);
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.title-main {
+  font-size: clamp(1.9rem, 7.5vw, 5.5rem); position: relative; z-index: 2;
+  max-width: 16ch;
+}
+.title-accent { color: var(--accent-blue); }
+.title-lecture { margin-top: var(--content-gap); letter-spacing: 0.1em; }
+.title-deco { position: absolute; border-radius: 50%; z-index: 1; pointer-events: none; }
+.title-deco--1 { width: 44vw; height: 44vw; background: rgba(67,97,238,0.07); top: -14vw; right: -12vw; }
+.title-deco--2 { width: 30vw; height: 30vw; border: 2px solid rgba(67,97,238,0.16); bottom: -9vw; left: -7vw; }
+
+/* === SECTION: Slide 2 — Big Question === */
+.q-deco {
+  position: absolute; font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(22rem, 70vh, 50rem); line-height: 0.8;
+  color: rgba(255,255,255,0.07); right: 2vw; bottom: -10vh; z-index: 0;
+  pointer-events: none; user-select: none;
+}
+.big-question {
+  font-size: clamp(2rem, 7vw, 5.2rem); margin-top: var(--content-gap);
+  max-width: 16ch; position: relative; z-index: 1;
+}
+.slide--full-blue .slide-content > .tag { position: relative; z-index: 1; }
+
+/* === SECTION: Slide 3 — Quiz === */
+.quiz-question {
+  text-align: center; max-width: 22ch;
+  margin: var(--element-gap) auto var(--content-gap);
+}
+.quiz-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--content-gap); flex: 1; min-height: 0;
+}
+.quiz-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(0.3rem, 1.4vh, 0.9rem);
+  background: #f3f5ff; border: 2px solid rgba(67,97,238,0.2);
+  border-radius: 16px; padding: clamp(0.6rem, 2vw, 1.6rem);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.quiz-card:hover {
+  transform: translateY(-4px); border-color: var(--accent-blue);
+  box-shadow: 0 14px 32px rgba(67,97,238,0.18);
+}
+.quiz-letter {
+  position: absolute; top: clamp(0.5rem, 1.6vh, 1rem); left: clamp(0.6rem, 1.6vw, 1.1rem);
+  width: clamp(1.6rem, 3.4vw, 2.4rem); height: clamp(1.6rem, 3.4vw, 2.4rem);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-blue); color: #fff; border-radius: 50%;
+  font-family: 'Archivo Black', sans-serif; font-size: var(--small-size);
+}
+.quiz-flag { font-size: clamp(2.2rem, 7.5vh, 4.6rem); line-height: 1; }
+.quiz-country {
+  font-family: 'Archivo Black', sans-serif; font-size: var(--h3-size);
+  text-transform: uppercase; text-align: center;
+}
+
+/* === SECTION: Slide 4 — TEA Bar Chart === */
+.tea-figure {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: 1fr auto;
+  column-gap: clamp(0.4rem, 1.2vw, 0.9rem);
+  flex: 1; min-height: 0; margin-top: var(--content-gap);
+}
+.tea-yaxis {
+  grid-column: 1; grid-row: 1;
+  display: flex; flex-direction: column; justify-content: space-between;
+  font-size: var(--small-size); font-weight: 700;
+  color: rgba(10,10,10,0.45); text-align: right; padding-right: 0.3em;
+}
+.tea-plot {
+  grid-column: 2; grid-row: 1; position: relative;
+  border-bottom: 2px solid rgba(10,10,10,0.3); min-height: 0;
+}
+.tea-grid {
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: rgba(10,10,10,0.1);
+}
+.tea-bars {
+  position: absolute; inset: 0;
+  display: flex; align-items: flex-end;
+  gap: clamp(1rem, 5vw, 3.5rem); padding: 0 clamp(0.8rem, 4vw, 3rem);
+}
+.tea-col { flex: 1; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
+.tea-bar {
+  width: 100%; max-width: clamp(56px, 12vw, 130px); height: 0;
+  background: var(--accent-blue); border-radius: 8px 8px 0 0;
+  position: relative;
+  transition: height 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+.slide.visible .tea-bar { height: var(--bar-h); }
+.tea-val {
+  position: absolute; top: -1.7em; left: 50%; transform: translateX(-50%);
+  font-family: 'Archivo Black', sans-serif; font-size: var(--body-size);
+  color: var(--accent-blue); white-space: nowrap;
+}
+.tea-xaxis {
+  grid-column: 2; grid-row: 2;
+  display: flex; gap: clamp(1rem, 5vw, 3.5rem);
+  padding: 0 clamp(0.8rem, 4vw, 3rem); margin-top: 0.6em;
+}
+.tea-xlabel {
+  flex: 1; text-align: center;
+  font-family: 'Archivo Black', sans-serif; font-size: var(--small-size);
+  text-transform: uppercase;
+}
+
+/* === SECTION: Slide 5 — Dense bar chart (all 45 economies) === */
+.tea-figure--dense { column-gap: clamp(0.3rem, 1vw, 0.7rem); }
+.tea-figure--dense .tea-bars,
+.tea-figure--dense .tea-xaxis {
+  gap: clamp(1px, 0.45vw, 6px); padding: 0 clamp(0.2rem, 1vw, 0.7rem);
+}
+.tea-figure--dense .tea-xaxis { align-items: flex-start; }
+.tea-figure--dense .tea-bar {
+  max-width: none; border-radius: 3px 3px 0 0;
+}
+.tea-figure--dense .tea-xlabel {
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-family: 'Manrope', sans-serif; font-weight: 600;
+  font-size: clamp(0.4rem, 0.92vw, 0.66rem);
+  text-transform: none; text-align: left;
+  white-space: nowrap; padding-top: 0.4em;
+}
+
+/* === SECTION: Slide 6 — GEM definition === */
+.gem-layout {
+  display: grid; grid-template-columns: 1fr 1.15fr;
+  gap: var(--content-gap); align-items: center;
+  flex: 1; min-height: 0; margin-top: var(--content-gap);
+}
+.gem-defs { display: flex; flex-direction: column; gap: var(--content-gap); }
+.gem-def {
+  border-left: 4px solid var(--accent-blue);
+  padding-left: clamp(0.6rem, 1.5vw, 1.2rem);
+}
+.gem-def-term {
+  font-family: 'Archivo Black', sans-serif; font-size: var(--h3-size);
+  color: var(--accent-blue); margin-bottom: 0.25em;
+}
+.gem-def-text { font-size: var(--body-size); line-height: 1.5; }
+.gem-image { display: flex; align-items: center; justify-content: center; min-height: 0; }
+.gem-image img {
+  max-width: 100%; max-height: min(60vh, 460px); width: auto;
+  object-fit: contain; background: #fff;
+  border: 1px solid rgba(10,10,10,0.12); border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(10,10,10,0.08);
+}
+@media (max-width: 768px) {
+  .gem-layout { grid-template-columns: 1fr; }
+  .gem-image img { max-height: min(34vh, 260px); }
+}
+
+/* === SECTION: Slide 8 — Paired bar chart (TEA vs Innovation) === */
+.tea-col--pair { gap: clamp(2px, 0.6vw, 10px); }
+.tea-col--pair .tea-bar {
+  width: auto; flex: 1 1 0;
+  max-width: clamp(36px, 8vw, 90px);
+}
+.tea-bar--alt { background: var(--accent-orange); }
+.tea-val--alt { color: var(--accent-orange); }
+.tea-legend {
+  display: flex; gap: var(--content-gap); justify-content: center;
+  margin-top: 0.7em; font-size: var(--small-size);
+}
+.tea-legend-item {
+  display: inline-flex; align-items: center; gap: 0.45em;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.tea-legend-swatch {
+  width: 0.95em; height: 0.95em; border-radius: 3px; display: inline-block;
+}
+
+/* === SECTION: Definition footer (slides 8–11) === */
+.def-note {
+  margin-top: var(--content-gap);
+  padding: clamp(0.5rem, 1.4vw, 1rem) clamp(0.7rem, 1.8vw, 1.2rem);
+  background: rgba(67, 97, 238, 0.06);
+  border-left: 3px solid var(--accent-blue);
+  border-radius: 0 6px 6px 0;
+  font-size: var(--small-size); line-height: 1.45;
+}
+.def-note strong { color: var(--accent-blue); }
+
+/* === SECTION: Slide 10 — Top-5 vs Bottom-5 paired chart === */
+.tea-figure--top-bot { column-gap: clamp(0.3rem, 1vw, 0.7rem); }
+.tea-figure--top-bot .tea-bars,
+.tea-figure--top-bot .tea-xaxis {
+  gap: clamp(2px, 0.55vw, 7px); padding: 0 clamp(0.3rem, 1vw, 0.8rem);
+}
+.tea-figure--top-bot .tea-col--pair { gap: clamp(1px, 0.35vw, 4px); }
+.tea-figure--top-bot .tea-col--pair .tea-bar {
+  width: auto; flex: 1 1 0; max-width: none; border-radius: 3px 3px 0 0;
+}
+.tea-figure--top-bot .tea-val { display: none; }
+.tea-figure--top-bot .tea-xaxis { align-items: flex-start; }
+.tea-figure--top-bot .tea-xlabel {
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-family: 'Manrope', sans-serif; font-weight: 600;
+  font-size: clamp(0.5rem, 1vw, 0.75rem);
+  text-transform: none; text-align: left;
+  white-space: nowrap; padding-top: 0.4em;
+}
+/* Visual break between Top-5 group and Bottom-5 group */
+.tea-figure--top-bot .tea-col:nth-child(6),
+.tea-figure--top-bot .tea-xlabel:nth-child(6) {
+  margin-left: clamp(0.8rem, 2.5vw, 1.8rem);
+}
+
+/* === SECTION: Slide 11 — Gender comparison table === */
+.gender-block {
+  display: flex; flex-direction: column; flex: 1; min-height: 0;
+  justify-content: center; gap: var(--content-gap);
+  margin-top: var(--content-gap);
+}
+.gender-table {
+  width: min(900px, 92%); margin: 0 auto;
+  border-collapse: separate; border-spacing: 0;
+  background: #fff;
+  border: 1px solid rgba(10,10,10,0.1); border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(10,10,10,0.06);
+}
+.gender-table th,
+.gender-table td {
+  padding: clamp(0.5rem, 1.6vw, 1.1rem) clamp(0.6rem, 2vw, 1.4rem);
+  text-align: left; font-size: var(--body-size);
+  border-bottom: 1px solid rgba(10,10,10,0.08);
+}
+.gender-table th {
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  font-size: var(--small-size); font-weight: 400;
+  background: var(--accent-blue); color: #fff;
+  border-bottom: none;
+}
+.gender-table th:not(:first-child),
+.gender-table td:not(:first-child) { text-align: right; }
+.gender-table tbody tr:last-child td { border-bottom: none; }
+.gender-table tbody tr:nth-child(even) td { background: rgba(67,97,238,0.04); }
+.gender-table tbody tr.gender-overall td { background: rgba(67,97,238,0.10); border-top: 2px solid var(--accent-blue); font-weight: 700; }
+.gender-row-label {
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.gender-value {
+  font-family: 'Archivo Black', sans-serif;
+  color: var(--accent-blue); font-size: var(--h3-size);
+}
+.gender-symbol { margin-right: 0.4em; }
+
+/* === SECTION: Slide 7 — Problems list & APA reference === */
+.problem-list {
+  display: flex; flex-direction: column; justify-content: center;
+  gap: var(--content-gap); flex: 1; min-height: 0;
+  margin-top: var(--content-gap);
+}
+.problem-item { display: flex; gap: clamp(0.7rem, 2vw, 1.4rem); align-items: flex-start; }
+.problem-num {
+  flex-shrink: 0;
+  width: clamp(1.9rem, 4.2vw, 2.9rem); height: clamp(1.9rem, 4.2vw, 2.9rem);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-blue); color: var(--text-light);
+  border-radius: 50%; font-family: 'Archivo Black', sans-serif;
+  font-size: var(--body-size);
+}
+.problem-text { font-size: var(--body-size); line-height: 1.5; padding-top: 0.15em; }
+.ref-line {
+  margin-top: var(--content-gap);
+  font-size: var(--small-size); line-height: 1.45;
+  padding-left: 2.4em; text-indent: -2.4em; /* APA hanging indent */
+}
+.ref-line a { color: var(--accent-blue); text-decoration: underline; word-break: break-word; }
+
+/* === SECTION: Generic bullet list (slides 3, 6, 10, 21) === */
+.bullet-list {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column;
+  gap: clamp(0.5rem, 1.5vh, 1.1rem);
+  margin-top: var(--content-gap);
+}
+.bullet-list li {
+  padding-left: 1.6em; position: relative;
+  font-size: var(--body-size); line-height: 1.5;
+}
+.bullet-list li::before {
+  content: ''; position: absolute; left: 0; top: 0.55em;
+  width: 9px; height: 9px;
+  background: var(--accent-blue); border-radius: 50%;
+}
+.sub-bullets {
+  list-style: none; margin: 0.5em 0 0; padding-left: 1.5em;
+  display: flex; flex-direction: column; gap: 0.4em;
+}
+.sub-bullets li {
+  position: relative; padding-left: 1.4em;
+  font-size: var(--body-size); line-height: 1.4; opacity: 0.88;
+}
+.sub-bullets li::before {
+  content: ''; position: absolute; left: 0; top: 0.5em;
+  width: 8px; height: 8px; border: 2px solid var(--accent-blue);
+  border-radius: 50%; background: transparent;
+}
+
+/* Equation block (slide 3) */
+.eq-block {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.25em;
+  margin: var(--content-gap) 0;
+  background: rgba(67,97,238,0.06); border-left: 6px solid var(--accent-blue);
+  padding: clamp(0.55rem,1.5vh,1rem) clamp(0.9rem,2vw,1.4rem); border-radius: 0 10px 10px 0;
+}
+.eq-formula {
+  font-family: 'Archivo Black', sans-serif; letter-spacing: 0.02em;
+  font-size: clamp(1.2rem, 3vw, 2rem); color: var(--accent-blue);
+}
+.eq-note { font-size: var(--small-size); line-height: 1.4; opacity: 0.85; }
+
+/* Closing slide */
+.closing-text { font-size: var(--body-size); margin-top: var(--content-gap); }
+.closing-link {
+  font-family: 'Archivo Black', sans-serif; color: var(--text-light);
+  font-size: clamp(1rem, 2.4vw, 1.7rem); text-decoration: underline;
+  text-underline-offset: 4px; word-break: break-word; margin-top: 0.4em; display: inline-block;
+}
+
+/* === SECTION: Slide 3 — Definition card (Stevenson) === */
+.def-card {
+  background: rgba(67,97,238,0.06);
+  border-left: 6px solid var(--accent-blue);
+  padding: clamp(1rem, 3vw, 2rem);
+  border-radius: 0 12px 12px 0;
+  margin-top: var(--content-gap);
+}
+.def-card-text {
+  font-size: clamp(1.1rem, 2.6vw, 1.75rem);
+  line-height: 1.4; font-weight: 500;
+}
+.def-card-author {
+  display: block; margin-top: 0.6em;
+  font-size: var(--small-size);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--accent-blue); font-weight: 700;
+}
+
+/* === SECTION: Slide 4 — Zappos story arc === */
+.zappos-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--content-gap); flex-wrap: wrap;
+}
+.zappos-header h2 { flex: 1; min-width: 0; }
+.zappos-logo {
+  max-width: clamp(110px, 14vw, 170px); height: auto;
+  flex-shrink: 0; object-fit: contain;
+}
+.story-arc {
+  display: flex; flex-direction: column;
+  gap: clamp(0.6rem, 1.8vh, 1.4rem);
+  flex: 1; min-height: 0; margin-top: var(--content-gap);
+  justify-content: center;
+}
+.story-step {
+  border-left: 3px solid var(--accent-blue);
+  padding-left: clamp(0.7rem, 1.8vw, 1.2rem);
+}
+.story-step-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: var(--small-size); text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--accent-blue);
+  margin-bottom: 0.3em;
+}
+.story-step-text { font-size: var(--body-size); line-height: 1.45; }
+
+/* === SECTION: Slide 4 — Jibo case (video + explanation) === */
+.video-stage {
+  flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;
+  margin-top: var(--content-gap);
+}
+.video-frame {
+  position: relative; width: 100%;
+  max-width: calc((100vh - 2 * var(--slide-padding) - 4rem) * 1.7778);
+  aspect-ratio: 16 / 9;
+  background: #000; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.28);
+}
+.video-frame iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+}
+.video-poster {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-decoration: none;
+  background: #000; cursor: pointer; overflow: hidden;
+}
+.video-poster img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.85;
+}
+.video-play {
+  position: relative; z-index: 1;
+  width: clamp(56px, 7vw, 86px); aspect-ratio: 1;
+  border-radius: 50%; background: rgba(67,97,238,0.92);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.4);
+}
+.video-play::after {
+  content: ''; position: absolute; top: 50%; left: 54%; transform: translate(-50%, -50%);
+  border-style: solid; border-width: 0.55em 0 0.55em 0.95em;
+  border-color: transparent transparent transparent #fff;
+}
+.video-caption {
+  position: relative; z-index: 1; margin-top: 0.9em;
+  font-family: 'Archivo Black', sans-serif; color: #fff;
+  font-size: var(--small-size); letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* === SECTION: Slide 23 — Self-employed vs employees (SVG chart) === */
+.se-chart {
+  flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;
+  margin-top: var(--content-gap);
+}
+.se-chart svg { width: 100%; height: auto; max-height: 60vh; display: block; }
+.se-chart text { font-family: 'Manrope', sans-serif; }
+
+/* === SECTION: Slide 25 — Levine & Rubinstein table === */
+.lr-wrap {
+  flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;
+  margin-top: var(--content-gap); overflow: hidden;
+}
+.lr-table {
+  border-collapse: collapse; width: 100%;
+  font-size: clamp(0.62rem, 1.25vw, 1rem); line-height: 1.15;
+}
+.lr-table th, .lr-table td {
+  padding: clamp(0.18rem, 0.7vh, 0.5rem) clamp(0.3rem, 0.9vw, 0.8rem);
+  text-align: center; border-bottom: 1px solid rgba(10,10,10,0.08);
+}
+.lr-table thead th {
+  font-family: 'Archivo Black', sans-serif; color: var(--accent-blue);
+  border-bottom: 2px solid var(--accent-blue); vertical-align: bottom;
+}
+.lr-table th.lr-group {
+  border-bottom: 1px solid var(--accent-blue);
+  font-size: 0.85em; letter-spacing: 0.04em;
+}
+.lr-table .lr-rowhead { text-align: left; font-weight: 600; white-space: nowrap; }
+.lr-table thead .lr-rowhead { border-bottom: 2px solid var(--accent-blue); }
+.lr-section td {
+  text-align: left; font-family: 'Archivo Black', sans-serif;
+  font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.06em;
+  color: #555; background: rgba(67,97,238,0.05); padding-top: 0.45em; padding-bottom: 0.45em;
+}
+.lr-sub td { color: #888; font-size: 0.86em; border-bottom: 1px solid rgba(10,10,10,0.12); }
+.lr-hi { background: rgba(230,159,0,0.14); }
+.lr-table th.lr-hi { background: rgba(230,159,0,0.22); border-bottom-color: var(--accent-orange); }
+
+/* === SECTION: Slide 26 — Baumol quote + 2x2 map === */
+.baumol-row {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: clamp(1rem, 3vw, 2.4rem); flex: 1; min-height: 0;
+  margin-top: var(--content-gap); align-items: center;
+}
+.baumol-quote { display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+.baumol-quote blockquote {
+  margin: 0; font-size: clamp(0.85rem, 1.55vw, 1.2rem); line-height: 1.5;
+  border-left: 4px solid var(--accent-blue); padding-left: clamp(0.7rem, 1.6vw, 1.2rem);
+  font-style: italic;
+}
+.baumol-quote cite {
+  font-style: normal; font-size: var(--small-size); opacity: 0.7;
+  margin-top: 0.8em; padding-left: clamp(0.7rem, 1.6vw, 1.2rem);
+}
+.baumol-map { display: flex; align-items: center; justify-content: center; min-height: 0; }
+.baumol-map svg { width: 100%; height: auto; max-height: 64vh; }
+.baumol-map text { font-family: 'Manrope', sans-serif; }
+
+/* === SECTION: Slide 27 — Interactive value model === */
+.vm-wrap {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: clamp(1rem, 3vw, 2.6rem); flex: 1; min-height: 0;
+  margin-top: var(--content-gap); align-items: center;
+}
+.vm-controls { display: flex; flex-direction: column; gap: clamp(0.45rem, 1.4vh, 1rem); min-height: 0; }
+.vm-types { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.vm-type {
+  flex: 1; min-width: 0; cursor: pointer;
+  font-family: 'Archivo Black', sans-serif; font-size: clamp(0.62rem, 1vw, 0.85rem);
+  text-transform: uppercase; letter-spacing: 0.03em;
+  padding: 0.55em 0.4em; border-radius: 8px;
+  border: 2px solid var(--accent-blue); background: #fff; color: var(--accent-blue);
+  transition: all 0.15s ease;
+}
+.vm-type.active { background: var(--accent-blue); color: #fff; }
+.vm-slider { display: flex; flex-direction: column; gap: 0.2em; font-size: var(--small-size); }
+.vm-slider span { display: flex; justify-content: space-between; font-weight: 600; }
+.vm-slider b { font-family: 'Archivo Black', sans-serif; color: var(--accent-blue); }
+.vm-slider input[type=range] { width: 100%; accent-color: var(--accent-blue); }
+.vm-formula {
+  font-size: clamp(0.62rem, 1.05vw, 0.88rem); opacity: 0.75; margin-top: 0.3em;
+  padding-top: 0.5em; border-top: 1px solid rgba(10,10,10,0.1);
+}
+.vm-viz { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; gap: var(--content-gap); }
+.vm-bars { width: 100%; }
+.vm-bars svg { width: 100%; height: auto; max-height: 50vh; }
+.vm-bars text { font-family: 'Manrope', sans-serif; }
+.vm-verdict {
+  font-family: 'Archivo Black', sans-serif; text-align: center;
+  font-size: clamp(0.9rem, 1.8vw, 1.4rem); line-height: 1.3;
+}
+.vm-verdict.good { color: #009e73; }
+.vm-verdict.neutral { color: var(--accent-orange); }
+.vm-verdict.bad { color: #d55e00; }
+
+/* === SECTION: Slide 6 — Uncertainty types grid === */
+.uncertainty-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--content-gap);
+  flex: 1; min-height: 0; margin-top: var(--content-gap);
+}
+.uncertainty-card {
+  background: rgba(67,97,238,0.05);
+  border-top: 4px solid var(--accent-blue);
+  border-radius: 0 0 12px 12px;
+  padding: clamp(0.8rem, 2.2vw, 1.6rem);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.uncertainty-card-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: var(--h3-size); text-transform: uppercase;
+  letter-spacing: 0.02em; color: var(--accent-blue);
+  margin-bottom: 0.4em;
+}
+.uncertainty-card-text { font-size: var(--body-size); line-height: 1.4; }
+
+/* === SECTION: Slide 7 — Compare row (two images) === */
+.compare-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--content-gap); flex: 1; min-height: 0;
+  margin-top: var(--content-gap); align-items: stretch;
+}
+.compare-cell {
+  display: flex; flex-direction: column; align-items: center;
+  gap: var(--element-gap); min-height: 0; justify-content: center;
+}
+.compare-cell img {
+  max-width: 100%; max-height: min(58vh, 460px);
+  width: auto; object-fit: contain; border-radius: 8px;
+}
+.compare-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: var(--h3-size); text-transform: uppercase;
+  color: var(--accent-blue);
+}
+.compare-sub { font-size: var(--small-size); opacity: 0.7; text-align: center; }
+
+/* === SECTION: Slide 8 — Split text / image (Kerr) === */
+.split-text-image {
+  display: grid; grid-template-columns: 1fr 1.25fr;
+  gap: var(--content-gap); flex: 1; min-height: 0;
+  margin-top: var(--content-gap); align-items: center;
+}
+.split-text-image .text-col {
+  display: flex; flex-direction: column; justify-content: center;
+}
+.split-text-image .img-col {
+  display: flex; align-items: center; justify-content: center; min-height: 0;
+}
+.split-text-image .img-col img {
+  max-width: 100%; max-height: min(62vh, 480px);
+  width: auto; object-fit: contain;
+  border-radius: 8px; background: #fff;
+  border: 1px solid rgba(10,10,10,0.1);
+  box-shadow: 0 6px 24px rgba(10,10,10,0.08);
+}
+.stat-call {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(1.2rem, 2.8vw, 1.9rem);
+  line-height: 1.3;
+}
+.stat-call em { font-style: normal; color: var(--accent-blue); }
+
+/* === SECTION: Slide 9 — Single dominant image === */
+.single-image {
+  display: flex; align-items: center; justify-content: center;
+  flex: 1; min-height: 0; margin-top: var(--content-gap);
+}
+.single-image img {
+  max-width: 100%; max-height: min(72vh, 600px);
+  object-fit: contain; background: #fff;
+  border-radius: 8px; border: 1px solid rgba(10,10,10,0.1);
+  box-shadow: 0 6px 24px rgba(10,10,10,0.08);
+}
+
+/* === Enlarged figures: slides 29, 34, 35 === */
+#slide-29 .split-text-image { grid-template-columns: 0.85fr 1.6fr; }
+#slide-29 .split-text-image .img-col img { max-height: min(80vh, 660px); }
+#slide-34 .single-image img,
+#slide-35 .single-image img { max-height: min(82vh, 720px); }
+
+/* === SECTION: Slide 10 — Two grouped question lists === */
+.q-sections {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--content-gap); flex: 1; min-height: 0;
+  margin-top: var(--content-gap);
+}
+.q-section {
+  display: flex; flex-direction: column;
+  border-top: 4px solid var(--accent-blue);
+  padding-top: clamp(0.5rem, 1.3vw, 0.9rem);
+}
+.q-section-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: var(--small-size); text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--accent-blue);
+  margin-bottom: 0.6em;
+}
+.q-section .bullet-list { margin-top: 0; }
+
+@media screen and (max-width: 768px) {
+  .uncertainty-grid, .compare-row, .split-text-image, .q-sections { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 600px) {
+  .quiz-grid { grid-template-columns: 1fr; }
+  .tea-bars, .tea-xaxis { gap: clamp(0.4rem, 3vw, 1rem); }
+}
+
+/* === PRINT / PDF EXPORT (16:9 landscape, one slide per page) === */
+@media print {
+  @page { size: 1280px 720px; margin: 0; }
+  html, body { width: 1280px; height: auto; overflow: visible !important; }
+  html { scroll-snap-type: none !important; scroll-behavior: auto !important; }
+  .slide {
+    width: 1280px !important; height: 720px !important;
+    overflow: hidden !important; scroll-snap-align: none !important;
+    page-break-after: always; break-after: page;
+    page-break-inside: avoid; break-inside: avoid;
+  }
+  .slide:last-of-type { page-break-after: avoid; break-after: avoid; }
+  /* freeze reveal animations to their final visible state */
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  /* CSS bar charts grow their height only on .slide.visible — force final height for print */
+  .tea-bar { height: var(--bar-h) !important; transition: none !important; }
+  /* hide on-screen UI chrome */
+  .progress-bar, .slide-counter, .nav-dots, .keyboard-hint,
+  .edit-hotzone, .edit-toolbar, .video-play { display: none !important; }
+  /* keep multi-column layouts intact on the fixed-size print page */
+  .split-text-image { grid-template-columns: 1fr 1.25fr !important; align-items: center; }
+  #slide-29 .split-text-image { grid-template-columns: 0.85fr 1.6fr !important; }
+  .split-text-image .img-col img { max-height: 58vh !important; }
+  .single-image img { max-height: 66vh !important; }
+  /* keep background colours/images in the PDF */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Slide counter -->
+<div class="slide-counter" id="slideCounter">1 / 36</div>
+
+<!-- Navigation dots -->
+<div class="nav-dots" id="navDots"></div>
+
+<!-- Keyboard hint -->
+<div class="keyboard-hint">Use arrow keys or scroll to navigate</div>
+
+<!-- Edit hotzone -->
+<div class="edit-hotzone" id="editHotzone">
+  <div class="edit-hotzone-indicator">E</div>
+</div>
+<div class="edit-toolbar" id="editToolbar">
+  <span class="edit-status">Edit Mode</span>
+  <button onclick="saveEdits()">Save</button>
+  <button onclick="exportPresentation()">Export</button>
+  <button onclick="toggleEditMode()">Close</button>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: Title -->
+<!-- ============================================================ -->
+<section class="slide title-slide" id="slide-1">
+  <span class="title-deco title-deco--1"></span>
+  <span class="title-deco title-deco--2"></span>
+  <header class="title-bar title-bar--top reveal">
+    Foundations of Entrepreneurship &amp; New Business Development
+  </header>
+  <div class="slide-content" style="align-items:center; text-align:center;">
+    <h1 class="title-main reveal reveal-d2">Entrepreneurship: <span class="title-accent">(so)</span> what?</h1>
+    <span class="tag tag--blue title-lecture reveal reveal-d4">Lecture 1</span>
+  </div>
+  <footer class="title-bar title-bar--bottom reveal reveal-d5">
+    <span class="title-name">Jeroen Mahieu</span>
+  </footer>
+</section>
+<!-- SPEAKER NOTE: Welcome students to the course. Set the scene for Lecture 1 — we start by questioning what "entrepreneurship" even means. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: Opening question — What is entrepreneurship? -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-2">
+  <span class="q-deco" aria-hidden="true">?</span>
+  <div class="slide-content">
+    <h1 class="big-question reveal">What is entrepreneurship?</h1>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Open the floor. Let students answer freely before converging on a definition. There is no single right answer yet — collect intuitions. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: How we define entrepreneurship (Stevenson)          -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-3">
+  <div class="slide-content">
+    <h2 class="reveal">How we define entrepreneurship</h2>
+    <div class="def-card reveal reveal-d2">
+      <p class="def-card-text">
+        Entrepreneurship is the <strong>pursuit of opportunity beyond resources controlled</strong>.
+      </p>
+      <span class="def-card-author">&mdash; Howard Stevenson</span>
+    </div>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d3">Focus on <strong>decision making under uncertainty</strong> with limited resources.</li>
+    </ul>
+    <div class="eq-block reveal reveal-d4">
+      <span class="eq-formula">E(V) = P &times; V</span>
+      <span class="eq-note">&hellip; but <em>P</em> (probability of success) and <em>V</em> (value of a successful project) are both <strong>unknown</strong> up front.</span>
+    </div>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d5">Should I pursue an opportunity (or not)? How can I learn about its value?</li>
+      <li class="reveal reveal-d6">Which choices do I need to make to realise the potential of this opportunity?</li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Stevenson's definition is the spine of the course — opportunity, scarce resources, decisions under uncertainty. The expected-value framing E(V)=P*V makes the core problem concrete: an entrepreneur is betting on two quantities (P and V) that are unknown ex ante. Every later slide can be mapped back to one of these threads. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: Case — Jibo (video)                                 -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-4">
+  <div class="slide-content">
+    <h2 class="reveal">Case: Jibo</h2>
+    <div class="video-stage reveal reveal-d2">
+      <div class="video-frame" id="jiboFrame">
+        <iframe id="jiboIframe" src="https://www.youtube-nocookie.com/embed/H0h20jRA5M0?rel=0" title="Jibo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <a class="video-poster" id="jiboPoster" href="https://www.youtube.com/watch?v=H0h20jRA5M0" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/H0h20jRA5M0/hqdefault.jpg" alt="Jibo video thumbnail"
+               onerror="this.style.display='none'">
+          <span class="video-play" aria-hidden="true"></span>
+          <span class="video-caption">Click to play on YouTube</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Play the Jibo promo. Jibo raised big money and generated huge hype as "the world's first social robot," then failed commercially — a clean illustration of entrepreneurship as costly experimentation under uncertainty. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: Case — Jibo (why it fits the definition)            -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-5">
+  <div class="slide-content">
+    <h2 class="reveal">Case: Jibo</h2>
+    <p class="def-note reveal reveal-d2">Why does Jibo fit our definition of entrepreneurship?</p>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d3">The potential value of an idea (opportunity) &mdash; and how to realise it &mdash; is <strong>uncertain up front</strong>.</li>
+      <li class="reveal reveal-d4">There is <strong>more than one path</strong> to create and capture value from this idea.</li>
+      <li class="reveal reveal-d5">Only through <strong>experimentation</strong> can entrepreneurs learn the true value of an idea and how to realise its potential.</li>
+      <li class="reveal reveal-d6">Experimentation is <strong>costly</strong> and entrepreneurs have only limited resources &mdash; many need <strong>external resources</strong>.</li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: These four points are the bridge from the Stevenson definition (slide 3) to the three fundamental problems (slide 6): uncertainty, costly experimentation, limited resources. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: Three Fundamental Problems of Entrepreneurs         -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-6">
+  <div class="slide-content">
+    <h2 class="reveal">Three Fundamental Problems of Entrepreneurs</h2>
+    <div class="problem-list">
+      <div class="problem-item reveal reveal-d2">
+        <span class="problem-num">1</span>
+        <p class="problem-text">Entrepreneurs face <strong>greater uncertainty</strong>.</p>
+      </div>
+      <div class="problem-item reveal reveal-d3">
+        <span class="problem-num">2</span>
+        <p class="problem-text">Entrepreneurs face <strong>highly-skewed outcomes</strong>.</p>
+      </div>
+      <div class="problem-item reveal reveal-d4">
+        <span class="problem-num">3</span>
+        <p class="problem-text">Entrepreneurs are <strong>highly resource-constrained</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Preview the next three slides — each problem gets one slide. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: Greater uncertainty — four types                    -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-7">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurs face greater uncertainty</h2>
+    <div class="uncertainty-grid">
+      <div class="uncertainty-card reveal reveal-d2">
+        <div class="uncertainty-card-title">Demand &amp; market</div>
+        <p class="uncertainty-card-text">Will customers want it &mdash; and at what price?</p>
+      </div>
+      <div class="uncertainty-card reveal reveal-d3">
+        <div class="uncertainty-card-title">Technology</div>
+        <p class="uncertainty-card-text">Can it actually be built &mdash; and will it work?</p>
+      </div>
+      <div class="uncertainty-card reveal reveal-d4">
+        <div class="uncertainty-card-title">Execution</div>
+        <p class="uncertainty-card-text">Can the team deliver, hire, and scale?</p>
+      </div>
+      <div class="uncertainty-card reveal reveal-d5">
+        <div class="uncertainty-card-title">Financing &amp; cost</div>
+        <p class="uncertainty-card-text">Can we afford to find out?</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Four flavours of entrepreneurial uncertainty. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: Uncertainty — Vanmoof vs Gazelle (visual compare)   -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-8">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurs face greater uncertainty</h2>
+    <div class="compare-row">
+      <div class="compare-cell reveal reveal-d2">
+        <img src="assets/vanmoof_s2.jpg" alt="VanMoof S2 e-bike">
+        <span class="compare-label">Vanmoof S2</span>
+        <span class="compare-sub">New product, new(ish) firm, new category</span>
+      </div>
+      <div class="compare-cell reveal reveal-d3">
+        <img src="assets/gazelle_ultimate_c380.png" alt="Gazelle Ultimate c380 bicycle">
+        <span class="compare-label">Gazelle Ultimate c380</span>
+        <span class="compare-sub">Established brand, established product</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Don't put the comparison prompt on the slide — ask students which of these involves more demand / technology / execution / financing uncertainty. The Vanmoof startup e-bike clearly bears far more uncertainty on all four dimensions than Gazelle's well-established touring bike. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: Highly-skewed outcomes (Kerr et al. 2014)           -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-9">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurs face highly-skewed outcomes</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="stat-call reveal reveal-d2">
+          At this major VC, almost <em>60%</em> of investments <strong>fail</strong>;<br>
+          only <em>~6%</em> are <strong>big successes</strong>.
+        </p>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/kerr_2014_vc_returns.png" alt="Distribution of returns at a major VC (Kerr, Nanda, Rhodes-Kropf, 2014)">
+      </div>
+    </div>
+    <p class="ref-line reveal reveal-d4">
+      <a href="https://doi.org/10.1257/jep.28.3.25" target="_blank" rel="noopener noreferrer">Kerr, W. R., Nanda, R., &amp; Rhodes-Kropf, M. (2014). Entrepreneurship as Experimentation. <em>Journal of Economic Perspectives, 28</em>(3), 25&ndash;48. https://doi.org/10.1257/jep.28.3.25</a>
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Most ventures don't return anything; a tiny tail produces the bulk of returns. The empirical anchor for "highly-skewed outcomes". -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: Highly resource-constrained (four types)           -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-10">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurs are highly resource-constrained</h2>
+    <div class="uncertainty-grid">
+      <div class="uncertainty-card reveal reveal-d2">
+        <div class="uncertainty-card-title">Human resources</div>
+        <p class="uncertainty-card-text">Only a small founding team &mdash; often a solo entrepreneur &mdash; at the start.</p>
+      </div>
+      <div class="uncertainty-card reveal reveal-d3">
+        <div class="uncertainty-card-title">Financial resources</div>
+        <p class="uncertainty-card-text">Entrepreneurs are typically cash-constrained.</p>
+      </div>
+      <div class="uncertainty-card reveal reveal-d4">
+        <div class="uncertainty-card-title">Physical capital</div>
+        <p class="uncertainty-card-text">Lack of high-end equipment, production facilities, &hellip;</p>
+      </div>
+      <div class="uncertainty-card reveal reveal-d5">
+        <div class="uncertainty-card-title">Intangible capital</div>
+        <p class="uncertainty-card-text">IP, goodwill, brand value yet to be built.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Four resource dimensions an entrepreneur lacks at the start. Sets up the CB Insights failure data on the next slide and the catch-22 that follows. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: Highly resource-constrained (CB Insights)           -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-11">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurs are highly resource-constrained</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/cb_insights_startup_failure_reasons.png" alt="CB Insights — top reasons startups fail">
+    </div>
+    <p class="source reveal reveal-d3">Source: CB Insights &mdash; Top reasons startups fail</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: "Ran out of cash" and "no market need" dominate the failure-reason list — both rooted in resource scarcity meeting uncertainty. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: The entrepreneurial catch-22                       -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-12">
+  <div class="slide-content">
+    <h2 class="reveal">The entrepreneurial catch-22</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list">
+          <li class="reveal reveal-d2">Uncertainty and risk can only be reduced by <strong>having resources</strong>.</li>
+          <li class="reveal reveal-d3">Resource providers might only commit when <strong>uncertainty and risk are low</strong>.</li>
+          <li class="reveal reveal-d4">Traditional business strategies and tactics <strong>break down</strong>.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d2">
+        <img src="assets/catch_22.png" alt="The entrepreneurial catch-22">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The chicken-and-egg problem at the heart of the course: you need resources to kill uncertainty, but resource-holders want uncertainty killed before they commit. This is why entrepreneurial method (experimentation, staged commitment, persuasion) differs from textbook strategy. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: The questions this raises (Part 1 / Part 2)        -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-13">
+  <div class="slide-content">
+    <h2 class="reveal">The questions this raises</h2>
+    <div class="q-sections">
+      <div class="q-section reveal reveal-d2">
+        <div class="q-section-label">Part 1 of the course</div>
+        <ul class="bullet-list">
+          <li>Who becomes an entrepreneur and why, when the odds of success are unknown but likely very low?</li>
+          <li>What are the private and social returns to entrepreneurship?</li>
+          <li>Which individual and contextual factors impact entrepreneurial performance?</li>
+        </ul>
+      </div>
+      <div class="q-section reveal reveal-d3">
+        <div class="q-section-label">Part 2 of the course</div>
+        <ul class="bullet-list">
+          <li>How do entrepreneurs form their initial beliefs about opportunities?</li>
+          <li>How do they learn in an uncertain environment with limited resources to experiment?</li>
+          <li>How do they ultimately persuade others?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Part 1 is the economics lens (who, returns, performance drivers). Part 2 is the business-studies lens (beliefs, learning, persuasion). Same underlying loop — different questions. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: Transition — How to measure entrepreneurship?      -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-14">
+  <span class="q-deco" aria-hidden="true">?</span>
+  <div class="slide-content">
+    <p class="reveal" style="font-size:var(--body-size); opacity:0.85; max-width:34ch; line-height:1.5; position:relative; z-index:1;">
+      If we want to know the answer to many of these questions, we first need to know&hellip;
+    </p>
+    <h1 class="big-question reveal reveal-d2" style="margin-top:var(--content-gap);">How to measure entrepreneurship?</h1>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Pivot the lecture from "why does this matter" to "how do we even count it". -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: Quiz — Which country is more entrepreneurial? -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-15">
+  <div class="slide-content">
+    <h2 class="quiz-question reveal">Which country is more entrepreneurial?</h2>
+    <div class="quiz-grid">
+      <div class="quiz-card reveal reveal-d2">
+        <span class="quiz-letter">A</span>
+        <span class="quiz-flag" aria-hidden="true">&#x1F1FA;&#x1F1F8;</span>
+        <span class="quiz-country">United States</span>
+      </div>
+      <div class="quiz-card reveal reveal-d3">
+        <span class="quiz-letter">B</span>
+        <span class="quiz-flag" aria-hidden="true">&#x1F1EA;&#x1F1E8;</span>
+        <span class="quiz-country">Ecuador</span>
+      </div>
+      <div class="quiz-card reveal reveal-d4">
+        <span class="quiz-letter">C</span>
+        <span class="quiz-flag" aria-hidden="true">&#x1F1F8;&#x1F1E6;</span>
+        <span class="quiz-country">Saudi Arabia</span>
+      </div>
+      <div class="quiz-card reveal reveal-d5">
+        <span class="quiz-letter">D</span>
+        <span class="quiz-flag" aria-hidden="true">&#x1F1F3;&#x1F1F1;</span>
+        <span class="quiz-country">Netherlands</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Ask for a show of hands per option. Most students pick the US — set up the surprise revealed on the next slide. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: 2023 TEA bar chart (answers the quiz)                -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-16">
+  <div class="slide-content">
+    <h2 class="reveal">Total Early-Stage Entrepreneurial Activity</h2>
+    <p class="small reveal" style="opacity:0.6; margin-top:0.3em;">
+      Share of adults aged 18&ndash;64 who are starting or running a new business (TEA)
+    </p>
+
+    <!-- Single-hue bar chart — colour-blind safe; consistent brand blue across all slides -->
+    <div class="tea-figure reveal reveal-d2">
+      <div class="tea-yaxis" aria-hidden="true">
+        <span>40%</span>
+        <span>30%</span>
+        <span>20%</span>
+        <span>10%</span>
+        <span>0%</span>
+      </div>
+      <div class="tea-plot">
+        <span class="tea-grid" style="bottom:100%;"></span>
+        <span class="tea-grid" style="bottom:75%;"></span>
+        <span class="tea-grid" style="bottom:50%;"></span>
+        <span class="tea-grid" style="bottom:25%;"></span>
+        <div class="tea-bars">
+          <!-- Ecuador 32.65% of max 40% -->
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:81.6%;"><span class="tea-val">32.7%</span></div></div>
+          <!-- Saudi Arabia 25.34% -->
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:63.4%;"><span class="tea-val">25.3%</span></div></div>
+          <!-- United States 14.71% -->
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:36.8%;"><span class="tea-val">14.7%</span></div></div>
+          <!-- Netherlands 13.69% -->
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:34.2%;"><span class="tea-val">13.7%</span></div></div>
+        </div>
+      </div>
+      <div class="tea-xaxis">
+        <span class="tea-xlabel">&#x1F1EA;&#x1F1E8; Ecuador</span>
+        <span class="tea-xlabel">&#x1F1F8;&#x1F1E6; Saudi Arabia</span>
+        <span class="tea-xlabel">&#x1F1FA;&#x1F1F8; United States</span>
+        <span class="tea-xlabel">&#x1F1F3;&#x1F1F1; Netherlands</span>
+      </div>
+    </div>
+
+    <p class="source reveal reveal-d3">Source: Global Entrepreneurship Monitor (GEM), 2023</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Reveal that Ecuador (32.7%) and Saudi Arabia (25.3%) far outrank the US (14.7%) and the Netherlands (13.7%). Use this to question whether "more activity" equals "more entrepreneurial" — a hook for the rest of the lecture. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: 2023 TEA — all 45 economies                           -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-17">
+  <div class="slide-content">
+    <h2 class="reveal">Total Early-Stage Entrepreneurial Activity</h2>
+    <p class="small reveal" style="opacity:0.6; margin-top:0.3em;">
+      All 45 economies in the 2023 GEM survey, ranked
+    </p>
+
+    <!-- Single-hue bar chart — colour-blind safe; same blue and 0–40% scale as slide 4 -->
+    <div class="tea-figure tea-figure--dense reveal reveal-d2">
+      <div class="tea-yaxis" aria-hidden="true">
+        <span>40%</span>
+        <span>30%</span>
+        <span>20%</span>
+        <span>10%</span>
+        <span>0%</span>
+      </div>
+      <div class="tea-plot">
+        <span class="tea-grid" style="bottom:100%;"></span>
+        <span class="tea-grid" style="bottom:75%;"></span>
+        <span class="tea-grid" style="bottom:50%;"></span>
+        <span class="tea-grid" style="bottom:25%;"></span>
+        <div class="tea-bars">
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:81.6%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:81.0%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:78.3%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:77.6%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:65.6%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:63.4%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:59.1%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:58.9%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:56.7%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:55.8%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:49.4%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:46.6%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:42.1%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:39.3%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:36.8%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:35.9%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:35.7%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:34.2%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:32.9%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:32.7%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:30.0%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:29.4%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:27.8%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:27.6%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:26.9%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:26.9%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:26.6%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:25.7%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:25.6%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:24.7%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:24.4%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:24.2%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:23.1%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:21.9%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:20.8%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:19.2%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:17.7%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:17.3%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:17.1%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:17.0%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:16.9%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:16.7%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:15.7%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:14.6%;"></div></div>
+          <div class="tea-col"><div class="tea-bar" style="--bar-h:6.5%;"></div></div>
+        </div>
+      </div>
+      <div class="tea-xaxis">
+        <span class="tea-xlabel">Ecuador</span>
+        <span class="tea-xlabel">Guatemala</span>
+        <span class="tea-xlabel">Panama</span>
+        <span class="tea-xlabel">Chile</span>
+        <span class="tea-xlabel">Uruguay</span>
+        <span class="tea-xlabel">Saudi Arabia</span>
+        <span class="tea-xlabel">Thailand</span>
+        <span class="tea-xlabel">Colombia</span>
+        <span class="tea-xlabel">Venezuela</span>
+        <span class="tea-xlabel">Puerto Rico</span>
+        <span class="tea-xlabel">Canada</span>
+        <span class="tea-xlabel">Brazil</span>
+        <span class="tea-xlabel">Mexico</span>
+        <span class="tea-xlabel">Jordan</span>
+        <span class="tea-xlabel">United States</span>
+        <span class="tea-xlabel">Latvia</span>
+        <span class="tea-xlabel">Qatar</span>
+        <span class="tea-xlabel">Netherlands</span>
+        <span class="tea-xlabel">Croatia</span>
+        <span class="tea-xlabel">Estonia</span>
+        <span class="tea-xlabel">India</span>
+        <span class="tea-xlabel">United Kingdom</span>
+        <span class="tea-xlabel">South Africa</span>
+        <span class="tea-xlabel">Cyprus</span>
+        <span class="tea-xlabel">France</span>
+        <span class="tea-xlabel">Slovakia</span>
+        <span class="tea-xlabel">Oman</span>
+        <span class="tea-xlabel">Switzerland</span>
+        <span class="tea-xlabel">South Korea</span>
+        <span class="tea-xlabel">Hungary</span>
+        <span class="tea-xlabel">Iran</span>
+        <span class="tea-xlabel">Luxembourg</span>
+        <span class="tea-xlabel">Sweden</span>
+        <span class="tea-xlabel">Israel</span>
+        <span class="tea-xlabel">Italy</span>
+        <span class="tea-xlabel">Germany</span>
+        <span class="tea-xlabel">Slovenia</span>
+        <span class="tea-xlabel">Norway</span>
+        <span class="tea-xlabel">China</span>
+        <span class="tea-xlabel">Spain</span>
+        <span class="tea-xlabel">Greece</span>
+        <span class="tea-xlabel">Lithuania</span>
+        <span class="tea-xlabel">Morocco</span>
+        <span class="tea-xlabel">Romania</span>
+        <span class="tea-xlabel">Poland</span>
+      </div>
+    </div>
+
+    <p class="source reveal reveal-d3">Source: Global Entrepreneurship Monitor (GEM), 2023</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Zoom out to the full sample. The same pattern holds — lower-income economies dominate the top of the ranking, mature economies cluster lower. This motivates a sharper definition of who actually counts as an "entrepreneur". -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: What is an entrepreneur (according to the GEM)?       -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-18">
+  <div class="slide-content">
+    <h2 class="reveal">What is an entrepreneur (according to the GEM)?</h2>
+    <div class="gem-layout">
+      <div class="gem-defs">
+        <div class="gem-def reveal reveal-d2">
+          <div class="gem-def-term">Entrepreneur</div>
+          <div class="gem-def-text">An adult who is engaged in setting up or operating a new venture that is <strong>&le; 42 months old</strong>.</div>
+        </div>
+        <div class="gem-def reveal reveal-d3">
+          <div class="gem-def-term">TEA rate</div>
+          <div class="gem-def-text">The percentage of the 18&ndash;64 population who are either a <strong>nascent entrepreneur</strong> or an <strong>owner-manager of a new business</strong>.</div>
+        </div>
+      </div>
+      <div class="gem-image reveal reveal-d4">
+        <img src="assets/gem_tea_definition.png" alt="GEM entrepreneurship process: potential entrepreneur, nascent entrepreneur and owner-manager of a new business (together forming Total Early-Stage Entrepreneurial Activity), and owner-manager of an established business">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Walk the diagram left to right — conception, firm birth, persistence. TEA captures only the nascent and new-business stages (venture ≤ 42 months / 3.5 years old), not established firms. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: Problems with the new-venture-creation definition     -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-19">
+  <div class="slide-content">
+    <h2 class="reveal">Problems with using new venture creation as definition of entrepreneurship</h2>
+    <div class="problem-list">
+      <div class="problem-item reveal reveal-d2">
+        <span class="problem-num">1</span>
+        <p class="problem-text">Many new ventures are mundane, hobby businesses that generate little private or social value &mdash; <strong>&ldquo;subsistence&rdquo;</strong> rather than <strong>&ldquo;transformational&rdquo;</strong> entrepreneurship.</p>
+      </div>
+      <div class="problem-item reveal reveal-d3">
+        <span class="problem-num">2</span>
+        <p class="problem-text">A focus on new firms (&le;&nbsp;3.5&nbsp;years) excludes the <strong>growth and exit stages</strong> of entrepreneurship.</p>
+      </div>
+      <div class="problem-item reveal reveal-d4">
+        <span class="problem-num">3</span>
+        <p class="problem-text">Excludes people who are in the entrepreneurial process but never reach the stage of actually setting up a business (<strong>survival bias</strong>) &mdash; roughly <strong>50%</strong> of everyone who considers starting a business (Bennett &amp; Chatterji, 2023).</p>
+      </div>
+    </div>
+    <p class="ref-line reveal reveal-d5">
+      <a href="https://doi.org/10.1002/smj.3077" target="_blank" rel="noopener noreferrer">Bennett, V. M., &amp; Chatterji, A. K. (2023). The entrepreneurial process: Evidence from a nationally representative survey. <em>Strategic Management Journal, 44</em>(1), 86&ndash;116. https://doi.org/10.1002/smj.3077</a>
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: This is the pivot of the lecture — the GEM "new venture creation" definition is convenient but flawed. Point 3 leans on Bennett & Chatterji: about half of would-be entrepreneurs drop out before ever founding, so TEA-style measures miss them entirely (survival bias). -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: Subsistence or transformational entrepreneurship?    -->
+<!-- (TEA 2018 vs Innovative-entrepreneurship rate)              -->
+<!-- Highest 2018 TEA = Angola (40.84) — replaces Ecuador        -->
+<!-- Lowest 2018 TEA  = Cyprus (3.86)                            -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-20">
+  <div class="slide-content">
+    <h2 class="reveal">Subsistence or transformational entrepreneurship?</h2>
+    <p class="small reveal" style="opacity:0.6; margin-top:0.3em;">
+      2018 TEA rate vs. share of TEA who are <strong>innovative entrepreneurs</strong>
+    </p>
+
+    <!-- Paired bar chart: blue = TEA, orange = Innovation. Okabe–Ito hues, colour-blind safe.
+         y-axis 0–50% to accommodate Angola's 40.84% TEA. Countries ordered by TEA. -->
+    <div class="tea-figure reveal reveal-d2">
+      <div class="tea-yaxis" aria-hidden="true">
+        <span>50%</span>
+        <span>40%</span>
+        <span>30%</span>
+        <span>20%</span>
+        <span>10%</span>
+        <span>0%</span>
+      </div>
+      <div class="tea-plot">
+        <span class="tea-grid" style="bottom:100%;"></span>
+        <span class="tea-grid" style="bottom:80%;"></span>
+        <span class="tea-grid" style="bottom:60%;"></span>
+        <span class="tea-grid" style="bottom:40%;"></span>
+        <span class="tea-grid" style="bottom:20%;"></span>
+        <div class="tea-bars">
+          <!-- Angola: TEA 40.84 → 81.7% ; Innovation 17.80 → 35.6% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:81.7%;"><span class="tea-val">40.8%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:35.6%;"><span class="tea-val tea-val--alt">17.8%</span></div>
+          </div>
+          <!-- United States: TEA 15.59 → 31.2% ; Innovation 33.99 → 68.0% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:31.2%;"><span class="tea-val">15.6%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:68.0%;"><span class="tea-val tea-val--alt">34.0%</span></div>
+          </div>
+          <!-- Netherlands: TEA 12.29 → 24.6% ; Innovation 23.83 → 47.7% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:24.6%;"><span class="tea-val">12.3%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:47.7%;"><span class="tea-val tea-val--alt">23.8%</span></div>
+          </div>
+          <!-- Cyprus: TEA 3.86 → 7.7% ; Innovation 38.63 → 77.3% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:7.7%;"><span class="tea-val">3.9%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:77.3%;"><span class="tea-val tea-val--alt">38.6%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tea-xaxis">
+        <span class="tea-xlabel">&#x1F1E6;&#x1F1F4; Angola <em style="font-weight:400; opacity:0.6;">(highest TEA)</em></span>
+        <span class="tea-xlabel">&#x1F1FA;&#x1F1F8; United States</span>
+        <span class="tea-xlabel">&#x1F1F3;&#x1F1F1; Netherlands</span>
+        <span class="tea-xlabel">&#x1F1E8;&#x1F1FE; Cyprus <em style="font-weight:400; opacity:0.6;">(lowest TEA)</em></span>
+      </div>
+    </div>
+
+    <div class="tea-legend reveal reveal-d3">
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:var(--accent-blue);"></span>
+        TEA rate
+      </span>
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:var(--accent-orange);"></span>
+        Innovative entrepreneurs (% of TEA)
+      </span>
+    </div>
+
+    <p class="def-note reveal reveal-d4">
+      <strong>Innovative entrepreneur (GEM)</strong> &mdash; share of those involved in TEA who indicate that their product or service is new to at least some customers <em>and</em> that few or no other businesses offer the same product.
+    </p>
+
+    <p class="source reveal reveal-d5">Source: Global Entrepreneurship Monitor (GEM), 2018 &mdash; Angola substitutes for Ecuador, which was not surveyed in 2018</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Punchline — countries with the highest TEA aren't necessarily the most "transformational". Angola has by far the highest TEA but a modest innovation rate. The US has middling TEA but high innovation. Cyprus has the lowest TEA yet the highest innovation share — classic subsistence-vs-transformational split. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: TEA 2023 vs High Job Creation Expectation              -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-21">
+  <div class="slide-content">
+    <h2 class="reveal">Subsistence or transformational entrepreneurship?</h2>
+    <p class="small reveal" style="opacity:0.6; margin-top:0.3em;">
+      2023 TEA rate vs. share of TEA with <strong>high job creation expectation</strong>
+    </p>
+
+    <div class="tea-figure reveal reveal-d2">
+      <div class="tea-yaxis" aria-hidden="true">
+        <span>40%</span>
+        <span>30%</span>
+        <span>20%</span>
+        <span>10%</span>
+        <span>0%</span>
+      </div>
+      <div class="tea-plot">
+        <span class="tea-grid" style="bottom:100%;"></span>
+        <span class="tea-grid" style="bottom:75%;"></span>
+        <span class="tea-grid" style="bottom:50%;"></span>
+        <span class="tea-grid" style="bottom:25%;"></span>
+        <div class="tea-bars">
+          <!-- Ecuador: TEA 32.65 → 81.6% ; HJC 5.85 → 14.6% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:81.6%;"><span class="tea-val">32.7%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:14.6%;"><span class="tea-val tea-val--alt">5.9%</span></div>
+          </div>
+          <!-- Saudi Arabia: TEA 25.34 → 63.4% ; HJC 29.46 → 73.7% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:63.4%;"><span class="tea-val">25.3%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:73.7%;"><span class="tea-val tea-val--alt">29.5%</span></div>
+          </div>
+          <!-- United States: TEA 14.71 → 36.8% ; HJC 28.80 → 72.0% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:36.8%;"><span class="tea-val">14.7%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:72.0%;"><span class="tea-val tea-val--alt">28.8%</span></div>
+          </div>
+          <!-- Netherlands: TEA 13.69 → 34.2% ; HJC 15.13 → 37.8% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:34.2%;"><span class="tea-val">13.7%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:37.8%;"><span class="tea-val tea-val--alt">15.1%</span></div>
+          </div>
+          <!-- Poland (lowest 2023 TEA): TEA 2.59 → 6.5% ; HJC 14.49 → 36.2% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:6.5%;"><span class="tea-val">2.6%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:36.2%;"><span class="tea-val tea-val--alt">14.5%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tea-xaxis">
+        <span class="tea-xlabel">&#x1F1EA;&#x1F1E8; Ecuador</span>
+        <span class="tea-xlabel">&#x1F1F8;&#x1F1E6; Saudi Arabia</span>
+        <span class="tea-xlabel">&#x1F1FA;&#x1F1F8; United States</span>
+        <span class="tea-xlabel">&#x1F1F3;&#x1F1F1; Netherlands</span>
+        <span class="tea-xlabel">&#x1F1F5;&#x1F1F1; Poland <em style="font-weight:400; opacity:0.6;">(lowest)</em></span>
+      </div>
+    </div>
+
+    <div class="tea-legend reveal reveal-d3">
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:var(--accent-blue);"></span>
+        TEA rate
+      </span>
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:var(--accent-orange);"></span>
+        High job creation expectation (% of TEA)
+      </span>
+    </div>
+
+    <p class="def-note reveal reveal-d4">
+      <strong>High job creation expectation (GEM)</strong> &mdash; share of those involved in TEA who expect to create <strong>6 or more jobs</strong> in the next 5 years.
+    </p>
+
+    <p class="source reveal reveal-d5">Source: Global Entrepreneurship Monitor (GEM), 2023</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Same lesson with a different lens. Ecuador's enormous TEA collapses to only ~6% with growth ambition. The US has half Ecuador's TEA but five times the share of would-be job creators. Poland's tiny TEA is similar to NL's on growth ambition — the headline number hides the type of entrepreneurship. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: TEA 2022 vs Necessity entrepreneurship              -->
+<!-- (highest, US, NL, lowest)                                     -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-22">
+  <div class="slide-content">
+    <h2 class="reveal">Subsistence or transformational entrepreneurship?</h2>
+    <p class="small reveal" style="opacity:0.6; margin-top:0.3em;">
+      2022 TEA rate vs. share of TEA who are <strong>necessity entrepreneurs</strong>
+    </p>
+
+    <!-- y-axis 0–100% because necessity rates reach ~90%. Same paired style as slides 17-18. -->
+    <div class="tea-figure reveal reveal-d2">
+      <div class="tea-yaxis" aria-hidden="true">
+        <span>100%</span>
+        <span>80%</span>
+        <span>60%</span>
+        <span>40%</span>
+        <span>20%</span>
+        <span>0%</span>
+      </div>
+      <div class="tea-plot">
+        <span class="tea-grid" style="bottom:100%;"></span>
+        <span class="tea-grid" style="bottom:80%;"></span>
+        <span class="tea-grid" style="bottom:60%;"></span>
+        <span class="tea-grid" style="bottom:40%;"></span>
+        <span class="tea-grid" style="bottom:20%;"></span>
+        <div class="tea-bars">
+          <!-- Guatemala (highest 2022 TEA): TEA 29.42 → 29.4% ; Necessity 89.06 → 89.1% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:29.4%;"><span class="tea-val">29.4%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:89.1%;"><span class="tea-val tea-val--alt">89.1%</span></div>
+          </div>
+          <!-- United States: TEA 19.19 → 19.2% ; Necessity 54.45 → 54.5% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:19.2%;"><span class="tea-val">19.2%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:54.5%;"><span class="tea-val tea-val--alt">54.5%</span></div>
+          </div>
+          <!-- Netherlands: TEA 12.45 → 12.5% ; Necessity 39.44 → 39.4% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:12.5%;"><span class="tea-val">12.5%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:39.4%;"><span class="tea-val tea-val--alt">39.4%</span></div>
+          </div>
+          <!-- Poland (lowest 2022 TEA): TEA 1.56 → 1.6% ; Necessity 73.11 → 73.1% -->
+          <div class="tea-col tea-col--pair">
+            <div class="tea-bar" style="--bar-h:1.6%;"><span class="tea-val">1.6%</span></div>
+            <div class="tea-bar tea-bar--alt" style="--bar-h:73.1%;"><span class="tea-val tea-val--alt">73.1%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tea-xaxis">
+        <span class="tea-xlabel">&#x1F1EC;&#x1F1F9; Guatemala <em style="font-weight:400; opacity:0.6;">(highest)</em></span>
+        <span class="tea-xlabel">&#x1F1FA;&#x1F1F8; United States</span>
+        <span class="tea-xlabel">&#x1F1F3;&#x1F1F1; Netherlands</span>
+        <span class="tea-xlabel">&#x1F1F5;&#x1F1F1; Poland <em style="font-weight:400; opacity:0.6;">(lowest)</em></span>
+      </div>
+    </div>
+
+    <div class="tea-legend reveal reveal-d3">
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:var(--accent-blue);"></span>
+        TEA rate
+      </span>
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:var(--accent-orange);"></span>
+        Necessity entrepreneurs (% of TEA)
+      </span>
+    </div>
+
+    <p class="def-note reveal reveal-d4">
+      <strong>Necessity entrepreneur (GEM)</strong> &mdash; share of TEA who responded that they became an entrepreneur <em>&ldquo;to earn a living because jobs are scarce&rdquo;</em> (variable <code>TEA22MOT4yes</code>).
+    </p>
+
+    <p class="source reveal reveal-d5">Source: Global Entrepreneurship Monitor (GEM), 2022</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Guatemala has the highest TEA AND ~90% of those entrepreneurs report it's out of necessity. The US has a much smaller share of necessity entrepreneurs (~55%) at meaningful TEA; the NL is even lower (39%). Poland is the anomaly — tiny TEA but still ~73% necessity-driven. High TEA isn't a sign of "more transformational" entrepreneurship. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: Gender gap in TEA and entrepreneurial intentions       -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-23">
+  <div class="slide-content">
+    <h2 class="reveal">Not everyone who considers entrepreneurship sets up a new business</h2>
+    <p class="small reveal" style="opacity:0.6; margin-top:0.3em;">
+      Global GEM 2022 &mdash; weighted across all 49 surveyed economies
+    </p>
+
+    <div class="gender-block">
+      <table class="gender-table reveal reveal-d2">
+        <thead>
+          <tr>
+            <th>Gender</th>
+            <th>TEA rate</th>
+            <th>Entrepreneurial intentions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="gender-row-label"><span class="gender-symbol">&#x2642;</span>Male</td>
+            <td class="gender-value">11.8%</td>
+            <td class="gender-value">20.1%</td>
+          </tr>
+          <tr>
+            <td class="gender-row-label"><span class="gender-symbol">&#x2640;</span>Female</td>
+            <td class="gender-value">7.7%</td>
+            <td class="gender-value">14.7%</td>
+          </tr>
+          <tr class="gender-overall">
+            <td class="gender-row-label">Overall</td>
+            <td class="gender-value">9.7%</td>
+            <td class="gender-value">17.3%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="def-note reveal reveal-d3" style="width: min(900px, 92%); margin-left:auto; margin-right:auto;">
+        <strong>Entrepreneurial intentions (<code>futsup</code>)</strong> &mdash; share of the 18&ndash;64 population (excluding those already engaged in entrepreneurial activity) who intend to start a business within the next three years.
+      </p>
+    </div>
+
+    <p class="source reveal reveal-d4">
+      Source: Global Entrepreneurship Monitor (GEM) Adult Population Survey, 2022
+      &mdash; computed from individual-level data (weighted), n &asymp; 172,000 respondents.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Three takeaways. (1) Men are roughly 50% more likely than women to be running TEA-stage businesses (11.8 vs 7.7) AND to express the intention (20.1 vs 14.7). (2) The overall TEA (9.7%) is below the male rate and above the female rate, as expected from a weighted average. (3) Intentions (17.3% overall) exceed TEA (9.7%) by a factor of ~2 — most people who "consider it" never actually start. That's the survival-bias problem from slide 16 in concrete numbers. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: Is entrepreneurship = self-employment?              -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-24">
+  <div class="slide-content">
+    <h2 class="reveal">Is entrepreneurship = self-employment?</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2">Self-employment captures the <strong>income risk-taking</strong> aspect of entrepreneurship.</li>
+      <li class="reveal reveal-d3">Easy to track &mdash; a <strong>measure available at the individual level</strong>, in administrative data and labour-force surveys.</li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Pivot to the labor-economics measurement tradition. The next slides will compare self-employment to TEA — they capture different slices of "entrepreneurship". -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: Self-employed (by type) vs employees over time (CBS) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-25">
+  <div class="slide-content">
+    <h2 class="reveal">Is entrepreneurship = self-employment?</h2>
+    <div class="se-chart reveal reveal-d2" id="seChart"></div>
+    <div class="tea-legend reveal reveal-d3">
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:var(--accent-blue);"></span>
+        Employees (all)
+      </span>
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:var(--accent-orange);"></span>
+        Self-employed without personnel (zzp)
+      </span>
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:#009e73;"></span>
+        Self-employed with personnel
+      </span>
+      <span class="tea-legend-item">
+        <span class="tea-legend-swatch" style="background:#56b4e9;"></span>
+        Co-working family member
+      </span>
+    </div>
+    <p class="source reveal reveal-d4">Source: CBS, Werkzame beroepsbevolking; positie in de werkkring (&times;1,000 persons)</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Employees dwarf the self-employed (~8 million vs ~1.5 million), but the self-employed-without-personnel (zzp) slice is the one that has grown fastest — from ~0.9m in 2013 to ~1.2m. That growth is what drives the "is self-employment entrepreneurship?" debate. The dip in 2025 reflects the latest CBS figures. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: Self-employment — false self-employment & holdings  -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-26">
+  <div class="slide-content">
+    <h2 class="reveal">Is entrepreneurship = self-employment?</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list">
+          <li class="reveal reveal-d2"><strong>False self-employment</strong> &mdash; someone carries out an assignment as a self-employed professional but is in reality an employee &mdash; e.g. they cannot decide themselves when or how to do the work. The client is effectively the employer but pays no payroll taxes.</li>
+          <li class="reveal reveal-d3"><strong>Management companies (Belgium)</strong> &mdash; holdings set up mainly by high-income individuals so income is taxed as corporate earnings instead of as wages (and many purchases can be deducted as operating costs).</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d2">
+        <img src="assets/uber-eats.jpg" alt="Uber Eats delivery rider">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Two reasons self-employment overstates "entrepreneurship": false self-employment (platform/gig work like Uber Eats riders classified as self-employed but functioning as employees) and tax-driven management companies. Neither is "pursuit of opportunity beyond resources controlled". -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 27: The self-employed are a mixed bunch (Levine-Rubinstein) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-27">
+  <div class="slide-content">
+    <h2 class="reveal">The self-employed are a mixed bunch</h2>
+    <div class="lr-wrap reveal reveal-d2">
+      <table class="lr-table">
+        <thead>
+          <tr>
+            <th class="lr-rowhead" rowspan="2"></th>
+            <th rowspan="2">All</th>
+            <th rowspan="2">Salaried</th>
+            <th colspan="3" class="lr-group">Self-employed</th>
+          </tr>
+          <tr>
+            <th>All</th>
+            <th>Unincorp.</th>
+            <th class="lr-hi">Incorp.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="lr-data">
+            <td class="lr-rowhead">Observations</td>
+            <td>1,225,886</td><td>1,108,591</td><td>117,295</td><td>75,476</td><td class="lr-hi">41,819</td>
+          </tr>
+          <tr class="lr-data lr-sub">
+            <td class="lr-rowhead"></td>
+            <td>100.0%</td><td>90.4%</td><td>9.6%</td><td>6.2%</td><td class="lr-hi">3.4%</td>
+          </tr>
+          <tr class="lr-section"><td colspan="6">A. Labour market outcomes</td></tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">Mean earnings</td>
+            <td>$47,515</td><td>$46,421</td><td>$58,174</td><td>$40,820</td><td class="lr-hi">$89,169</td>
+          </tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">Median earnings</td>
+            <td>$36,090</td><td>$36,363</td><td>$34,190</td><td>$24,625</td><td class="lr-hi">$55,591</td>
+          </tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">Median hourly earnings</td>
+            <td>$18.0</td><td>$18.0</td><td>$17.4</td><td>$13.8</td><td class="lr-hi">$24.6</td>
+          </tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">Annual hours worked</td>
+            <td>1,985</td><td>1,976</td><td>2,078</td><td>1,936</td><td class="lr-hi">2,331</td>
+          </tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">Full-time, full-year</td>
+            <td>0.69</td><td>0.70</td><td>0.64</td><td>0.57</td><td class="lr-hi">0.78</td>
+          </tr>
+          <tr class="lr-section"><td colspan="6">B. Demographics</td></tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">Age</td>
+            <td>40.2</td><td>40.0</td><td>42.9</td><td>42.4</td><td class="lr-hi">43.6</td>
+          </tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">White</td>
+            <td>0.70</td><td>0.69</td><td>0.79</td><td>0.76</td><td class="lr-hi">0.83</td>
+          </tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">Female</td>
+            <td>0.48</td><td>0.49</td><td>0.36</td><td>0.40</td><td class="lr-hi">0.28</td>
+          </tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">Years of schooling</td>
+            <td>13.7</td><td>13.7</td><td>13.9</td><td>13.6</td><td class="lr-hi">14.5</td>
+          </tr>
+          <tr class="lr-data">
+            <td class="lr-rowhead">College graduate (or more)</td>
+            <td>0.33</td><td>0.33</td><td>0.36</td><td>0.31</td><td class="lr-hi">0.46</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="source reveal reveal-d3">
+      Source: <a href="https://doi.org/10.1093/qje/qjw044" target="_blank" rel="noopener">Levine &amp; Rubinstein (2017)</a>, &ldquo;Smart and Illicit: Who Becomes an Entrepreneur and Do They Earn More?&rdquo;, <em>QJE</em> 132(2), Table I, Panel A (CPS 1996&ndash;2012).
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Pooling all self-employed hides huge heterogeneity. The INCORPORATED self-employed (highlighted column) earn far more ($89k mean vs $58k all SE, $46k salaried), work more hours, and are more educated. The UNINCORPORATED actually earn LESS than salaried workers ($40.8k). "Self-employment" lumps high-skill incorporated founders together with low-earning unincorporated own-account workers. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 28: Productive, unproductive, destructive (Baumol)      -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-28">
+  <div class="slide-content">
+    <h2 class="reveal">Productive, unproductive, and destructive entrepreneurship</h2>
+    <div class="baumol-row">
+      <div class="baumol-quote reveal reveal-d2">
+        <blockquote>
+          &ldquo;The basic hypothesis is that, while the total supply of entrepreneurs varies among societies, the productive contribution of the society&rsquo;s entrepreneurial activities varies much more because of their allocation between productive activities such as innovation and largely unproductive activities such as rent seeking or organized crime. This allocation is heavily influenced by the relative payoffs society offers to such activities.&rdquo;
+        </blockquote>
+        <cite>&mdash; Baumol (1990), <em>Journal of Political Economy</em> 98(5), 893&ndash;921</cite>
+      </div>
+      <div class="baumol-map reveal reveal-d3" id="baumolMap"></div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Baumol's key move: hold the SUPPLY of entrepreneurs fixed and ask where their talent is ALLOCATED. Institutions/payoffs decide whether entrepreneurial energy goes into productive innovation (private + and social +), unproductive rent-seeking/litigation (private + but social ~0), or destructive activity like organized crime (private + but social −). All three create private value for the entrepreneur; they differ sharply in social value. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 29: Do subsidies spur (un)productive entrepreneurship? -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-29">
+  <div class="slide-content">
+    <h2 class="reveal">Do subsidies spur productive or unproductive entrepreneurship?</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <div class="baumol-quote">
+          <blockquote class="reveal reveal-d2">
+            &ldquo;We document a <strong>null effect</strong> of [local public programs targeting innovative start-ups] over a wide range of firm-level outcomes. However, we find that securing local subsidies increases start-ups&rsquo; probability to obtain <strong>additional</strong> public subsidies, which points in the direction of a vicious &lsquo;Matthew effect&rsquo; in subsidy allocation.&rdquo;
+          </blockquote>
+          <cite class="reveal reveal-d3">&mdash; Santoleri &amp; Russo (2025), <em>Research Policy</em> 54(1)</cite>
+        </div>
+      </div>
+      <div class="img-col reveal reveal-d2">
+        <img src="assets/subsidy_entrepreneurs_rdd.jpg" alt="Regression-discontinuity estimates of subsidy effects on start-up outcomes">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Subsidies meant to spur productive entrepreneurship can instead create "subsidy entrepreneurs" — firms that get good at winning subsidies rather than at creating value. The RDD shows ~null real effects but a higher chance of capturing further subsidies (a Matthew effect). Ties Baumol's allocation argument to concrete policy. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 30: In a nutshell — measuring entrepreneurship is hard -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-30">
+  <div class="slide-content">
+    <h2 class="reveal">In a nutshell: measuring entrepreneurship is hard</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2">Entrepreneurship is a <strong>wide spectrum</strong> &mdash; from bootstrapped software apps to VC-backed deep-tech start-ups in the space industry.</li>
+      <li class="reveal reveal-d3">Operationalising all the distinctive characteristics (<em>uncertainty, limited resources, experimentation</em>) at once is very challenging at scale.</li>
+      <li class="reveal reveal-d4">Each definition is a <strong>trade-off</strong>:
+        <ul class="sub-bullets">
+          <li>Restricting to start-ups with an innovative product leaves out entrepreneurs who <em>tried</em> to create something innovative but failed along the way.</li>
+        </ul>
+      </li>
+      <li class="reveal reveal-d5">Keep these trade-offs in mind throughout the course &mdash; in your own research, when reading policy reports, in the news, &hellip;</li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Wrap-up of the measurement half of the lecture. No single measure is right; each is a defensible compromise. The honest stance is to be explicit about which slice you're capturing. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 31: Why should we care? (transition question)         -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-31">
+  <span class="q-deco" aria-hidden="true">?</span>
+  <div class="slide-content">
+    <h1 class="big-question reveal">Why should we care about entrepreneurship?</h1>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Pivot from "what/how to measure" to "why it matters". Collect intuitions before showing the productivity / job-creation / innovation evidence. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 32: Startups & productivity growth (Alon et al. 2018)  -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-32">
+  <div class="slide-content">
+    <h2 class="reveal">Startups contribute most to productivity growth</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/alon%20_et_al_startups_productivity_growth.png" alt="Startups' contribution to aggregate productivity growth">
+    </div>
+    <p class="source reveal reveal-d3">Source: Alon, Berger, Dent &amp; Pugsley (2018), &ldquo;Older and slower: The startup deficit&rsquo;s lasting effects on aggregate productivity growth&rdquo;, <em>Journal of Monetary Economics</em> 93, 68&ndash;85.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Young firms punch far above their weight in productivity growth; the secular decline in startup rates ("startup deficit") drags on aggregate productivity. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 33: Startups & job creation (Haltiwanger et al. 2016)  -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-33">
+  <div class="slide-content">
+    <h2 class="reveal">Startups create (and destroy) most jobs</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/haltiwanger_et_al_2016_startups_job_creation.png" alt="Job creation and destruction by firm age">
+    </div>
+    <p class="source reveal reveal-d3">Source: Haltiwanger, Jarmin, Kulick &amp; Miranda (2016), &ldquo;High-growth young firms&rdquo;, in <em>Measuring Entrepreneurial Businesses</em>, NBER / University of Chicago Press, 11&ndash;62.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Young firms account for an outsized share of GROSS job creation — but also high churn (destruction). It's the up-or-out dynamic of entrepreneurship. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 34: Only a small fraction create the jobs (Calvino)    -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-34">
+  <div class="slide-content">
+    <h2 class="reveal">&hellip; but only a small fraction of startups create all those jobs</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/calvino_no_country_for_young_firms.png" alt="Skewed contribution of a few high-growth startups to job creation">
+    </div>
+    <p class="source reveal reveal-d3">Source: Calvino, Criscuolo &amp; Menon (2016), &ldquo;No Country for Young Firms?&rdquo;, OECD STI Policy Papers No. 29, OECD Publishing.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The job-creation story is highly skewed — a small number of high-growth young firms generate the bulk of net new jobs. Echoes the "highly-skewed outcomes" theme from slide 9. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 35: Startups & breakthrough innovation (Ewens & Marx)  -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-35">
+  <div class="slide-content">
+    <h2 class="reveal">Startups disproportionately contribute to breakthrough innovations</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/ewens_marx_startups_breakthrough_innovation.bmp" alt="Share of breakthrough innovations originating from startups">
+    </div>
+    <p class="source reveal reveal-d3">Source: Ewens, Michael &amp; Matt Marx, &ldquo;Firm Age and Invention: An Open Access Dataset&rdquo;, Working Paper.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Beyond jobs and productivity, young firms are over-represented among genuine breakthrough innovations — the third pillar of "why we care". -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 36: Closing — materials on GitHub                      -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-36">
+  <div class="slide-content closing">
+    <h2 class="reveal">Slides &amp; data</h2>
+    <p class="reveal reveal-d2 closing-text">The slides and the data behind every graph in this lecture are available at:</p>
+    <p class="reveal reveal-d3"><a class="closing-link" href="https://github.com/jmahieu/foundations-of-entrepreneurship" target="_blank" rel="noopener">github.com/jmahieu/foundations-of-entrepreneurship</a></p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Point students to the repo for all slides and underlying data so they can reproduce the graphs. -->
+
+<!-- ============================================================ -->
+<!-- (removed) Former interactive value model slide               -->
+<!-- ============================================================ -->
+
+
+<!-- ============================================================ -->
+<!-- JAVASCRIPT -->
+<!-- ============================================================ -->
+<script>
+/* === SECTION: SlidePresentation Class === */
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll('.slide');
+    this.currentSlide = 0;
+    this.totalSlides = this.slides.length;
+    this.touchStartY = 0;
+    this.touchStartX = 0;
+
+    this.initObserver();
+    this.initKeyboard();
+    this.initTouch();
+    this.initNavDots();
+    this.updateProgress();
+    this.updateCounter();
+  }
+
+  initObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const index = Array.from(this.slides).indexOf(entry.target);
+          if (index !== -1) {
+            this.currentSlide = index;
+            this.updateProgress();
+            this.updateCounter();
+            this.updateNavDots();
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    this.slides.forEach(slide => observer.observe(slide));
+  }
+
+  initKeyboard() {
+    document.addEventListener('keydown', (e) => {
+      if (document.body.classList.contains('edit-mode') && e.key !== 'Escape' && e.key !== 'e') return;
+      switch(e.key) {
+        case 'ArrowDown': case 'ArrowRight': case ' ': case 'PageDown':
+          e.preventDefault(); this.next(); break;
+        case 'ArrowUp': case 'ArrowLeft': case 'PageUp':
+          e.preventDefault(); this.prev(); break;
+        case 'Home': e.preventDefault(); this.goTo(0); break;
+        case 'End': e.preventDefault(); this.goTo(this.totalSlides - 1); break;
+        case 'e': case 'E':
+          if (!e.ctrlKey && !e.metaKey) toggleEditMode();
+          break;
+      }
+    });
+  }
+
+  initTouch() {
+    document.addEventListener('touchstart', (e) => {
+      this.touchStartY = e.touches[0].clientY;
+      this.touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      const deltaY = this.touchStartY - e.changedTouches[0].clientY;
+      const deltaX = this.touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
+        deltaY > 0 ? this.next() : this.prev();
+      }
+    }, { passive: true });
+  }
+
+  initNavDots() {
+    const container = document.getElementById('navDots');
+    for (let i = 0; i < this.totalSlides; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => this.goTo(i));
+      container.appendChild(dot);
+    }
+  }
+
+  next() {
+    if (this.currentSlide < this.totalSlides - 1) this.goTo(this.currentSlide + 1);
+  }
+
+  prev() {
+    if (this.currentSlide > 0) this.goTo(this.currentSlide - 1);
+  }
+
+  goTo(index) {
+    if (index >= 0 && index < this.totalSlides) {
+      this.slides[index].scrollIntoView({ behavior: 'smooth' });
+      this.currentSlide = index;
+      this.updateProgress();
+      this.updateCounter();
+      this.updateNavDots();
+    }
+  }
+
+  updateProgress() {
+    const progress = (this.currentSlide / (this.totalSlides - 1)) * 100;
+    document.getElementById('progressBar').style.width = progress + '%';
+  }
+
+  updateCounter() {
+    document.getElementById('slideCounter').textContent =
+      `${this.currentSlide + 1} / ${this.totalSlides}`;
+  }
+
+  updateNavDots() {
+    document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === this.currentSlide);
+    });
+  }
+}
+
+/* === SECTION: Edit Mode === */
+let editMode = false;
+let hoverTimer = null;
+const hotzone = document.getElementById('editHotzone');
+const toolbar = document.getElementById('editToolbar');
+
+hotzone.addEventListener('mouseenter', () => {
+  hoverTimer = setTimeout(() => { hotzone.classList.add('show'); }, 400);
+});
+hotzone.addEventListener('mouseleave', () => {
+  clearTimeout(hoverTimer);
+  if (!editMode) hotzone.classList.remove('show');
+});
+hotzone.addEventListener('click', toggleEditMode);
+
+function toggleEditMode() {
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode', editMode);
+  toolbar.classList.toggle('active', editMode);
+  hotzone.classList.toggle('show', editMode);
+
+  const editables = document.querySelectorAll('.slide h1, .slide h2, .slide h3, .slide p, .slide li, .slide span:not(.nav-dot):not(.quiz-letter):not(.quiz-flag):not(.problem-num)');
+  editables.forEach(el => {
+    if (editMode) {
+      el.setAttribute('contenteditable', 'true');
+    } else {
+      el.removeAttribute('contenteditable');
+    }
+  });
+
+  if (!editMode) saveEdits();
+}
+
+function saveEdits() {
+  const slides = document.querySelectorAll('.slide');
+  const data = {};
+  slides.forEach((slide, i) => { data[`slide-${i}`] = slide.innerHTML; });
+  localStorage.setItem('lecture-01-sowhat-edits', JSON.stringify(data));
+}
+
+function loadEdits() {
+  const data = JSON.parse(localStorage.getItem('lecture-01-sowhat-edits') || 'null');
+  if (data) {
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, i) => {
+      if (data[`slide-${i}`]) slide.innerHTML = data[`slide-${i}`];
+    });
+  }
+}
+
+function exportPresentation() {
+  const html = document.documentElement.outerHTML;
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'lecture-01-entrepreneurship-edited.html';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* === SECTION: Slide 23 — render stacked-column chart (CBS data) === */
+function renderSEChart() {
+  const el = document.getElementById('seChart');
+  if (!el) return;
+  const years = [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+  // values in x1,000 persons
+  const emp = [7199,7132,7191,7270,7422,7604,7761,7703,7810,8009,8151,8183,8290]; // Werknemer (all)
+  const zzp = [894,916,936,960,986,999,1019,1054,1078,1176,1230,1262,1200];        // zelfst. zonder personeel
+  const zmp = [302,299,290,306,311,310,310,329,334,331,327,328,318];               // zelfst. met personeel
+  const fam = [38,36,40,34,26,26,27,30,33,32,29,25,25];                            // meewerkend gezinslid
+  // NB: use literal hex (not var(--…)) — CSS custom properties do not resolve
+  // inside SVG presentation attributes in all browsers, which left bars unfilled.
+  const series = [
+    { data: emp, color: '#4361ee' },
+    { data: zzp, color: '#e69f00' },
+    { data: zmp, color: '#009e73' },
+    { data: fam, color: '#56b4e9' }
+  ];
+  const W = 1000, H = 520, mL = 78, mR = 16, mT = 18, mB = 46;
+  const pw = W - mL - mR, ph = H - mT - mB;
+  const yMax = 10000; // x1,000 persons = 10 million
+  const yOf = v => mT + ph - (v / yMax) * ph;
+  const band = pw / years.length, bw = band * 0.62;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Self-employed by type versus employees, 2013-2025">`;
+  // y gridlines + labels (millions)
+  for (let g = 0; g <= 10; g += 2) {
+    const v = g * 1000, y = yOf(v);
+    s += `<line x1="${mL}" y1="${y}" x2="${W - mR}" y2="${y}" stroke="rgba(10,10,10,0.10)" stroke-width="1"/>`;
+    s += `<text x="${mL - 10}" y="${y + 5}" text-anchor="end" font-size="20" fill="#555">${g}</text>`;
+  }
+  s += `<text transform="translate(20 ${mT + ph / 2}) rotate(-90)" text-anchor="middle" font-size="20" fill="#555">Persons (millions)</text>`;
+  // stacked columns
+  years.forEach((yr, i) => {
+    const x = mL + i * band + (band - bw) / 2;
+    let cum = 0;
+    series.forEach(se => {
+      const val = se.data[i];
+      const y0 = yOf(cum), y1 = yOf(cum + val);
+      s += `<rect x="${x}" y="${y1}" width="${bw}" height="${y0 - y1}" fill="${se.color}"/>`;
+      cum += val;
+    });
+    s += `<text x="${x + bw / 2}" y="${mT + ph + 28}" text-anchor="middle" font-size="19" fill="#555">${String(yr).slice(2)}</text>`;
+  });
+  // x axis baseline
+  s += `<line x1="${mL}" y1="${mT + ph}" x2="${W - mR}" y2="${mT + ph}" stroke="rgba(10,10,10,0.35)" stroke-width="1.5"/>`;
+  s += `</svg>`;
+  el.innerHTML = s;
+}
+
+/* === SECTION: Slide 26 — Baumol allocation map (SVG) === */
+function renderBaumolMap() {
+  const el = document.getElementById('baumolMap');
+  if (!el) return;
+  const W = 620, H = 560, ax = 92, zeroY = 300, topY = 50, botY = 520, rightX = 588;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Productive, unproductive and destructive entrepreneurship by private and societal value">`;
+  s += `<defs><marker id="arrW" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#555"/></marker></defs>`;
+  // axes
+  s += `<line x1="${ax}" y1="${topY}" x2="${ax}" y2="${botY}" stroke="#555" stroke-width="2" marker-end="url(#arrW)"/>`;
+  s += `<line x1="${ax}" y1="${zeroY}" x2="${rightX}" y2="${zeroY}" stroke="#555" stroke-width="2" marker-end="url(#arrW)"/>`;
+  // axis labels (anchored inside the viewBox so they never clip)
+  s += `<text x="${ax + 10}" y="${topY + 2}" text-anchor="start" font-size="18" font-weight="700" fill="#555">Societal value +</text>`;
+  s += `<text x="${ax + 10}" y="${botY}" text-anchor="start" font-size="18" font-weight="700" fill="#555">&#8211; (destroyed)</text>`;
+  s += `<text x="${rightX}" y="${zeroY + 34}" text-anchor="end" font-size="18" font-weight="700" fill="#555">Private value (for the entrepreneur) &#8594;</text>`;
+  // badges: [x, y, w, label, color]
+  const badge = (cx, cy, label, sub, color) => {
+    const w = 196, h = 60;
+    let g = `<g>`;
+    g += `<rect x="${cx - w/2}" y="${cy - h/2}" width="${w}" height="${h}" rx="12" fill="${color}"/>`;
+    g += `<text x="${cx}" y="${cy - 4}" text-anchor="middle" font-size="22" font-family="'Archivo Black',sans-serif" fill="#fff">${label}</text>`;
+    g += `<text x="${cx}" y="${cy + 18}" text-anchor="middle" font-size="14" fill="#fff" opacity="0.92">${sub}</text>`;
+    g += `</g>`;
+    return g;
+  };
+  s += badge(400, 120, 'Productive', 'innovation &middot; social +', '#009e73');
+  s += badge(400, 250, 'Unproductive', 'rent-seeking &middot; social ≈ 0', '#e69f00');
+  s += badge(400, 420, 'Destructive', 'organized crime &middot; social −', '#d55e00');
+  s += `</svg>`;
+  el.innerHTML = s;
+}
+
+/* === SECTION: Slide 27 — interactive private vs societal value === */
+/* === SECTION: Initialize === */
+document.addEventListener('DOMContentLoaded', () => {
+  loadEdits();
+  renderSEChart();
+  renderBaumolMap();
+  new SlidePresentation();
+  // YouTube embeds fail with "Error 153" when opened from file:// (no valid referrer).
+  // Inline iframe only works when served over http(s); otherwise show a clickable poster.
+  const iframe = document.getElementById('jiboIframe');
+  const poster = document.getElementById('jiboPoster');
+  if (iframe && poster) {
+    if (location.protocol === 'http:' || location.protocol === 'https:') {
+      poster.style.display = 'none';      // served → let the inline player work
+    } else {
+      iframe.removeAttribute('src');       // local file → don't even load the broken embed
+    }
+  }
+});
+</script>
+
+</body>
+</html>
