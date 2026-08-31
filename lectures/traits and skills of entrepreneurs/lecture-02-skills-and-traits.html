@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecture 02 — The Skills and Traits of Entrepreneurs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* === VIEWPORT FITTING: MANDATORY BASE STYLES === */
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide { width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; position: relative; }
+.slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-height: 100%; overflow: hidden; padding: var(--slide-padding); }
+:root {
+  --title-size: clamp(1.5rem, 5vw, 4rem);
+  --h2-size: clamp(1.3rem, 3.7vw, 2.7rem);
+  --h3-size: clamp(1.05rem, 2.6vw, 1.85rem);
+  --body-size: clamp(1.05rem, 2.1vw, 1.6rem);
+  --small-size: clamp(0.7rem, 1.05vw, 0.95rem);
+  --slide-padding: clamp(0.9rem, 3.1vw, 3rem);
+  --content-gap: clamp(0.5rem, 1.9vw, 1.8rem);
+  --element-gap: clamp(0.25rem, 1vw, 1rem);
+  --bg-dark: #0a0a0a;
+  --bg-white: #ffffff;
+  /* ---- COLOUR-BLIND-SAFE PALETTE (brand blue + Okabe–Ito) ---- */
+  --accent-blue:   #4361ee; /* brand / primary series          */
+  --accent-orange: #e69f00; /* Okabe–Ito orange  (2nd series)  */
+  --accent-green:  #009e73; /* Okabe–Ito bluish-green (3rd)    */
+  --accent-sky:    #56b4e9; /* Okabe–Ito sky-blue (4th)        */
+  --accent-verm:   #d55e00; /* Okabe–Ito vermillion (negative) */
+  --text-dark: #0a0a0a;
+  --text-light: #ffffff;
+}
+img, .image-container { max-width: 100%; max-height: min(50vh, 400px); object-fit: contain; }
+@media (max-height: 700px) { :root { --slide-padding: clamp(0.75rem, 3vw, 2rem); --content-gap: clamp(0.4rem, 1.5vw, 1rem); --title-size: clamp(1.25rem, 4.5vw, 2.5rem); --h2-size: clamp(1rem, 3vw, 1.75rem); } }
+@media (max-height: 600px) { :root { --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem); --content-gap: clamp(0.3rem, 1vw, 0.75rem); --title-size: clamp(1.1rem, 4vw, 2rem); --body-size: clamp(0.8rem, 1.4vw, 1.1rem); } .nav-dots, .keyboard-hint, .decorative { display: none; } }
+@media (max-height: 500px) { :root { --slide-padding: clamp(0.4rem, 2vw, 1rem); --title-size: clamp(1rem, 3.5vw, 1.5rem); --h2-size: clamp(0.9rem, 2.5vw, 1.25rem); --body-size: clamp(0.75rem, 1.2vw, 1rem); } }
+@media (max-width: 600px) { :root { --title-size: clamp(1.25rem, 7vw, 2.5rem); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; } html { scroll-behavior: auto; } }
+
+/* === Global Styles === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: var(--bg-dark); color: var(--text-dark); }
+h1, h2, h3 { font-family: 'Archivo Black', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; }
+h1 { font-size: var(--title-size); line-height: 1.1; }
+h2 { font-size: var(--h2-size); line-height: 1.15; }
+h3 { font-size: var(--h3-size); line-height: 1.2; }
+p, li { font-size: var(--body-size); line-height: 1.5; }
+.small { font-size: var(--small-size); }
+a { color: var(--accent-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* === Slide backgrounds === */
+.slide--full-blue { background: var(--accent-blue); color: var(--text-light); }
+.slide--full-blue .slide-content { justify-content: center; align-items: center; text-align: center; }
+.slide--full-dark { background: var(--bg-dark); color: var(--text-light); }
+.slide--full-white { background: var(--bg-white); color: var(--text-dark); }
+
+/* === Components === */
+.tag { display: inline-block; padding: 0.2em 0.8em; border-radius: 100px; font-size: var(--small-size); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.tag--blue { background: var(--accent-blue); color: var(--text-light); }
+.source { font-size: var(--small-size); opacity: 0.6; margin-top: var(--element-gap); font-style: italic; }
+
+h2 + * { margin-top: var(--content-gap); }
+
+/* === Animations === */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.slide.visible .reveal { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; } .reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; } .reveal-d4 { transition-delay: 0.4s; }
+.reveal-d5 { transition-delay: 0.5s; } .reveal-d6 { transition-delay: 0.6s; }
+.reveal-d7 { transition-delay: 0.7s; } .reveal-d8 { transition-delay: 0.8s; }
+
+/* === Progress & Navigation === */
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent-blue); z-index: 1000; transition: width 0.3s ease; width: 0%; }
+.slide-counter { position: fixed; bottom: clamp(0.5rem, 2vh, 1.5rem); right: clamp(0.5rem, 2vw, 1.5rem); font-size: var(--small-size); font-weight: 700; color: rgba(120,120,120,0.8); z-index: 1000; background: rgba(255,255,255,0.7); padding: 0.3em 0.8em; border-radius: 100px; backdrop-filter: blur(10px); }
+.nav-dots { position: fixed; right: clamp(0.3rem, 1vw, 0.8rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 1000; }
+.nav-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(67,97,238,0.25); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+.nav-dot.active { background: var(--accent-blue); transform: scale(1.3); }
+.nav-dot:hover { background: rgba(67,97,238,0.55); }
+.keyboard-hint { position: fixed; bottom: clamp(0.5rem, 2vh, 1.5rem); left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: rgba(120,120,120,0.7); z-index: 1000; animation: fadeOut 3s 5s forwards; }
+@keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+/* === Edit Mode === */
+.edit-hotzone { position: fixed; top: 0; left: 0; width: 60px; height: 60px; z-index: 2000; cursor: pointer; opacity: 0; transition: opacity 0.3s ease; }
+.edit-hotzone.show { opacity: 1; }
+.edit-hotzone-indicator { position: absolute; top: 10px; left: 10px; width: 36px; height: 36px; background: var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 700; box-shadow: 0 2px 10px rgba(67,97,238,0.5); }
+.edit-toolbar { position: fixed; top: 10px; left: 70px; z-index: 2000; background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 8px 12px; display: none; gap: 8px; align-items: center; }
+.edit-toolbar.active { display: flex; }
+.edit-toolbar button { background: var(--accent-blue); color: white; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 600; }
+.edit-toolbar button:hover { filter: brightness(1.2); }
+.edit-toolbar .edit-status { color: rgba(255,255,255,0.7); font-size: 11px; }
+body.edit-mode [contenteditable="true"] { outline: 2px dashed var(--accent-blue); outline-offset: 2px; cursor: text; border-radius: 4px; }
+
+/* === Slide 1 — Title === */
+.title-slide { background: var(--bg-white); color: var(--text-dark); }
+.title-bar { padding: clamp(0.9rem, 3vh, 2.2rem) var(--slide-padding); text-align: center; position: relative; z-index: 2; }
+.title-bar--top { font-size: var(--small-size); font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent-blue); }
+.title-bar--bottom { border-top: 2px solid rgba(10,10,10,0.08); }
+.title-name { font-family: 'Archivo Black', sans-serif; font-size: var(--body-size); text-transform: uppercase; letter-spacing: 0.04em; }
+.title-main { font-size: clamp(1.9rem, 7vw, 5rem); position: relative; z-index: 2; max-width: 18ch; }
+.title-lecture { margin-top: var(--content-gap); letter-spacing: 0.1em; }
+.title-deco { position: absolute; border-radius: 50%; z-index: 1; pointer-events: none; }
+.title-deco--1 { width: 44vw; height: 44vw; background: rgba(67,97,238,0.07); top: -14vw; right: -12vw; }
+.title-deco--2 { width: 30vw; height: 30vw; border: 2px solid rgba(67,97,238,0.16); bottom: -9vw; left: -7vw; }
+
+/* === Big question (discussion) === */
+.q-deco { position: absolute; font-family: 'Archivo Black', sans-serif; font-size: clamp(22rem, 70vh, 50rem); line-height: 0.8; color: rgba(255,255,255,0.07); right: 2vw; bottom: -10vh; z-index: 0; pointer-events: none; user-select: none; }
+.big-question { font-size: clamp(2.4rem, 8vw, 6rem); margin-top: var(--element-gap); max-width: 18ch; position: relative; z-index: 1; }
+.pre-question { font-size: var(--h3-size); font-weight: 500; opacity: 0.9; max-width: 30ch; position: relative; z-index: 1; }
+
+/* === Bullet list === */
+.bullet-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: clamp(0.7rem, 2.7vh, 2.1rem); margin-top: var(--content-gap); }
+.bullet-list li { padding-left: 1.6em; position: relative; font-size: var(--body-size); line-height: 1.5; }
+.bullet-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 9px; height: 9px; background: var(--accent-blue); border-radius: 50%; }
+
+/* === Single dominant image === */
+.single-image { display: flex; align-items: center; justify-content: center; flex: 1; min-height: 0; margin-top: var(--content-gap); }
+.single-image img { max-width: 100%; max-height: min(90vh, 900px); object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid rgba(10,10,10,0.1); box-shadow: 0 6px 24px rgba(10,10,10,0.08); }
+
+/* === Compare row (two images side by side) === */
+.compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--content-gap); flex: 1; min-height: 0; margin-top: var(--content-gap); align-items: stretch; }
+.compare-cell { display: flex; flex-direction: column; align-items: center; gap: var(--element-gap); min-height: 0; justify-content: center; }
+.compare-cell img { max-width: 100%; max-height: min(80vh, 700px); width: auto; object-fit: contain; border-radius: 8px; background: #fff; border: 1px solid rgba(10,10,10,0.1); box-shadow: 0 6px 24px rgba(10,10,10,0.08); }
+.compare-label { font-family: 'Archivo Black', sans-serif; font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-blue); }
+
+/* === Split text / image === */
+.split-text-image { display: grid; grid-template-columns: 1fr 1.35fr; gap: var(--content-gap); flex: 1; min-height: 0; margin-top: var(--content-gap); align-items: center; }
+.split-text-image .text-col { display: flex; flex-direction: column; justify-content: center; }
+.split-text-image .img-col { display: flex; align-items: center; justify-content: center; min-height: 0; }
+.split-text-image .img-col img { max-width: 100%; max-height: min(88vh, 820px); width: auto; object-fit: contain; border-radius: 8px; background: #fff; border: 1px solid rgba(10,10,10,0.1); box-shadow: 0 6px 24px rgba(10,10,10,0.08); }
+/* The Kihlstrom-Laffont slide is equation-heavy — keep the text column dominant so the maths stays readable */
+#slide-22 .split-text-image { grid-template-columns: 1.15fr 1fr; }
+/* Jack-of-all-trades model slide is text/formula-heavy — give the text more room */
+#slide-46 .split-text-image { grid-template-columns: 1.2fr 1fr; }
+
+/* Two wide figures stacked in a split's image column (team-sport slide) */
+.stacked-figs { display: flex; flex-direction: column; gap: clamp(0.3rem, 1vh, 0.7rem); width: 100%; min-height: 0; align-items: center; }
+.stacked-figs figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 0.15em; min-height: 0; }
+.split-text-image .img-col .stacked-figs img { max-width: 100%; max-height: min(35vh, 256px); width: auto; object-fit: contain; border-radius: 6px; background: #fff; border: 1px solid rgba(10,10,10,0.1); box-shadow: 0 4px 16px rgba(10,10,10,0.06); }
+.stacked-figs figcaption { font-size: clamp(0.5rem, 0.85vw, 0.68rem); opacity: 0.7; text-align: center; line-height: 1.2; }
+/* Give the wide team-sport figures more width so they can grow */
+#slide-48 .split-text-image { grid-template-columns: 0.72fr 1.5fr; }
+/* Slide 14's title wraps to two lines — trim the figure slightly so it fits */
+#slide-14 .single-image img { max-height: min(78vh, 560px); }
+
+/* === Minimal inline SVG chart (slide 17 K-L diagram) === */
+.svg-chart { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 0; }
+.svg-chart svg { width: 100%; height: auto; max-height: min(74vh, 560px); display: block; }
+.svg-chart text { font-family: 'Manrope', sans-serif; }
+
+/* === Slide 2 — Investment dilemma === */
+.dilemma-intro { font-size: var(--h3-size); font-weight: 500; margin-top: var(--element-gap); }
+.dilemma-intro strong { color: var(--accent-blue); }
+.dilemma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--content-gap); flex: 1; min-height: 0; margin-top: var(--content-gap); }
+.option-card { display: flex; flex-direction: column; border-radius: 14px; padding: clamp(0.7rem, 1.9vw, 1.5rem); min-height: 0; overflow: hidden; }
+.option-card--a { background: rgba(67,97,238,0.06); border-top: 5px solid var(--accent-blue); }
+.option-card--b { background: rgba(230,159,0,0.08); border-top: 5px solid var(--accent-orange); }
+.option-tag { font-family: 'Archivo Black', sans-serif; font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.08em; }
+.option-card--a .option-tag { color: var(--accent-blue); }
+.option-card--b .option-tag { color: var(--accent-orange); }
+.option-title { font-family: 'Archivo Black', sans-serif; font-size: clamp(1rem, 2vw, 1.5rem); margin: 0.15em 0 0.35em; }
+.option-lede { font-size: clamp(0.8rem, 1.4vw, 1.05rem); line-height: 1.4; opacity: 0.85; margin-bottom: 0.5em; }
+.stat-list { list-style: none; display: flex; flex-direction: column; gap: clamp(0.3rem, 0.9vh, 0.7rem); }
+.stat-list li { display: flex; align-items: baseline; gap: 0.6em; font-size: clamp(0.78rem, 1.35vw, 1.05rem); line-height: 1.35; }
+.stat-list li::before { content: ''; flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%; transform: translateY(-0.15em); }
+.option-card--a .stat-list li::before { background: var(--accent-blue); }
+.option-card--b .stat-list li::before { background: var(--accent-orange); }
+.stat-list b { font-family: 'Archivo Black', sans-serif; font-weight: 400; }
+
+/* === Slide 8 — Possible explanations (two groups) === */
+.explain-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: var(--content-gap); flex: 1; min-height: 0; margin-top: var(--content-gap); }
+.explain-panel { display: flex; flex-direction: column; border-radius: 14px; padding: clamp(0.8rem, 2vw, 1.6rem); min-height: 0; }
+.explain-panel--neutral { background: rgba(230,159,0,0.08); border-top: 5px solid var(--accent-orange); }
+.explain-panel--enhancing { background: rgba(0,158,115,0.08); border-top: 5px solid var(--accent-green); }
+.explain-head { font-family: 'Archivo Black', sans-serif; font-size: var(--h3-size); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 0.15em; }
+.explain-panel--neutral .explain-head { color: #b57c00; }
+.explain-panel--enhancing .explain-head { color: var(--accent-green); }
+.explain-sub { font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; opacity: 0.7; margin-bottom: 0.7em; }
+.explain-items { list-style: none; display: flex; flex-direction: column; gap: clamp(0.35rem, 1vh, 0.8rem); }
+.explain-items li { display: flex; align-items: baseline; gap: 0.6em; font-size: clamp(0.82rem, 1.45vw, 1.15rem); line-height: 1.35; }
+.explain-items li::before { content: ''; flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; transform: translateY(-0.15em); }
+.explain-panel--neutral .explain-items li::before { background: var(--accent-orange); }
+.explain-panel--enhancing .explain-items li::before { background: var(--accent-green); }
+
+/* === APA reference lines === */
+.ref-block { margin-top: var(--content-gap); display: flex; flex-direction: column; gap: 0.5em; }
+.ref-line { font-size: var(--small-size); line-height: 1.4; padding-left: 2.4em; text-indent: -2.4em; opacity: 0.75; }
+
+/* === Section divider (full blue, one big word) === */
+.section-word { font-size: clamp(3rem, 13vw, 9.5rem); letter-spacing: 0.02em; position: relative; z-index: 1; }
+.section-kicker { font-size: var(--h3-size); font-weight: 500; opacity: 0.9; letter-spacing: 0.04em; text-transform: uppercase; }
+
+/* === Sub-bullets (nested) === */
+.sub-bullets { list-style: none; margin: 0.4em 0 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: clamp(0.25rem, 0.9vh, 0.6rem); }
+.sub-bullets li { position: relative; padding-left: 1.4em; font-size: clamp(0.85rem, 1.5vw, 1.15rem); line-height: 1.4; opacity: 0.9; }
+.sub-bullets li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 8px; height: 8px; border: 2px solid var(--accent-blue); border-radius: 50%; background: transparent; }
+
+/* === Inline & display math === */
+.math { font-style: italic; font-family: 'Manrope', sans-serif; white-space: nowrap; }
+.math sub, .math sup { font-style: normal; }
+.eq-block { display: flex; flex-direction: column; align-items: flex-start; gap: 0.25em; margin: var(--element-gap) 0; background: rgba(67,97,238,0.06); border-left: 6px solid var(--accent-blue); padding: clamp(0.5rem,1.4vh,0.9rem) clamp(0.8rem,2vw,1.3rem); border-radius: 0 10px 10px 0; }
+.eq-formula { font-style: italic; font-size: clamp(1.05rem, 2.4vw, 1.6rem); color: var(--accent-blue); white-space: nowrap; }
+.eq-formula sub, .eq-formula sup { font-style: normal; }
+
+/* Denser bullet list for text-heavy slides */
+.bullet-list--tight { gap: clamp(0.5rem, 1.9vh, 1.35rem); }
+.bullet-list--tight li { font-size: clamp(0.85rem, 1.55vw, 1.2rem); }
+
+/* === Slide 15 — risk-score comparison cards === */
+.riskscore-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--content-gap); margin: var(--content-gap) 0; }
+.riskscore-card { border-radius: 14px; padding: clamp(0.9rem, 2.2vw, 1.7rem); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.2em; }
+.riskscore-card--ent { background: rgba(67,97,238,0.08); border-top: 5px solid var(--accent-blue); }
+.riskscore-card--pop { background: rgba(230,159,0,0.10); border-top: 5px solid var(--accent-orange); }
+.riskscore-num { font-family: 'Archivo Black', sans-serif; font-size: clamp(2rem, 6vw, 4rem); line-height: 1; }
+.riskscore-card--ent .riskscore-num { color: var(--accent-blue); }
+.riskscore-card--pop .riskscore-num { color: #b57c00; }
+.riskscore-label { font-family: 'Archivo Black', sans-serif; font-size: clamp(0.8rem, 1.5vw, 1.1rem); text-transform: uppercase; letter-spacing: 0.03em; }
+.riskscore-sub { font-size: var(--small-size); opacity: 0.75; line-height: 1.35; }
+.riskscore-prompt { text-align: center; font-family: 'Archivo Black', sans-serif; font-size: var(--h3-size); color: var(--accent-blue); }
+
+/* === Closing === */
+.closing-text { font-size: var(--body-size); margin-top: var(--content-gap); }
+.closing-link { font-family: 'Archivo Black', sans-serif; color: var(--text-light); font-size: clamp(1rem, 2.4vw, 1.7rem); text-decoration: underline; text-underline-offset: 4px; word-break: break-word; margin-top: 0.4em; display: inline-block; }
+
+/* === Explain-panel colour variants (slide 22: fits / hard to explain) === */
+.explain-grid--even { grid-template-columns: 1fr 1fr; }
+.explain-panel--fit { background: rgba(0,158,115,0.08); border-top: 5px solid var(--accent-green); }
+.explain-panel--fit .explain-head { color: var(--accent-green); }
+.explain-panel--fit .explain-items li::before { background: var(--accent-green); }
+.explain-panel--problem { background: rgba(213,94,0,0.08); border-top: 5px solid var(--accent-verm); }
+.explain-panel--problem .explain-head { color: var(--accent-verm); }
+.explain-panel--problem .explain-items li::before { background: var(--accent-verm); }
+
+/* === Two-column text lists (dense slides 26, 29) === */
+.two-col-lists { display: grid; grid-template-columns: 1fr 1fr; gap: var(--content-gap); flex: 1; min-height: 0; margin-top: var(--content-gap); align-items: start; }
+.two-col-lists .col { display: flex; flex-direction: column; min-height: 0; }
+.col-head { font-family: 'Archivo Black', sans-serif; font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-blue); border-top: 3px solid var(--accent-blue); padding-top: 0.5em; margin-bottom: 0.6em; }
+.col-head--alt { color: var(--accent-orange); border-top-color: var(--accent-orange); }
+
+/* === Bottom note callout === */
+.slide-note { margin-top: var(--content-gap); padding: clamp(0.5rem,1.4vw,1rem) clamp(0.7rem,1.8vw,1.2rem); background: rgba(67,97,238,0.06); border-left: 3px solid var(--accent-blue); border-radius: 0 6px 6px 0; font-size: var(--small-size); line-height: 1.45; }
+.slide-note strong { color: var(--accent-blue); }
+
+/* === QR + link layout (slide 32) === */
+.qr-layout { display: grid; grid-template-columns: 0.8fr 1fr; gap: var(--content-gap); flex: 1; min-height: 0; margin-top: var(--content-gap); align-items: center; }
+.qr-layout .qr-img { display: flex; align-items: center; justify-content: center; min-height: 0; }
+.qr-layout .qr-img img { width: min(38vh, 300px); height: auto; object-fit: contain; background: #fff; padding: 10px; border-radius: 10px; border: 1px solid rgba(10,10,10,0.1); box-shadow: 0 6px 24px rgba(10,10,10,0.08); }
+.qr-cta { display: flex; flex-direction: column; gap: var(--element-gap); }
+.qr-cta .cta-lead { font-size: var(--h3-size); font-weight: 600; }
+.big-link { font-family: 'Archivo Black', sans-serif; font-size: clamp(1rem, 2.2vw, 1.8rem); color: var(--accent-blue); text-decoration: underline; text-underline-offset: 4px; word-break: break-word; line-height: 1.25; }
+
+@media screen and (max-width: 768px) {
+  .dilemma-grid, .explain-grid, .compare-row, .split-text-image, .two-col-lists, .qr-layout { grid-template-columns: 1fr; }
+}
+
+/* === Focus box (slide 36) === */
+.focus-box { margin-top: var(--content-gap); background: rgba(67,97,238,0.06); border-left: 6px solid var(--accent-blue); border-radius: 0 12px 12px 0; padding: clamp(0.7rem,1.9vw,1.4rem) clamp(0.9rem,2.2vw,1.6rem); }
+.focus-box .focus-label { font-family: 'Archivo Black', sans-serif; font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-blue); margin-bottom: 0.4em; }
+.focus-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.4em; }
+.focus-box li { position: relative; padding-left: 1.5em; font-size: clamp(0.9rem,1.6vw,1.2rem); font-weight: 600; }
+.focus-box li::before { content: ''; position: absolute; left: 0.1em; top: 0.55em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-blue); }
+
+/* === 2x2 photo raster with captions (slide 42) === */
+.photo-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: clamp(0.4rem, 1.1vw, 0.9rem); flex: 1; min-height: 0; margin-top: var(--content-gap); }
+.photo-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25em; min-height: 0; background: rgba(67,97,238,0.05); border-radius: 12px; padding: clamp(0.35rem, 1vw, 0.7rem); }
+.photo-card img { max-width: 100%; max-height: min(41vh, 345px); width: auto; object-fit: contain; border-radius: 8px; background: #fff; border: 1px solid rgba(10,10,10,0.1); }
+.photo-card .photo-name { font-family: 'Archivo Black', sans-serif; font-size: clamp(0.85rem, 1.5vw, 1.1rem); color: var(--accent-blue); text-align: center; }
+.photo-card .photo-caption { font-size: clamp(0.6rem, 0.95vw, 0.8rem); text-align: center; opacity: 0.8; line-height: 1.25; }
+
+/* === Formula pair (slide 44) === */
+.formula-pair { display: flex; flex-direction: column; gap: 0.3em; margin: var(--element-gap) 0; }
+.formula-pair .formula-row { display: flex; align-items: baseline; gap: 0.8em; }
+.formula-pair .formula-tag { font-family: 'Archivo Black', sans-serif; font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-blue); min-width: 6.5em; }
+.formula-pair .formula-expr { font-style: italic; font-size: clamp(1.05rem, 2.4vw, 1.5rem); }
+.formula-pair .formula-note { font-size: var(--small-size); opacity: 0.78; padding-left: calc(6.5em + 0.8em); line-height: 1.3; }
+.formula-pair .formula-row:has(.formula-note) { margin-top: -0.15em; margin-bottom: 0.15em; }
+
+/* === Local video (slide 41) === */
+.video-wrap { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; margin-top: var(--content-gap); }
+.video-wrap video { max-width: 100%; max-height: min(74vh, 600px); width: auto; background: #000; border-radius: 10px; box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+
+/* === Two-line caption under an SVG chart === */
+.chart-caption { text-align: center; font-size: var(--small-size); opacity: 0.75; margin-top: 0.3em; }
+
+/* === PRINT / PDF EXPORT (16:9 landscape, one slide per page) === */
+@media print {
+  @page { size: 1280px 720px; margin: 0; }
+  html, body { width: 1280px; height: auto; overflow: visible !important; }
+  html { scroll-snap-type: none !important; scroll-behavior: auto !important; }
+  .slide { width: 1280px !important; height: 720px !important; overflow: hidden !important; scroll-snap-align: none !important; page-break-after: always; break-after: page; page-break-inside: avoid; break-inside: avoid; }
+  .slide:last-of-type { page-break-after: avoid; break-after: avoid; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .progress-bar, .slide-counter, .nav-dots, .keyboard-hint, .edit-hotzone, .edit-toolbar { display: none !important; }
+  .dilemma-grid, .explain-grid { grid-template-columns: 1fr 1fr !important; }
+  .compare-row { grid-template-columns: 1fr 1fr !important; }
+  .split-text-image { grid-template-columns: 1fr 1.35fr !important; align-items: center; }
+  #slide-22 .split-text-image { grid-template-columns: 1.15fr 1fr !important; }
+  #slide-46 .split-text-image { grid-template-columns: 1.2fr 1fr !important; }
+  #slide-48 .split-text-image { grid-template-columns: 0.72fr 1.5fr !important; }
+  .single-image img { max-height: 90vh !important; }
+  .compare-cell img { max-height: 80vh !important; }
+  .split-text-image .img-col img { max-height: 88vh !important; }
+  .split-text-image .img-col .stacked-figs img { max-height: 35vh !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-counter" id="slideCounter">1 / 51</div>
+<div class="nav-dots" id="navDots"></div>
+<div class="keyboard-hint">Use arrow keys or scroll to navigate</div>
+
+<div class="edit-hotzone" id="editHotzone">
+  <div class="edit-hotzone-indicator">E</div>
+</div>
+<div class="edit-toolbar" id="editToolbar">
+  <span class="edit-status">Edit Mode</span>
+  <button onclick="saveEdits()">Save</button>
+  <button onclick="exportPresentation()">Export</button>
+  <button onclick="toggleEditMode()">Close</button>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: Title -->
+<!-- ============================================================ -->
+<section class="slide title-slide" id="slide-1">
+  <span class="title-deco title-deco--1"></span>
+  <span class="title-deco title-deco--2"></span>
+  <header class="title-bar title-bar--top reveal">
+    Foundations of Entrepreneurship &amp; New Business Development
+  </header>
+  <div class="slide-content" style="align-items:center; text-align:center;">
+    <h1 class="title-main reveal reveal-d2">The skills and traits of entrepreneurs</h1>
+    <span class="tag tag--blue title-lecture reveal reveal-d4">Lecture 2</span>
+  </div>
+  <footer class="title-bar title-bar--bottom reveal reveal-d5">
+    <span class="title-name">Jeroen Mahieu</span>
+  </footer>
+</section>
+<!-- SPEAKER NOTE: Welcome back. Lecture 2 asks who becomes an entrepreneur and why — the puzzle being that the financial returns alone don't explain the choice. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: The Investment Choice (opening dilemma) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-2">
+  <div class="slide-content">
+    <h2 class="reveal">The Investment Choice</h2>
+    <p class="dilemma-intro reveal reveal-d2">You have <strong>&euro;100,000</strong> to invest for <strong>10 years</strong>. Which do you choose?</p>
+    <div class="dilemma-grid">
+      <div class="option-card option-card--a reveal reveal-d3">
+        <span class="option-tag">Option A</span>
+        <span class="option-title">Start your own company</span>
+        <p class="option-lede">You put most of your wealth into one private firm where you also work.</p>
+        <ul class="stat-list">
+          <li>About <b>35%</b> chance the business survives the first 10 years</li>
+          <li>About <b>10%</b> chance you lose everything you invested</li>
+          <li>Median capital gain: <b>6.9%</b> per year</li>
+          <li>Upper quartile: <b>18.6%</b> per year</li>
+          <li>About <b>10%</b> chance of <b>&gt;200%</b> excess gains per year vs. the public stock market</li>
+        </ul>
+      </div>
+      <div class="option-card option-card--b reveal reveal-d4">
+        <span class="option-tag">Option B</span>
+        <span class="option-title">Invest in the public stock market</span>
+        <p class="option-lede">You buy a diversified public equity index. Over comparable horizons, public equity returns are:</p>
+        <ul class="stat-list">
+          <li>Minimum: <b>5.6%</b> per year</li>
+          <li>Maximum: <b>19.9%</b> per year</li>
+          <li>Median excess gains compared to entrepreneurs: <b>2%</b> per year</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Let students vote and argue. The point: on a risk-adjusted, diversified basis, Option B usually dominates — yet millions choose Option A. That tension is the puzzle of the next slides. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: The Entrepreneurship Puzzle — Moskowitz & Vissing-Jorgensen -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-3">
+  <div class="slide-content">
+    <h2 class="reveal">The Entrepreneurship Puzzle</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/moskowitz vissing-jorgensen figure 2.png" alt="Moskowitz &amp; Vissing-Jorgensen, Figure 2"
+           onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+    </div>
+    <p class="source reveal reveal-d3">Source: Moskowitz, T. J. &amp; Vissing-J&oslash;rgensen, A. (2002). The Returns to Entrepreneurial Investment: A Private Equity Premium Puzzle? <em>American Economic Review</em>, 92(4), 745&ndash;778.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Despite bearing far more risk, private (entrepreneurial) equity earns returns no higher than the diversified public market — the "private equity premium puzzle". -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: The Entrepreneurship Puzzle — Hamilton -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-4">
+  <div class="slide-content">
+    <h2 class="reveal">The Entrepreneurship Puzzle</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/hamilton figure 1.png" alt="Hamilton, Figure 1"
+           onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+    </div>
+    <p class="source reveal reveal-d3">Source: Hamilton, B. H. (2000). Does Entrepreneurship Pay? An Empirical Analysis of the Returns to Self&#8209;Employment. <em>Journal of Political Economy</em>, 108(3), 604&ndash;631.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Hamilton: most of the self-employed earn less than they would as employees, and the gap widens with tenure — yet they stay. Non-pecuniary benefits must be doing work. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: The Entrepreneurship Puzzle — Hall & Woodward figures 2 & 3 -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-5">
+  <div class="slide-content">
+    <h2 class="reveal">The Entrepreneurship Puzzle</h2>
+    <div class="compare-row">
+      <div class="compare-cell reveal reveal-d2">
+        <img src="assets/hall woodward figure 2.png" alt="Hall &amp; Woodward, Figure 2"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+        <span class="compare-label">Figure 2</span>
+      </div>
+      <div class="compare-cell reveal reveal-d3">
+        <img src="assets/hall woodward figure 3.png" alt="Hall &amp; Woodward, Figure 3"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+        <span class="compare-label">Figure 3</span>
+      </div>
+    </div>
+    <p class="source reveal reveal-d4">Source: Hall, R. E. &amp; Woodward, S. E. (2010). The Burden of the Nondiversifiable Risk of Entrepreneurship. <em>American Economic Review</em>, 100(3), 1163&ndash;1194.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Founder payoffs are extremely skewed: a large share receive little or nothing while a few receive very large amounts. The expected value hides enormous, undiversifiable risk. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: The Entrepreneurship Puzzle — Hall & Woodward table 3 -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-6">
+  <div class="slide-content">
+    <h2 class="reveal">The Entrepreneurship Puzzle</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/hall woodward table 3.png" alt="Hall &amp; Woodward, Table 3"
+           onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+    </div>
+    <p class="source reveal reveal-d3">Source: Hall, R. E. &amp; Woodward, S. E. (2010). The Burden of the Nondiversifiable Risk of Entrepreneurship. <em>American Economic Review</em>, 100(3), 1163&ndash;1194.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The financial attractiveness of entrepreneurship depends strongly on risk aversion, outside options, and starting wealth. For a risk-neutral person the expected payoff looks high; once we account for risk aversion, much of that value disappears — many founders get little, a few get a lot. It is especially unattractive for those with strong alternative salaries or low starting wealth, who bear a large, undiversified risk. Lesson: high expected payoff, but risk-adjusted value can be small or even negative. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: The questions these findings raise -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-7">
+  <div class="slide-content">
+    <h2 class="reveal">The questions these findings raise</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2">Clearly, it is hard to explain why many people become entrepreneurs based on <strong>expected financial returns alone</strong>.</li>
+      <li class="reveal reveal-d3"><strong>Who</strong> becomes an entrepreneur, and <strong>why</strong>?</li>
+      <li class="reveal reveal-d4">What are the influences of particular <strong>personal characteristics</strong> and <strong>environmental factors</strong>?</li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Pivot from "the puzzle" to "the explanations". The rest of the lecture is about characteristics and environment. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: Possible explanations (performance-neutral vs enhancing) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-8">
+  <div class="slide-content">
+    <h2 class="reveal">Possible explanations</h2>
+    <div class="explain-grid">
+      <div class="explain-panel explain-panel--neutral reveal reveal-d2">
+        <span class="explain-head">Preferences / traits-based</span>
+        <span class="explain-sub">Who is willing to enter</span>
+        <ul class="explain-items">
+          <li>Entrepreneurs &ldquo;pay&rdquo; for certain amenities (compensating differentials)</li>
+          <li>Entrepreneurs like risk (and/or skewness)</li>
+          <li>Entrepreneurs are too optimistic about the future</li>
+          <li>Entrepreneurs are too confident about themselves or their projects</li>
+        </ul>
+      </div>
+      <div class="explain-panel explain-panel--enhancing reveal reveal-d3">
+        <span class="explain-head">Skills-based</span>
+        <span class="explain-sub">Who actually performs better</span>
+        <ul class="explain-items">
+          <li>Entrepreneurship rewards ability differently than wage work</li>
+          <li>Entrepreneurs have a high portion of &ldquo;entrepreneurial&rdquo; human capital</li>
+          <li>Entrepreneurs have a valuable social network</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The first four explanations are performance-neutral (they rationalise the choice without implying higher returns); the last three are performance-enhancing (they predict genuinely higher returns for entrepreneurs). -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: Born or made? (discussion) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-9">
+  <span class="q-deco" aria-hidden="true">?</span>
+  <div class="slide-content">
+    <p class="pre-question reveal">Before we examine these questions, we first need to know&hellip;</p>
+    <h1 class="big-question reveal reveal-d2">Are entrepreneurs born or made?</h1>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Take a show of hands. Frame the nature-vs-nurture question that the next two slides answer with adoption data. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: Nature vs. Nurture — the approach -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-10">
+  <div class="slide-content">
+    <h2 class="reveal">Nature vs. Nurture</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list">
+          <li class="reveal reveal-d2">We have long known that having an <strong>entrepreneurial parent</strong> raises your odds of becoming an entrepreneur yourself.</li>
+          <li class="reveal reveal-d3">Is this <strong>selection</strong> (genes) or <strong>treatment</strong> (parental interactions)?</li>
+          <li class="reveal reveal-d4">By comparing <strong>adopted vs. non-adopted</strong> children, we can tease apart these influences.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/lindquist et al 2015 approach.png" alt="Lindquist et al. (2015) adoption design"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Ask students what assumptions make this estimate the causal effect of pre-birth vs post-birth factors. Key one: adoption is (as good as) random — no correlation between the entrepreneurial background of adopting and biological parents. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: Nature vs. Nurture — the findings -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-11">
+  <div class="slide-content">
+    <h2 class="reveal">Nature vs. Nurture</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list">
+          <li class="reveal reveal-d2"><strong>Lindquist et al. (2015)</strong>: having entrepreneurial (biological) parents raises the likelihood of becoming an entrepreneur by <strong>45&ndash;65%</strong>. Two-thirds of this effect is <strong>nurture</strong>, one-third <strong>nature</strong>.</li>
+          <li class="reveal reveal-d3"><strong>Vladasel et al. (2021)</strong>: family influence matters more for <strong>growth-oriented (incorporated)</strong> than unincorporated entrepreneurs, with genes accounting for roughly <strong>half</strong> of this effect.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/vladasel et al 2021 figure 4.jpg" alt="Vladasel et al. (2021) Figure 4"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+    <div class="ref-block">
+      <p class="ref-line reveal reveal-d4">Lindquist, M. J., Sol, J., &amp; Van Praag, M. (2015). Why do entrepreneurial parents have entrepreneurial children? <em>Journal of Labor Economics</em>, 33(2), 269&ndash;296.</p>
+      <p class="ref-line reveal reveal-d5">Vladasel, T., Lindquist, M. J., Sol, J., &amp; Van Praag, M. (2021). On the origins of entrepreneurship: Evidence from sibling correlations. <em>Journal of Business Venturing</em>, 36(5), 106017.</p>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The larger effect for incorporated entrepreneurs is likely due to more channels through which parents can help — resources and skills, not just genes. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: Section divider — Preferences -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-12">
+  <div class="slide-content">
+    <h1 class="section-word reveal">Preferences</h1>
+  </div>
+</section>
+<!-- SPEAKER NOTE: We start with the "preferences / traits-based" explanations — beginning with the most famous one: risk tolerance. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: Explanation 2 — Compensating differentials (per script) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-13">
+  <div class="slide-content">
+    <h2 class="reveal">Explanation 1: Paying for what the job gives you</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2"><strong>Compensating differentials:</strong> if entrepreneurs earn <em>less</em> on average (Hamilton 2000 &mdash; ~35% lower median earnings after 10 years), they must be receiving <strong>something else</strong> in return.</li>
+      <li class="reveal reveal-d3">That &ldquo;something else&rdquo; is <strong>non-pecuniary</strong>: autonomy, flexibility, being your own boss, building something of your own, doing work you find meaningful.</li>
+      <li class="reveal reveal-d4">The financial &ldquo;penalty&rdquo; is then not a puzzle &mdash; it is the <strong>price of a job you like</strong>.</li>
+    </ul>
+    <p class="source reveal reveal-d5">Hamilton, B. H. (2000). Does entrepreneurship pay? An empirical analysis of the returns to self-employment. <em>Journal of Political Economy</em>, 108(3), 604&ndash;631.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The compensating-differentials logic reframes the earnings gap: it is not that entrepreneurship "fails" financially, but that founders are buying non-pecuniary benefits with forgone wages. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: Compensating Differentials (Rosen) — Lavetti figure -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-14">
+  <div class="slide-content">
+    <h2 class="reveal">Compensating Differentials (Rosen, 1974; 1986)</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/lavetti figure 1.png" alt="Lavetti (2023) Figure 1 — compensating wage differentials"
+           onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+    </div>
+    <p class="source reveal reveal-d3">Source: Lavetti, Kurt. 2023. &ldquo;Compensating Wage Differentials in Labor Markets: Empirical Challenges and Applications.&rdquo; <em>Journal of Economic Perspectives</em>, 37(3): 189&ndash;212.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Rosen's hedonic framework: in equilibrium, jobs with more amenities pay less. Entrepreneurship is one extreme — high autonomy, low (or negative) wage premium. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: Why do people actually start businesses? (Hurst & Pugsley) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-15">
+  <div class="slide-content">
+    <h2 class="reveal">Why do people actually start businesses?</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2"><strong>Hurst &amp; Pugsley (2011):</strong> most founders are <strong>not</strong> would-be high-growth innovators. Asked <em>why</em> they started, <strong>non-pecuniary reasons dominate</strong> (flexibility, being one&rsquo;s own boss).</li>
+          <li class="reveal reveal-d3">Most small-business owners <strong>do not want to grow</strong> and do not plan to innovate &mdash; plumbers, dentists, consultants, shopkeepers.</li>
+          <li class="reveal reveal-d4">&ldquo;Having a good business idea&rdquo; is cited by only about a <strong>third</strong> of founders.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <div class="svg-chart" id="reasonsChart"></div>
+      </div>
+    </div>
+    <p class="source reveal reveal-d5">Hurst, E., &amp; Pugsley, B. W. (2011). What do small businesses do? <em>Brookings Papers on Economic Activity</em>, Fall 2011, 73&ndash;142. (Shares approximate.)</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Stress the heterogeneity — averaging "entrepreneurs" mixes lifestyle founders with the rare high-growth venture. Foreshadows Part 2 and innovation-driven entrepreneurship. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: Autonomy is worth paying for (Benz & Frey) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-16">
+  <div class="slide-content">
+    <h2 class="reveal">Autonomy is worth paying for</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2"><strong>Benz &amp; Frey (2008):</strong> the self-employed report <strong>higher job satisfaction</strong> than employees &mdash; even after holding income and hours constant.</li>
+      <li class="reveal reveal-d3">This is <strong>procedural utility</strong>: people value not just <em>what</em> they get, but <em>how</em> the outcome comes about &mdash; being self-determined rather than told what to do.</li>
+      <li class="reveal reveal-d4">A concrete estimate of the compensating differential: people would <strong>give up meaningful income</strong> to keep the autonomy of working for themselves.</li>
+    </ul>
+    <p class="source reveal reveal-d5">Benz, M., &amp; Frey, B. S. (2008). Being independent is a great thing: Subjective evaluations of self-employment and hierarchy. <em>Economica</em>, 75(298), 362&ndash;383.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Procedural utility is the mechanism behind the compensating differential — autonomy itself yields utility, independent of income. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 17 (NEW): Not only the Moms and Pops — Sauermann (2018) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-17">
+  <div class="slide-content">
+    <h2 class="reveal">Not only the Moms and Pops</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list">
+          <li class="reveal reveal-d2">Tech-startup <strong>joiners</strong> value <strong>independence and challenge</strong> more than employees of established small or large firms.</li>
+          <li class="reveal reveal-d3">This &ldquo;<strong>fire in the belly</strong>&rdquo; is linked to a <strong>higher rate of innovation</strong> by startup employees.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/sauermann figure 1.png" alt="Sauermann (2018) Figure 1"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d5">Sauermann, H. (2018). Fire in the belly? Employee motives and innovative performance in start&#8209;ups versus established firms. <em>Strategic Entrepreneurship Journal</em>, 12(4), 423&ndash;454.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: A "preferences" point about startup EMPLOYEES, not just founders — the motive to join a startup (independence, challenge) predicts innovative output. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: Explanation 2 — Risk Tolerance (Cramer et al. 2002) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-18">
+  <div class="slide-content">
+    <h2 class="reveal">Explanation 2: Risk Tolerance</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">Entrepreneurs are commonly portrayed as <strong>risk takers</strong> &mdash; so they may be &ldquo;okay&rdquo; with lower-than-expected returns, explaining part of the puzzle.</li>
+          <li class="reveal reveal-d3">What does the evidence say?</li>
+          <li class="reveal reveal-d4"><strong>Cramer et al. (2002)</strong> measured risk aversion via willingness to pay for a lottery ticket (10 tickets, single prize of 1,000 guilders). Conditional on wealth, this reservation price reflects risk aversion.</li>
+          <li class="reveal reveal-d5">Entrepreneurs are indeed <strong>less risk averse</strong> &mdash; but risk aversion is also highly correlated with (ex-post) wealth. Do risk-tolerant people become wealthier, or do the wealthy become risk-tolerant?</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/cramer et al 2002 figure 1.jpg" alt="Cramer et al. (2002) Figure 1"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">Cramer, J. S., Hartog, J., Jonker, N., &amp; Van Praag, C. M. (2002). Low risk aversion encourages the choice for entrepreneurship: an empirical test of a truism. <em>Journal of Economic Behavior &amp; Organization</em>, 48(1), 29&ndash;36.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The reverse-causality worry (wealth ↔ risk tolerance) is the reason the next studies use revealed behaviour and richer designs. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: Risk Tolerance — Hvide & Panos (2014) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-19">
+  <div class="slide-content">
+    <h2 class="reveal">Risk Tolerance</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2"><strong>Hvide &amp; Panos (2014)</strong> use observed financial behaviour (owning individual stocks) as a <strong>revealed</strong> measure of risk tolerance for ~400,000 Norwegians. Stockholders are <strong>~50% more likely</strong> to later start a firm.</li>
+      <li class="reveal reveal-d3">But more risk tolerance &ne; better firms: risk-tolerant entrepreneurs start firms with <strong>~25% lower sales</strong> and <strong>~15% lower return on assets</strong> than firms started by the more risk-averse.</li>
+      <li class="reveal reveal-d4">So risk tolerance predicts <strong>who enters</strong> &mdash; but if anything it predicts <strong>worse</strong> outcomes, not better ones.</li>
+    </ul>
+    <p class="source reveal reveal-d5">Hvide, H. K., &amp; Panos, G. A. (2014). Risk tolerance and entrepreneurship. <em>Journal of Financial Economics</em>, 111(1), 200&ndash;223.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Key nuance: risk tolerance is a selection story, not a performance story. It helps explain entry, not the returns. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: Risk Tolerance — Bailey et al. (2026) + your score -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-20">
+  <div class="slide-content">
+    <h2 class="reveal">Risk Tolerance</h2>
+    <p class="reveal reveal-d2" style="margin-top:var(--element-gap)">Cramer et al. (2002) and Hvide &amp; Panos (2014) pool <em>all</em> entrepreneurs &mdash; but what about the more <strong>growth-oriented, innovative</strong> types?</p>
+    <div class="riskscore-row">
+      <div class="riskscore-card riskscore-card--ent reveal reveal-d3">
+        <span class="riskscore-num">3.60</span>
+        <span class="riskscore-label">Science &amp; tech startups</span>
+        <span class="riskscore-sub">Bailey et al. (2026), scale 1 (most risk averse) &ndash; 4 (most risk loving)</span>
+      </div>
+      <div class="riskscore-card riskscore-card--pop reveal reveal-d4">
+        <span class="riskscore-num">1.72</span>
+        <span class="riskscore-label">General population</span>
+        <span class="riskscore-sub">Barsky et al. (1997) population mean, same scale</span>
+      </div>
+    </div>
+    <p class="riskscore-prompt reveal reveal-d5">How does this compare to your risk preference score?</p>
+    <p class="source reveal reveal-d6">Bailey-Rihawi, E., Fehder, D. C., Floyd, E., Hochberg, Y. V., &amp; Lee, D. (2026). Learning to Quit? A Multi-Year, Multi-Site Field Experiment with Innovation-Driven Entrepreneurs.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Tie to the in-class survey (student-survey-risk-optimism.html). Innovation-driven founders are far more risk-loving than the population — but recall this still predicts entry, not necessarily success. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: Risk Tolerance — Levine & Rubinstein (2017) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-21">
+  <div class="slide-content">
+    <h2 class="reveal">Risk Tolerance</h2>
+    <ul class="bullet-list bullet-list--tight">
+      <li class="reveal reveal-d2"><strong>Levine &amp; Rubinstein (2017)</strong> use a different proxy for risk tolerance: <strong>&ldquo;illicit&rdquo; behaviour as teenagers</strong> (damaging property, fighting, shoplifting, robbery, using force, assault or threats, drug use, dealing, gambling, being stopped by police, being charged).</li>
+      <li class="reveal reveal-d3"><strong>Incorporated</strong> entrepreneurs (their proxy for growth orientation) are <strong>twice as likely</strong> as salaried workers to report having taken something by force as youths, ~<strong>40% more likely</strong> to have been stopped by police, and score <strong>0.2 SD higher</strong> on an overall illicit-activity index.</li>
+      <li class="reveal reveal-d4">The unincorporated also engage in more illicit activity than salaried workers &mdash; but the <strong>incorporated engage in still more</strong>.</li>
+    </ul>
+    <p class="source reveal reveal-d5">Levine, R., &amp; Rubinstein, Y. (2017). Smart and Illicit: Who Becomes an Entrepreneur and Do They Earn More? <em>Quarterly Journal of Economics</em>, 132(2), 963&ndash;1018.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: A memorable result: the "smart and illicit" profile — high cognitive/non-cognitive ability plus a taste for rule-breaking/risk — predicts incorporated entrepreneurship. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: Kihlstrom & Laffont (1979) — the model -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-22">
+  <div class="slide-content">
+    <h2 class="reveal">Risk Tolerance &mdash; Kihlstrom &amp; Laffont (1979)</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">Suppose people differ only in risk aversion <span class="math">r</span>. Each chooses to be a worker or an entrepreneur.</li>
+          <li class="reveal reveal-d3"><strong>Worker:</strong> earns the certain wage <span class="math">w</span> &rarr; utility <span class="math">u(w)</span>.</li>
+          <li class="reveal reveal-d4"><strong>Entrepreneur:</strong> hires labour <span class="math">L</span> and runs a risky technology <span class="math">x = &theta;&#8202;f(L)</span> (<span class="math">f</span> concave, shock <span class="math">&theta;</span>, <span class="math">E[&theta;]=1</span>). Profit <span class="math">&pi; = &theta;&#8202;f(L) &minus; wL</span> is uncertain.</li>
+          <li class="reveal reveal-d5">You enter iff the risky venture beats the wage:</li>
+        </ul>
+        <div class="eq-block reveal reveal-d5">
+          <span class="eq-formula">E[&#8202;u(&pi;)&#8202;] &ge; u(w)</span>
+        </div>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d6">The risk premium grows with <span class="math">r</span>, so there is a single cutoff <span class="math">r<sup>&#8727;</sup></span>: people with <span class="math">r &lt; r<sup>&#8727;</sup></span> become entrepreneurs, those with <span class="math">r &gt; r<sup>&#8727;</sup></span> become workers.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <div class="svg-chart" id="klChart"></div>
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">Kihlstrom, R. E., &amp; Laffont, J.-J. (1979). A general equilibrium entrepreneurial theory of firm formation based on risk aversion. <em>Journal of Political Economy</em>, 87(4), 719&ndash;748.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Three predictions: (1) selection on risk attitude — the less risk-averse sort into entrepreneurship (ability plays no role by assumption); (2) less risk-averse entrepreneurs run larger firms; (3) in equilibrium E[π]−w is the compensation for bearing non-diversifiable risk. Comparative static: an economy-wide rise in risk aversion shifts the curve down, pushes r* left → fewer entrepreneurs, lower wages. Ask students to name the strong assumptions: identical ability, one risky technology, entrepreneurs as sole risk-bearers (no diversification, insurance, or limited liability). -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: Kihlstrom & Laffont — what it fits / what it misses -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-23">
+  <div class="slide-content">
+    <h2 class="reveal">Risk Tolerance &mdash; Kihlstrom &amp; Laffont (1979)</h2>
+    <div class="explain-grid explain-grid--even">
+      <div class="explain-panel explain-panel--fit reveal reveal-d2">
+        <span class="explain-head">Fits the evidence</span>
+        <span class="explain-sub">Where K&ndash;L does well</span>
+        <ul class="explain-items">
+          <li>Entrepreneurs are, in general, <strong>more risk-tolerant</strong>.</li>
+          <li>Innovation-driven / growth-oriented types are more risk-tolerant than subsistence types.</li>
+        </ul>
+      </div>
+      <div class="explain-panel explain-panel--problem reveal reveal-d3">
+        <span class="explain-head">Hard to explain</span>
+        <span class="explain-sub">Where K&ndash;L struggles</span>
+        <ul class="explain-items">
+          <li>More risk-tolerant entrepreneurs <strong>underperform</strong> the more risk-averse (Hvide &amp; Panos, 2014).</li>
+          <li>No role for <strong>ability &amp; skills</strong>, endogenous risk aversion (Camerer et al., 2002), or innovation &mdash; entrepreneurs are purely profit-driven.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The model's clean prediction (selection on risk) matches broad patterns but cannot explain why the bold underperform, nor accommodate skill/ability or innovation — motivating the skills-based explanations in Part 2. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: Kihlstrom & Laffont — limited liability -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-24">
+  <div class="slide-content">
+    <h2 class="reveal">Risk Tolerance &mdash; Kihlstrom &amp; Laffont (1979)</h2>
+    <ul class="bullet-list bullet-list--tight">
+      <li class="reveal reveal-d2">An economy-wide rise in risk aversion (a pandemic, an oil crisis, &hellip;) lowers <strong>both</strong> the number of entrepreneurs <strong>and</strong> wages.</li>
+      <li class="reveal reveal-d3">K&ndash;L assume entrepreneurs bear <strong>all</strong> the costs of failure. What if there is <strong>limited liability</strong>? Payoff becomes <span class="math">&pi;&#771; = max(&theta;&#8202;f(L) &minus; wL,&#8202;0)</span> &mdash; losses beyond zero fall on others.
+        <ul class="sub-bullets">
+          <li class="reveal reveal-d4">More risk-averse people now enter entrepreneurship (though this alone doesn&rsquo;t say what they build).</li>
+          <li class="reveal reveal-d5">Conditional on entering, they run <strong>larger firms</strong> and hire more: capping the downside removes the worst-case states that made scale costly, so the same <span class="math">r</span> supports a bigger <span class="math">L</span>.</li>
+          <li class="reveal reveal-d6">Wages <strong>rise</strong> (more entrants = more labour demand), partly &mdash; but not fully &mdash; offsetting the scale effect.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Same asset-substitution / risk-shifting logic as corporate finance (Jensen & Meckling, 1976): once someone else bears part of the downside, the decision-maker rationally takes on more scale and risk than the efficient benchmark. Hooks: undercapitalized startups, leveraged PE roll-ups, LLC vs. sole proprietorship. Ask: who ends up bearing the risk the entrepreneur no longer does? -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: The fine line of limited liability -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-25">
+  <div class="slide-content">
+    <h2 class="reveal">The fine line of limited liability</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list">
+          <li class="reveal reveal-d2"><strong>Without</strong> limited liability, few people become entrepreneurs &mdash; and those who do may avoid &ldquo;aiming big&rdquo; to limit the risk of catastrophic personal losses.</li>
+          <li class="reveal reveal-d3"><strong>With</strong> limited liability, however, entrepreneurs may take <strong>excessive risks</strong> if they believe they cannot be held personally accountable.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/sbf.jpg" alt="Sam Bankman-Fried"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: SBF / FTX as the cautionary tale — limited downside plus other people's money can tip risk-taking into recklessness or fraud. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: A taste for skewness — entrepreneurship as a lottery -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-26">
+  <div class="slide-content">
+    <h2 class="reveal">A taste for skewness: entrepreneurship as a lottery</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">Startup payoffs are <strong>right-skewed</strong>: most ventures fail or earn little; a few earn spectacular returns.</li>
+          <li class="reveal reveal-d3">People routinely <strong>pay for positive skewness</strong> &mdash; buying lottery tickets and betting long shots even at negative expected value (the &ldquo;favorite&ndash;long-shot bias&rdquo;; Golec &amp; Tamarkin 1998).</li>
+          <li class="reveal reveal-d4">If founders <strong>value the small chance of a huge win</strong>, they will enter even when the <em>median</em> and <em>mean</em> returns are unattractive.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <div class="svg-chart" id="skewChart"></div>
+      </div>
+    </div>
+    <p class="source reveal reveal-d5">Golec, J., &amp; Tamarkin, M. (1998). Bettors love skewness, not risk, at the horse track. <em>Journal of Political Economy</em>, 106(1), 205&ndash;225.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Tie back to Moskowitz & Vissing-Jorgensen (slide 3) — skewness preference is one of their candidate resolutions of the private-equity-premium puzzle. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: Explanation 3 — Entrepreneurs are optimists -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-27">
+  <div class="slide-content">
+    <h2 class="reveal">Explanation 3: Entrepreneurs are optimists</h2>
+    <div class="two-col-lists">
+      <div class="col reveal reveal-d2">
+        <span class="col-head">What optimism is</span>
+        <ul class="bullet-list bullet-list--tight">
+          <li><strong>Optimism</strong> = the consistent belief that you are <em>less</em> likely than others to suffer bad events and <em>more</em> likely to experience good ones (Weinstein, 1980). &ldquo;Good things will happen to <em>you</em>.&rdquo;</li>
+          <li>It is strongest when (a) the event feels <strong>controllable</strong> and (b) there is <strong>commitment</strong> or emotional investment in the outcome.</li>
+          <li><strong>Cooper, Woo &amp; Dunkelberg (1988)</strong> surveyed ~3,000 new founders:
+            <ul class="sub-bullets">
+              <li><strong>81%</strong> put their <em>own</em> chances at 7-in-10 or better; <strong>33%</strong> said a <strong>perfect 10-in-10</strong>.</li>
+              <li>Actual survival is far lower &mdash; and estimates for &ldquo;<em>a business like yours</em>&rdquo; dropped sharply.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col reveal reveal-d3">
+        <span class="col-head col-head--alt">The innovation-driven types</span>
+        <ul class="bullet-list bullet-list--tight">
+          <li><strong>Bailey et al. (2026):</strong> a max optimism score of almost <strong>20 (out of 24)</strong>, vs <strong>14.33</strong> for the standard lab population (Scheier, Carver &amp; Bridges, 1994).</li>
+          <li><strong>&Aring;stebro et al. (2007):</strong> independent inventors are significantly more optimistic than the general population.
+            <ul class="sub-bullets">
+              <li><strong>1/3</strong> keep spending money and <strong>1/2</strong> keep spending time on projects <em>after</em> receiving highly diagnostic advice to cease.</li>
+              <li>The highly optimistic keep spending even after explicitly <strong>negative</strong> advice.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="ref-block">
+      <p class="ref-line reveal reveal-d4">Cooper, A. C., Woo, C. Y., &amp; Dunkelberg, W. C. (1988). Entrepreneurs&rsquo; perceived chances for success. <em>Journal of Business Venturing</em>, 3(2), 97&ndash;108.</p>
+      <p class="ref-line reveal reveal-d5">&Aring;stebro, T., Jeffrey, S. A., &amp; Adomdza, G. K. (2007). Inventor perseverance after being told to quit: the role of cognitive biases. <em>Journal of Behavioral Decision Making</em>, 20, 253&ndash;272.</p>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Note the "self vs. others" asymmetry — the same founders are realistic about "a business like yours" but not about their own. This is unrealistic optimism, not ignorance of base rates. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 27: Optimism has consequences (Landier & Thesmar) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-28">
+  <div class="slide-content">
+    <h2 class="reveal">Optimism has consequences</h2>
+    <ul class="bullet-list bullet-list--tight">
+      <li class="reveal reveal-d2"><strong>Landier &amp; Thesmar (2009):</strong> French founders make <strong>systematic upward errors</strong> &mdash; they overestimate future sales and hiring.</li>
+      <li class="reveal reveal-d3">More educated founders, and those with their <strong>own</strong> idea, are the most optimistic.
+        <ul class="sub-bullets">
+          <li>Those with better non-entrepreneurial outside options only enter when they are <em>really</em> optimistic (self-selection).</li>
+        </ul>
+      </li>
+      <li class="reveal reveal-d4">Optimists <strong>self-select into short-term debt</strong>: they expect to refinance on better terms soon, creating a separating equilibrium between optimists and realists.</li>
+      <li class="reveal reveal-d5">Mild optimism may even help persistence &mdash; but it means expected returns are systematically <em>overstated</em> at entry.</li>
+    </ul>
+    <p class="source reveal reveal-d6">Landier, A., &amp; Thesmar, D. (2009). Financial contracting with optimistic entrepreneurs. <em>The Review of Financial Studies</em>, 22(1), 117&ndash;150.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Optimism isn't just a belief — it shapes financing choices (short-term debt) and who enters (self-selection among those with good outside options). -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 28: Explanation 4 — Overconfidence, three flavours -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-29">
+  <div class="slide-content">
+    <h2 class="reveal">Explanation 4: Overconfidence &mdash; three flavours</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">People enter because they <strong>subjectively perceive the return distribution too favorably</strong> when evaluating their <em>own</em> project.</li>
+          <li class="reveal reveal-d3"><strong>Moore &amp; Healy (2008)</strong> separate three biases that often get lumped together:
+            <ul class="sub-bullets">
+              <li><strong>Over-estimation</strong> &mdash; thinking you (or your project) are better than you really are.</li>
+              <li><strong>Over-placement</strong> &mdash; thinking you are better than <em>others</em> (&ldquo;most startups fail, but not mine&rdquo;).</li>
+              <li><strong>Over-precision</strong> &mdash; being too certain your forecasts are right.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <div class="svg-chart" id="overconfChart"></div>
+      </div>
+    </div>
+    <p class="source reveal reveal-d5">Moore, D. A., &amp; Healy, P. J. (2008). The trouble with overconfidence. <em>Psychological Review</em>, 115(2), 502&ndash;517.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The distinction matters — over-placement ("not mine") drives excess entry on the next slide, while over-precision shows up as founders ignoring base rates and disconfirming evidence. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 29: Overconfidence and excess entry -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-30">
+  <div class="slide-content">
+    <h2 class="reveal">Overconfidence and excess entry</h2>
+    <div class="two-col-lists">
+      <div class="col reveal reveal-d2">
+        <span class="col-head">The core experiment</span>
+        <ul class="bullet-list bullet-list--tight">
+          <li><strong>Camerer &amp; Lovallo (1999):</strong> when payoffs depend on <strong>skill</strong>, people <strong>over-enter</strong> markets; when payoffs are random, entry is rational (over-placement).
+            <ul class="sub-bullets">
+              <li>Subjects entered a &ldquo;market&rdquo; where payoffs depended on their <em>rank</em>; in the skill condition, rank came from a trivia quiz.</li>
+            </ul>
+          </li>
+          <li><strong>&ldquo;Reference-group neglect&rdquo;:</strong> entrants focus on their own skill and forget they compete against other confident entrants.</li>
+        </ul>
+      </div>
+      <div class="col reveal reveal-d3">
+        <span class="col-head col-head--alt">Founders in the field</span>
+        <ul class="bullet-list bullet-list--tight">
+          <li><strong>Busenitz &amp; Barney (1997):</strong> founders are more overconfident than managers in large firms &mdash; equally likely to be wrong, far more sure they are right.</li>
+          <li><strong>Koellinger, Minniti &amp; Schade (2007):</strong> across 18 countries, subjective (often biased) confidence is one of the strongest correlates of starting a business.</li>
+          <li>Not all overconfidence causes excess entry: <strong>Herz et al. (2014)</strong> find <strong>over-precision</strong> leads to <em>less</em> experimentation (tunnel vision).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ref-block">
+      <p class="ref-line reveal reveal-d4">Camerer, C., &amp; Lovallo, D. (1999). Overconfidence and excess entry: An experimental approach. <em>American Economic Review</em>, 89(1), 306&ndash;318. &middot; Busenitz, L. W., &amp; Barney, J. B. (1997). <em>Journal of Business Venturing</em>, 12(1), 9&ndash;30. &middot; Koellinger, P., Minniti, M., &amp; Schade, C. (2007). <em>Journal of Economic Psychology</em>, 28(4), 502&ndash;527.</p>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Excess entry is the market-level consequence of over-placement plus reference-group neglect. But over-precision can also cause under-experimentation — overconfidence is not one thing. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 30: Discussion — bug or feature? -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-31">
+  <span class="q-deco" aria-hidden="true">?</span>
+  <div class="slide-content">
+    <h1 class="big-question reveal">Optimism and overconfidence: a bug &mdash; or a feature?</h1>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Prompt both sides. Bug: biased beliefs → over-entry, value destruction, founders bearing undiversified risk they misjudge. Feature: without some over-optimism, would anyone attempt hard, socially valuable, low-base-rate projects? (Link to the social value of experimentation from Lecture 1.) A private cost but a social benefit. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 31: Do you have an 'entrepreneurial personality'? -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-32">
+  <div class="slide-content">
+    <h2 class="reveal">Do you have an &ldquo;entrepreneurial personality&rdquo;?</h2>
+    <div class="qr-layout">
+      <div class="qr-img reveal reveal-d2">
+        <img src="assets/qr big five.png" alt="QR code linking to the Big Five personality test"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+      <div class="qr-cta reveal reveal-d3">
+        <span class="cta-lead">Take the test and find out &mdash; scan the code or follow the link:</span>
+        <a class="big-link" href="https://jmahieu.github.io/entrepreneurial-personality-traits/" target="_blank" rel="noopener">jmahieu.github.io/entrepreneurial-personality-traits</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Have students take the test live; return to their results when discussing the Big Five on the next slide. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 32: What the Big Five say -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-33">
+  <div class="slide-content">
+    <h2 class="reveal">What the Big Five say</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2"><strong>Zhao &amp; Seibert (2006)</strong>, meta-analysis of entrepreneurs vs. managers. Entrepreneurs score:</li>
+          <li class="reveal reveal-d3"><strong>Higher</strong> on Conscientiousness and Openness to experience.</li>
+          <li class="reveal reveal-d4"><strong>Lower</strong> on Agreeableness and Neuroticism (i.e. more emotionally stable, more competitive).</li>
+          <li class="reveal reveal-d5"><strong>No reliable difference</strong> on Extraversion.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <div class="svg-chart" id="bigFiveChart"></div>
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">Zhao, H., &amp; Seibert, S. E. (2006). The Big Five personality dimensions and entrepreneurial status: A meta-analytical review. <em>Journal of Applied Psychology</em>, 91(2), 259&ndash;271. (Effects are small; magnitudes approximate.)</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The surprise — Extraversion, the trait people assume defines entrepreneurs, is essentially unrelated. Flag that these corrected correlations are small; the multivariate combination is only moderate (R ≈ .37). -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 33: Traits predict entry better than success -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-34">
+  <div class="slide-content">
+    <h2 class="reveal">Traits predict <em>entry</em> better than <em>success</em></h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2"><strong>Zhao, Seibert &amp; Lumpkin (2010)</strong>, meta-analysis: the Big Five relate to entrepreneurial <strong>intentions</strong> (multivariate R &asymp; .36) somewhat more strongly than to entrepreneurial <strong>performance</strong> (R &asymp; .31).</li>
+      <li class="reveal reveal-d3">Some predictors of <em>wanting to</em> and <em>becoming</em> an entrepreneur (e.g. Agreeableness, risk propensity) <strong>do not predict how well the venture does</strong>.</li>
+    </ul>
+    <p class="source reveal reveal-d4">Zhao, H., Seibert, S. E., &amp; Lumpkin, G. T. (2010). The relationship of personality to entrepreneurial intentions and performance: A meta-analytic review. <em>Journal of Management</em>, 36(2), 381&ndash;404.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The recurring theme of the whole traits section: traits sort people into entry far better than they predict who succeeds. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 34: So how much do traits really explain? -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-35">
+  <div class="slide-content">
+    <h2 class="reveal">So how much do traits really explain?</h2>
+    <ul class="bullet-list bullet-list--tight">
+      <li class="reveal reveal-d2"><strong>Kerr, Kerr &amp; Xu (2018)</strong> review the modern evidence: traits like internal locus of control, risk-taking, tolerance of ambiguity and overconfidence <strong>do matter</strong> &mdash; but effects are <strong>modest</strong>, and the field is full of <strong>disagreement</strong>, because &ldquo;entrepreneurship&rdquo; is so heterogeneous.</li>
+      <li class="reveal reveal-d3"><strong>Gartner (1988):</strong> maybe we are asking the wrong question. <strong>&ldquo;Who is an entrepreneur?&rdquo; is the wrong question</strong> &mdash; entrepreneurship is not a personality type, it is an <strong>activity</strong>: creating an organization. Ask <em>what entrepreneurs do</em>, not <em>who they are</em>.</li>
+    </ul>
+    <p class="source reveal reveal-d4">Kerr, S. P., Kerr, W. R., &amp; Xu, T. (2018). Personality traits of entrepreneurs: A review of recent literature. <em>Foundations and Trends in Entrepreneurship</em>, 14(3), 279&ndash;356. &middot; Gartner, W. B. (1988). &ldquo;Who is an entrepreneur?&rdquo; is the wrong question. <em>American Journal of Small Business</em>, 12(4), 11&ndash;32.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Gartner's pivot — from "who" to "what they do" — is the bridge into the skills/activity view of Part 2. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 35: Section divider — Skills, ability & human capital -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-36">
+  <div class="slide-content">
+    <h1 class="big-question reveal">Skills, ability &amp; human capital</h1>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Transition from traits/preferences to skills — the "performance-enhancing" explanations from slide 8. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 36: Yes, I Can (?) — from preferences to skills -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-37">
+  <div class="slide-content">
+    <h2 class="reveal">Yes, I Can (?)</h2>
+    <ul class="bullet-list bullet-list--tight">
+      <li class="reveal reveal-d2">So far we explained the puzzle by saying entrepreneurs <strong>like</strong> the nature of the work.</li>
+      <li class="reveal reveal-d3">These explanations mostly take returns as <strong>given / exogenous</strong> &mdash; e.g. Kihlstrom &amp; Laffont (1979), where entrepreneurial performance is <em>random</em>.</li>
+      <li class="reveal reveal-d4">But entrepreneurs can also <strong>influence their performance</strong> (why else the high internal locus of control?).</li>
+      <li class="reveal reveal-d5">What if traits and skills <strong>impact performance</strong>? Low <em>average</em> returns may hide high returns for a skilled minority &mdash; the puzzle is about <strong>heterogeneity</strong>, not a universally bad deal.</li>
+    </ul>
+    <div class="focus-box reveal reveal-d6">
+      <div class="focus-label">Focus on two explanations</div>
+      <ul>
+        <li>Entrepreneurship rewards ability more steeply than wage work</li>
+        <li>Entrepreneurs carry valuable, unique traits and skills</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Pivot to the performance-enhancing (skills-based) explanations. The key reframing: heterogeneity, not a universal bad deal. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 37: Explanation 5 — Entrepreneurship rewards ability (Roy model) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-38">
+  <div class="slide-content">
+    <h2 class="reveal">Explanation 5: Entrepreneurship rewards ability</h2>
+    <ul class="bullet-list bullet-list--tight">
+      <li class="reveal reveal-d2">People differ in ability <span class="math">a</span> and sort into the occupation where their talent pays best &mdash; <strong>comparative advantage</strong>. Potential income rises with ability in each:</li>
+    </ul>
+    <div class="eq-block reveal reveal-d3">
+      <span class="eq-formula">Employee:&nbsp;&nbsp; w<sub>E</sub>(a) = &mu;<sub>E</sub> + &gamma;<sub>E</sub>&#8202;a</span>
+      <span class="eq-formula">Entrepreneur:&nbsp;&nbsp; w<sub>S</sub>(a) = &mu;<sub>S</sub> + &gamma;<sub>S</sub>&#8202;a</span>
+    </div>
+    <ul class="bullet-list bullet-list--tight">
+      <li class="reveal reveal-d4"><strong>Choice rule:</strong> become an entrepreneur iff <span class="math">w<sub>S</sub>(a) &ge; w<sub>E</sub>(a)</span>.</li>
+      <li class="reveal reveal-d5">Two assumptions drive the result:
+        <ul class="sub-bullets">
+          <li><span class="math">&gamma;<sub>S</sub> &gt; &gamma;<sub>E</sub></span> &mdash; the entrepreneur is the <strong>residual claimant</strong>, keeping the marginal return to her talent (a wage compresses it). Ability is rewarded <em>more steeply</em>.</li>
+          <li><span class="math">&mu;<sub>S</sub> &lt; &mu;<sub>E</sub></span> &mdash; but she gives up the safe baseline wage, so at <strong>low ability</strong> entrepreneurship pays <em>less</em>.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: γ is the slope = marginal return to ability. Entrepreneurship = higher slope, lower intercept. That trade-off produces a single ability cut-off (next slide). Ask what makes γ_S > γ_E plausible (ownership of upside, no wage ceiling, scalability) and what pushes back (risk, no insurance, financing constraints). -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 38: Entrepreneurship rewards ability — the ability threshold a* -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-39">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurship rewards ability</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">The <strong>gain</strong> from entrepreneurship rises with ability: <span class="math">&Delta;(a) = (&mu;<sub>S</sub> &minus; &mu;<sub>E</sub>) + (&gamma;<sub>S</sub> &minus; &gamma;<sub>E</sub>)&#8202;a</span>.</li>
+          <li class="reveal reveal-d3">Since <span class="math">&gamma;<sub>S</sub> &gt; &gamma;<sub>E</sub></span>, there is a single <strong>ability threshold</strong> <span class="math">a<sup>&#8727;</sup> = (&mu;<sub>E</sub> &minus; &mu;<sub>S</sub>) / (&gamma;<sub>S</sub> &minus; &gamma;<sub>E</sub>)</span>: <span class="math">a &gt; a<sup>&#8727;</sup></span> &rarr; entrepreneur, <span class="math">a &lt; a<sup>&#8727;</sup></span> &rarr; employee &rArr; <strong>positive sorting on ability</strong>.</li>
+          <li class="reveal reveal-d4"><strong>Predictions:</strong> the ablest self-select into entrepreneurship <em>and</em> earn more there; entrepreneurial earnings are <strong>more dispersed</strong>.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <div class="svg-chart" id="abilityChart"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Reconcile with low measured returns: most entrants sit just above a*, so the marginal entrepreneur barely beats their wage → low average despite positive sorting. Whether γ_S > γ_E holds is empirical: Hamilton (2000) even found negative selection for the typical self-employed, while the steep-returns story fits incorporated/high-growth founders (Levine & Rubinstein 2017). -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 39: Entrepreneurship rewards ability — the evidence (Hegde & Tumlinson) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-40">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurship rewards ability</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2"><strong>Levine &amp; Rubinstein (2017):</strong> incorporated entrepreneurs have higher cognitive ability (AFQT) than employees <em>and</em> than unincorporated entrepreneurs.</li>
+          <li class="reveal reveal-d3"><strong>Hegde &amp; Tumlinson (2021):</strong> entrepreneurs have higher cognitive ability at <strong>each level of education</strong> (both incorporated and unincorporated).</li>
+          <li class="reveal reveal-d4">But they do <strong>not</strong> find higher <em>returns</em> to cognitive ability for entrepreneurs.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/hegde tumlinson figure 2.png" alt="Hegde &amp; Tumlinson (2021) Figure 2"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d5">Hegde, D., &amp; Tumlinson, J. (2021). Information frictions and entrepreneurship. <em>Strategic Management Journal</em>, 42(3), 491&ndash;528.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Ability sorts people into (incorporated) entrepreneurship, but the return to ability is not steeper — a caution against the strong γ_S > γ_E reading. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 40: Entrepreneurial Human Capital (bridge) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-41">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurial Human Capital</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2">These explanations treat ability as a <strong>one-dimensional</strong> &ldquo;more is better.&rdquo; But is human capital in entrepreneurship really that simple?</li>
+      <li class="reveal reveal-d3">Ability is also usually treated as <strong>given</strong> &mdash; something you are born with. What about the human capital that can be <strong>&ldquo;made&rdquo;</strong>?</li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Bridge from innate ability to acquired, multi-dimensional human capital — education, balance, experience, networks. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 41: Does education pay for entrepreneurs? (video) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-42">
+  <div class="slide-content">
+    <h2 class="reveal">Does education pay for entrepreneurs?</h2>
+    <div class="video-wrap reveal reveal-d2">
+      <video controls preload="metadata">
+        <source src="assets/education silicon valley.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Silicon Valley clip — a light way into the education question before the evidence on the next slide. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 42: Does education pay for entrepreneurs? (famous dropouts) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-43">
+  <div class="slide-content">
+    <h2 class="reveal">Does education pay for entrepreneurs?</h2>
+    <div class="photo-grid">
+      <div class="photo-card reveal reveal-d2">
+        <img src="assets/bill gates.png" alt="Bill Gates" onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+        <span class="photo-name">Bill Gates</span>
+        <span class="photo-caption">Co-founder of Microsoft, dropped out of Harvard University</span>
+      </div>
+      <div class="photo-card reveal reveal-d3">
+        <img src="assets/steve jobs.png" alt="Steve Jobs" onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+        <span class="photo-name">Steve Jobs</span>
+        <span class="photo-caption">Co-founder of Apple, dropped out of Reed College</span>
+      </div>
+      <div class="photo-card reveal reveal-d4">
+        <img src="assets/mark zuckerberg.png" alt="Mark Zuckerberg" onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+        <span class="photo-name">Mark Zuckerberg</span>
+        <span class="photo-caption">Co-founder of Facebook, dropped out of Harvard University</span>
+      </div>
+      <div class="photo-card reveal reveal-d5">
+        <img src="assets/elizabeth holmes.png" alt="Elizabeth Holmes" onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+        <span class="photo-name">Elizabeth Holmes</span>
+        <span class="photo-caption">Founder of Theranos, dropped out of Stanford University</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The famous-dropout narrative is vivid but survivorship-biased — it's the loud exception, not the rule. Note Holmes as the cautionary inclusion: dropping out didn't protect against catastrophic failure/fraud. The next slide brings the actual evidence. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 44 (NEW): Are founders young dropouts? (the myth vs reality) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-44">
+  <div class="slide-content">
+    <h2 class="reveal">Are founders young dropouts?</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list">
+          <li class="reveal reveal-d2">The pervasive image: the <strong>twenty-something</strong> who <strong>dropped out of college</strong> to chase a startup dream and became an ultra-successful billionaire.</li>
+          <li class="reveal reveal-d3">Yet most highly successful entrepreneurs are <strong>middle-aged (40&ndash;50)</strong>, not young.</li>
+          <li class="reveal reveal-d4">Most startups are founded by individuals with <strong>prior work experience</strong> (see next lecture).</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/azoulay et al figure 1.png" alt="Azoulay et al. — founder age distribution"
+             onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d5">Azoulay, P., Jones, B. F., Kim, J. D., &amp; Miranda, J. (2020). Age and high-growth entrepreneurship. <em>American Economic Review: Insights</em>, 2(1), 65&ndash;82.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Counterpoint to the dropout gallery — the survivorship-biased myth vs. the actual age/experience profile of founders. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 45: Does education pay for entrepreneurs? (Giorcelli 2024, ESMWT) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-45">
+  <div class="slide-content">
+    <h2 class="reveal">Does education pay for entrepreneurs?</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2"><strong>Giorcelli (2024)</strong> studies the &ldquo;Engineering, Science and Management War Training&rdquo; (ESMWT) program &mdash; MBA-style education for middle managers and production supervisors at U.S. war industrial facilities in WWII.</li>
+          <li class="reveal reveal-d3">ESMWT attendance <strong>systematically increased</strong> managers&rsquo; entrepreneurial activity. Effects were <strong>strongest for nonwhite and female</strong> participants &mdash; why?</li>
+          <li class="reveal reveal-d4">Not just a signaling effect (&ldquo;badge of honor&rdquo;) &mdash; participation led to:
+            <ul class="sub-bullets">
+              <li><strong>Better firm performance</strong> (less absenteeism, late orders, injuries, scrap) via adoption of managerial practices</li>
+              <li><strong>Network building</strong> with managers of other facilities, raising the likelihood of co-founding a business together</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/esmwt.jpg" alt="ESMWT program" onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d5">Giorcelli, M. (2024). The Effects of Business School Education on Manager Career Outcomes.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: A rare setting with plausibly exogenous variation in access to management education — and a causal channel (practices + networks), not just signaling. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 44: Explanation 6 — the 'jack-of-all-trades' (Lazear, the model) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-46">
+  <div class="slide-content">
+    <h2 class="reveal">Explanation 6: The &lsquo;jack-of-all-trades&rsquo;</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2"><strong>Lazear (2004, 2005):</strong> running a firm needs a bit of everything &mdash; entrepreneurs are <strong>generalists</strong>, not specialists.</li>
+          <li class="reveal reveal-d3"><strong>Balance beats depth:</strong> your earnings as a founder are limited by your <strong>weakest</strong> essential skill.</li>
+        </ul>
+        <div class="formula-pair reveal reveal-d4">
+          <div class="formula-row"><span class="formula-tag">Employee</span><span class="formula-expr">w = max{x<sub>1</sub>, x<sub>2</sub>}</span></div>
+          <div class="formula-row"><span class="formula-note">specializes &mdash; paid for their <em>strongest</em> skill</span></div>
+          <div class="formula-row"><span class="formula-tag">Entrepreneur</span><span class="formula-expr">&pi; = &lambda;&#8202;min{x<sub>1</sub>, x<sub>2</sub>}</span></div>
+          <div class="formula-row"><span class="formula-note">needs both &mdash; only as good as the <em>weakest</em></span></div>
+        </div>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/lazear figure 1.png" alt="Lazear (2004/2005) Figure 1" onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">Lazear, E. P. (2004). Balanced skills and entrepreneurship. <em>American Economic Review</em>, 94(2), 208&ndash;211. &mdash; Lazear, E. P. (2005). Entrepreneurship. <em>Journal of Labor Economics</em>, 23(4), 649&ndash;680.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: max{} vs min{} is the crux — a wage worker gets to play to their strength, a solo founder is capped by their weakness. That is exactly why balance beats depth for entrepreneurs but not for employees. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 45: Jack-of-all-trades — the evidence (diverse experience) -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-47">
+  <div class="slide-content">
+    <h2 class="reveal">Explanation 6: The &lsquo;jack-of-all-trades&rsquo;</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list">
+          <li class="reveal reveal-d2">People with more <strong>diverse education, prior work roles or fields</strong> are more likely to become (better) entrepreneurs.</li>
+          <li class="reveal reveal-d3">Top management teams with more <strong>diverse experience</strong> have more success in accessing venture capital.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/lazear figure 2.png" alt="Lazear (2004/2005) Figure 2" onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Balance, not a single peak — variety in the founder's or founding team's background is exactly what Lazear's model predicts should pay off. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 48 (NEW): Innovation-driven entrepreneurship is a team sport -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-48">
+  <div class="slide-content">
+    <h2 class="reveal">Innovation-driven entrepreneurship is a <em>team</em> sport</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">Traditional small business is mostly <strong>solo</strong>: the large majority have <strong>no employees</strong> and a single owner.</li>
+          <li class="reveal reveal-d3">Innovation-driven ventures are typically <strong>team-founded</strong> &mdash; no one person holds all the specialized skills a differentiated product needs.</li>
+          <li class="reveal reveal-d4">The founding <strong>team</strong> is how ventures satisfy Lazear&rsquo;s balance requirement <em>without</em> every individual being a generalist.</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <div class="stacked-figs">
+          <figure>
+            <img src="assets/ruef et al figure 1.png" alt="Ruef et al. (2003) Figure 1"
+                 onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+            <figcaption>Based on data from Ruef, Aldrich &amp; Carter (2003), <em>American Sociological Review</em>, 68(2), 195&ndash;222.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/wasserman figure 1.png" alt="Wasserman (2013) Figure 1"
+                 onerror="this.style.opacity=0.15;this.alt='(image not found)'">
+            <figcaption>Based on data from Wasserman (2013), <em>The Founder&rsquo;s Dilemmas</em>, Ch. 3.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Solo vs. team — IDE ventures satisfy the balance requirement at the team level, not the individual level. Skill diversity in the founding team predicts performance. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 49 (NEW): Reconciling the puzzle -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-49">
+  <div class="slide-content">
+    <h2 class="reveal">Reconciling the puzzle</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2">Low <strong>average</strong> returns are fully consistent with the evidence once we combine four things:
+        <ul class="sub-bullets">
+          <li>outcomes are <strong>right-skewed</strong> &mdash; most earn little, a few earn enormously</li>
+          <li>founders collect large <strong>non-pecuniary</strong> benefits (autonomy, meaning)</li>
+          <li>many enter on <strong>optimistic / overconfident</strong> beliefs that overstate their odds</li>
+          <li>a skilled minority genuinely earns <strong>high risk-adjusted returns</strong> (ability + human capital)</li>
+        </ul>
+      </li>
+      <li class="reveal reveal-d4">The puzzle is not &ldquo;why does anyone do it?&rdquo; &mdash; it is &ldquo;<strong>averaging hides everything that matters</strong>.&rdquo;</li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Connect back to the start of the lecture: the low mean/median we opened with is the aggregate of very different populations. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 50 (NEW): What this means for you -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-50">
+  <div class="slide-content">
+    <h2 class="reveal">What this means for you</h2>
+    <ul class="bullet-list">
+      <li class="reveal reveal-d2">Heritable <strong>preferences and traits</strong> (risk attitude, personality) tilt the odds of <em>entering</em> (recall the nature share in Lindquist et al. / Vladasel et al.) &mdash; but there is <strong>no single &ldquo;entrepreneur type.&rdquo;</strong></li>
+      <li class="reveal reveal-d3">The things that most predict <em>doing well</em> &mdash; general and social ability, a balanced skill set, industry experience, a good team and network &mdash; are <strong>buildable</strong> (see also next class).</li>
+      <li class="reveal reveal-d4">Beware your own <strong>optimism and overconfidence</strong>: they help you start, but can also let you <strong>persist with underperforming</strong> projects and ideas.</li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The practical takeaway — traits tilt entry, but performance is largely buildable; calibrate your own optimism. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 51: Closing — materials on GitHub -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-51">
+  <div class="slide-content closing">
+    <h2 class="reveal">Slides &amp; data</h2>
+    <p class="reveal reveal-d2 closing-text">The slides and the data behind every graph in this lecture are available at:</p>
+    <p class="reveal reveal-d3"><a class="closing-link" href="https://github.com/jmahieu/foundations-of-entrepreneurship" target="_blank" rel="noopener">github.com/jmahieu/foundations-of-entrepreneurship</a></p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Point students to the repo for all slides and underlying data so they can reproduce the graphs. -->
+
+<!-- ============================================================ -->
+<!-- JAVASCRIPT -->
+<!-- ============================================================ -->
+<script>
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll('.slide');
+    this.currentSlide = 0;
+    this.totalSlides = this.slides.length;
+    this.touchStartY = 0; this.touchStartX = 0;
+    this.initObserver(); this.initKeyboard(); this.initTouch();
+    this.initNavDots(); this.updateProgress(); this.updateCounter();
+  }
+  initObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const i = Array.from(this.slides).indexOf(entry.target);
+          if (i !== -1) { this.currentSlide = i; this.updateProgress(); this.updateCounter(); this.updateNavDots(); }
+        }
+      });
+    }, { threshold: 0.5 });
+    this.slides.forEach(s => observer.observe(s));
+  }
+  initKeyboard() {
+    document.addEventListener('keydown', (e) => {
+      if (document.body.classList.contains('edit-mode') && e.key !== 'Escape' && e.key !== 'e') return;
+      switch (e.key) {
+        case 'ArrowDown': case 'ArrowRight': case ' ': case 'PageDown': e.preventDefault(); this.next(); break;
+        case 'ArrowUp': case 'ArrowLeft': case 'PageUp': e.preventDefault(); this.prev(); break;
+        case 'Home': e.preventDefault(); this.goTo(0); break;
+        case 'End': e.preventDefault(); this.goTo(this.totalSlides - 1); break;
+        case 'e': case 'E': if (!e.ctrlKey && !e.metaKey) toggleEditMode(); break;
+      }
+    });
+  }
+  initTouch() {
+    document.addEventListener('touchstart', (e) => { this.touchStartY = e.touches[0].clientY; this.touchStartX = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      const dY = this.touchStartY - e.changedTouches[0].clientY, dX = this.touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(dY) > Math.abs(dX) && Math.abs(dY) > 50) { dY > 0 ? this.next() : this.prev(); }
+    }, { passive: true });
+  }
+  initNavDots() {
+    const c = document.getElementById('navDots');
+    for (let i = 0; i < this.totalSlides; i++) {
+      const d = document.createElement('button');
+      d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.addEventListener('click', () => this.goTo(i));
+      c.appendChild(d);
+    }
+  }
+  next() { if (this.currentSlide < this.totalSlides - 1) this.goTo(this.currentSlide + 1); }
+  prev() { if (this.currentSlide > 0) this.goTo(this.currentSlide - 1); }
+  goTo(i) { if (i >= 0 && i < this.totalSlides) { this.slides[i].scrollIntoView({ behavior: 'smooth' }); this.currentSlide = i; this.updateProgress(); this.updateCounter(); this.updateNavDots(); } }
+  updateProgress() { document.getElementById('progressBar').style.width = (this.currentSlide / Math.max(1, this.totalSlides - 1)) * 100 + '%'; }
+  updateCounter() { document.getElementById('slideCounter').textContent = (this.currentSlide + 1) + ' / ' + this.totalSlides; }
+  updateNavDots() { document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === this.currentSlide)); }
+}
+
+/* === Edit Mode === */
+let editMode = false;
+let hoverTimer = null;
+const hotzone = document.getElementById('editHotzone');
+const toolbar = document.getElementById('editToolbar');
+
+hotzone.addEventListener('mouseenter', () => { hoverTimer = setTimeout(() => { hotzone.classList.add('show'); }, 400); });
+hotzone.addEventListener('mouseleave', () => { clearTimeout(hoverTimer); if (!editMode) hotzone.classList.remove('show'); });
+hotzone.addEventListener('click', toggleEditMode);
+
+function toggleEditMode() {
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode', editMode);
+  toolbar.classList.toggle('active', editMode);
+  hotzone.classList.toggle('show', editMode);
+  const editables = document.querySelectorAll('.slide h1, .slide h2, .slide h3, .slide p, .slide li, .slide span:not(.nav-dot)');
+  editables.forEach(el => {
+    if (editMode) { el.setAttribute('contenteditable', 'true'); } else { el.removeAttribute('contenteditable'); }
+  });
+  if (!editMode) saveEdits();
+}
+function saveEdits() {
+  const slides = document.querySelectorAll('.slide');
+  const data = {};
+  slides.forEach((slide, i) => { data[`slide-${i}`] = slide.innerHTML; });
+  localStorage.setItem('lecture-02-skills-traits-edits', JSON.stringify(data));
+}
+function loadEdits() {
+  const data = JSON.parse(localStorage.getItem('lecture-02-skills-traits-edits') || 'null');
+  if (data) {
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, i) => { if (data[`slide-${i}`]) slide.innerHTML = data[`slide-${i}`]; });
+  }
+}
+function exportPresentation() {
+  const html = document.documentElement.outerHTML;
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'lecture-02-skills-and-traits-edited.html'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* === Slide 17 — minimal Kihlstrom & Laffont occupational-choice diagram ===
+   Literal hex colours only (var(--…) does not resolve inside SVG attributes). */
+function renderKLChart() {
+  const el = document.getElementById('klChart');
+  if (!el) return;
+  const BLUE = '#4361ee', ORANGE = '#e69f00', GREY = '#555', AX = '#999';
+  const W = 640, H = 520, mL = 40, mR = 34, mT = 44, mB = 62;
+  const x0 = mL, x1 = W - mR, y0 = mT, y1 = H - mB;
+  const px = r => x0 + r * (x1 - x0);
+  const py = v => y1 - v * (y1 - y0);
+  const CE = r => 0.92 * Math.exp(-2.3 * r) + 0.06;   // entrepreneur's certainty equivalent, decreasing & convex in r
+  const wLvl = 0.5;                                    // worker's certain wage
+  const rStar = -Math.log((wLvl - 0.06) / 0.92) / 2.3; // where CE(r) = w
+  const wy = py(wLvl), rx = px(rStar);
+  let d = '';
+  for (let i = 0; i <= 60; i++) { const r = i / 60, X = px(r), Y = py(CE(r)); d += (i === 0 ? `M${X},${Y}` : `L${X.toFixed(1)},${Y.toFixed(1)}`); }
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Kihlstrom and Laffont: occupational choice by degree of risk aversion">`;
+  s += `<defs><marker id="klAr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="${AX}"/></marker></defs>`;
+  // axes
+  s += `<line x1="${x0}" y1="${y1}" x2="${x1 + 8}" y2="${y1}" stroke="${AX}" stroke-width="2" marker-end="url(#klAr)"/>`;
+  s += `<line x1="${x0}" y1="${y1}" x2="${x0}" y2="${y0 - 8}" stroke="${AX}" stroke-width="2" marker-end="url(#klAr)"/>`;
+  // r* cutoff (dashed)
+  s += `<line x1="${rx}" y1="${y1}" x2="${rx}" y2="${wy}" stroke="${GREY}" stroke-width="1.5" stroke-dasharray="5 5"/>`;
+  // worker wage w
+  s += `<line x1="${x0}" y1="${wy}" x2="${x1}" y2="${wy}" stroke="${ORANGE}" stroke-width="4"/>`;
+  // entrepreneur CE(π)
+  s += `<path d="${d}" fill="none" stroke="${BLUE}" stroke-width="4" stroke-linejoin="round"/>`;
+  // intersection
+  s += `<circle cx="${rx}" cy="${wy}" r="6" fill="${GREY}"/>`;
+  // labels (minimal)
+  s += `<text x="${px(0.34)}" y="${py(0.9)}" font-size="20" font-weight="700" fill="${BLUE}">Entrepreneur CE(&#960;)</text>`;
+  s += `<text x="${x1 - 4}" y="${wy - 12}" text-anchor="end" font-size="20" font-weight="700" fill="${ORANGE}">Worker w</text>`;
+  s += `<text x="${rx}" y="${y1 + 26}" text-anchor="middle" font-size="19" font-style="italic" fill="${GREY}">r*</text>`;
+  s += `<text x="${(x0 + x1) / 2}" y="${H - 8}" text-anchor="middle" font-size="17" fill="${GREY}">Risk aversion  r  &#8594;</text>`;
+  s += `<text transform="translate(18 ${(y0 + y1) / 2}) rotate(-90)" text-anchor="middle" font-size="16" fill="${GREY}">Certainty equivalent</text>`;
+  el.innerHTML = s;
+}
+
+/* === Slide 15 — "Primary reason for starting a business" horizontal bars === */
+function renderReasonsChart() {
+  const el = document.getElementById('reasonsChart');
+  if (!el) return;
+  const rows = [
+    { label: 'Non-pecuniary (autonomy / flexibility / own boss)', val: 50, color: '#4361ee' },
+    { label: 'Had a specific business idea', val: 38, color: '#e69f00' },
+    { label: 'Other', val: 12, color: '#56b4e9' }
+  ];
+  const W = 720, H = 430, mL = 16, mR = 54, mT = 18, mB = 46;
+  const x0 = mL, x1 = W - mR, y0 = mT, y1 = H - mB, axisMax = 60;
+  const xOf = v => x0 + (v / axisMax) * (x1 - x0);
+  const band = (y1 - y0) / rows.length, barH = Math.min(46, band * 0.42);
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Primary reason for starting a business, percent">`;
+  for (let g = 0; g <= axisMax; g += 20) { const x = xOf(g); s += `<line x1="${x}" y1="${y0}" x2="${x}" y2="${y1}" stroke="rgba(10,10,10,0.08)" stroke-width="1"/>`; s += `<text x="${x}" y="${y1 + 24}" text-anchor="middle" font-size="16" fill="#777">${g}%</text>`; }
+  rows.forEach((r, i) => {
+    const top = y0 + i * band, labY = top + band * 0.4, barY = labY + 8;
+    s += `<text x="${x0}" y="${labY}" font-size="17" font-weight="600" fill="#333">${r.label}</text>`;
+    s += `<rect x="${x0}" y="${barY}" width="${(xOf(r.val) - x0).toFixed(1)}" height="${barH.toFixed(1)}" rx="4" fill="${r.color}"/>`;
+    s += `<text x="${(xOf(r.val) + 8).toFixed(1)}" y="${(barY + barH * 0.72).toFixed(1)}" font-size="18" font-weight="700" fill="${r.color}">${r.val}%</text>`;
+  });
+  s += `<line x1="${x0}" y1="${y1}" x2="${x1}" y2="${y1}" stroke="rgba(10,10,10,0.3)" stroke-width="1.5"/>`;
+  s += `</svg>`;
+  el.innerHTML = s;
+}
+
+/* === Slide 25 — right-skewed payoff distribution (median < mean) === */
+function renderSkewChart() {
+  const el = document.getElementById('skewChart');
+  if (!el) return;
+  const W = 720, H = 440, mL = 20, mR = 20, mT = 26, mB = 52;
+  const x0 = mL, x1 = W - mR, y0 = mT, y1 = H - mB;
+  const k = 1.6, tMax = 8, f = t => Math.pow(t, k) * Math.exp(-t);
+  let fMax = 0; for (let t = 0; t <= tMax; t += 0.05) fMax = Math.max(fMax, f(t));
+  const xOf = t => x0 + (t / tMax) * (x1 - x0);
+  const yOf = v => y1 - (v / fMax) * (y1 - y0) * 0.9;
+  let d = `M${x0},${y1}`;
+  for (let t = 0; t <= tMax; t += 0.1) d += `L${xOf(t).toFixed(1)},${yOf(f(t)).toFixed(1)}`;
+  d += `L${x1},${y1} Z`;
+  const medianT = 2.4, meanT = 3.5;   // mean pulled right into the tail by the skew
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Right-skewed distribution of entrepreneurial payoffs">`;
+  s += `<path d="${d}" fill="rgba(67,97,238,0.10)" stroke="#333" stroke-width="3" stroke-linejoin="round"/>`;
+  const mx = xOf(medianT); s += `<line x1="${mx.toFixed(1)}" y1="${yOf(f(medianT)).toFixed(1)}" x2="${mx.toFixed(1)}" y2="${y1}" stroke="#555" stroke-width="2" stroke-dasharray="6 5"/>`;
+  s += `<text x="${mx.toFixed(1)}" y="${y0 + 12}" text-anchor="middle" font-size="17" font-weight="700" fill="#555">median</text>`;
+  const ax = xOf(meanT); s += `<line x1="${ax.toFixed(1)}" y1="${yOf(f(meanT)).toFixed(1)}" x2="${ax.toFixed(1)}" y2="${y1}" stroke="#d55e00" stroke-width="2" stroke-dasharray="6 5"/>`;
+  s += `<text x="${(ax + 6).toFixed(1)}" y="${y0 + 32}" text-anchor="start" font-size="17" font-weight="700" fill="#d55e00">mean</text>`;
+  s += `<line x1="${x0}" y1="${y1}" x2="${x1}" y2="${y1}" stroke="rgba(10,10,10,0.35)" stroke-width="1.5"/>`;
+  s += `<text x="${(x0 + x1) / 2}" y="${H - 14}" text-anchor="middle" font-size="17" fill="#555">Entrepreneurial payoff  &#8594;</text>`;
+  s += `</svg>`;
+  el.innerHTML = s;
+}
+
+/* === Slide 28 — overconfidence: actual vs perceived return distribution === */
+function renderOverconfChart() {
+  const el = document.getElementById('overconfChart');
+  if (!el) return;
+  const W = 720, H = 440, mL = 20, mR = 20, mT = 40, mB = 52;
+  const x0 = mL, x1 = W - mR, y0 = mT, y1 = H - mB, dom = 10;
+  const gauss = (x, mu, sd) => Math.exp(-0.5 * Math.pow((x - mu) / sd, 2));
+  const xOf = x => x0 + (x / dom) * (x1 - x0);
+  const yOf = v => y1 - v * (y1 - y0) * 0.9;
+  const curves = [
+    { mu: 4.0, sd: 1.9, amp: 0.72, color: '#888' },       // reality: wider, lower
+    { mu: 6.2, sd: 1.05, amp: 1.0, color: '#4361ee' }     // founder: shifted right (over-estimation) & narrower (over-precision)
+  ];
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Actual versus perceived return distribution">`;
+  curves.forEach(c => {
+    let d = '';
+    for (let x = 0; x <= dom; x += 0.1) { const X = xOf(x), Y = yOf(c.amp * gauss(x, c.mu, c.sd)); d += (x === 0 ? `M${X.toFixed(1)},${Y.toFixed(1)}` : `L${X.toFixed(1)},${Y.toFixed(1)}`); }
+    s += `<path d="${d}" fill="none" stroke="${c.color}" stroke-width="3.5" stroke-linejoin="round"/>`;
+    const mx = xOf(c.mu); s += `<line x1="${mx.toFixed(1)}" y1="${yOf(c.amp).toFixed(1)}" x2="${mx.toFixed(1)}" y2="${y1}" stroke="${c.color}" stroke-width="1.5" stroke-dasharray="5 5"/>`;
+  });
+  s += `<text x="${xOf(4.0).toFixed(1)}" y="${(yOf(0.72) - 10).toFixed(1)}" text-anchor="middle" font-size="16" font-weight="700" fill="#777">Actual</text>`;
+  s += `<text x="${xOf(6.2).toFixed(1)}" y="${(yOf(1.0) - 10).toFixed(1)}" text-anchor="middle" font-size="16" font-weight="700" fill="#4361ee">Founder&#8217;s belief</text>`;
+  s += `<line x1="${x0}" y1="${y1}" x2="${x1}" y2="${y1}" stroke="rgba(10,10,10,0.35)" stroke-width="1.5"/>`;
+  s += `<text x="${(x0 + x1) / 2}" y="${H - 14}" text-anchor="middle" font-size="17" fill="#555">Perceived project return  &#8594;</text>`;
+  s += `</svg>`;
+  el.innerHTML = s;
+}
+
+/* === Slide 33 — Big Five diverging bars (entrepreneurs vs managers) === */
+function renderBigFiveChart() {
+  const el = document.getElementById('bigFiveChart');
+  if (!el) return;
+  const rows = [
+    { label: 'Conscientiousness', val: 0.26, color: '#4361ee' },
+    { label: 'Openness', val: 0.18, color: '#4361ee' },
+    { label: 'Extraversion', val: 0.09, color: '#999' },
+    { label: 'Neuroticism', val: -0.12, color: '#d55e00' },
+    { label: 'Agreeableness', val: -0.22, color: '#d55e00' }
+  ];
+  const W = 720, H = 430, mL = 178, mR = 30, mT = 20, mB = 48;
+  const x0 = mL, x1 = W - mR, y0 = mT, y1 = H - mB;
+  const cx = (x0 + x1) / 2, axisMax = 0.3, scale = (x1 - cx) / axisMax;
+  const band = (y1 - y0) / rows.length, barH = Math.min(34, band * 0.5);
+  const xOf = v => cx + v * scale;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Big Five differences between entrepreneurs and managers">`;
+  [-0.2, 0, 0.2].forEach(g => { const x = xOf(g); s += `<line x1="${x.toFixed(1)}" y1="${y0}" x2="${x.toFixed(1)}" y2="${y1}" stroke="rgba(10,10,10,0.08)" stroke-width="1"/>`; s += `<text x="${x.toFixed(1)}" y="${y1 + 22}" text-anchor="middle" font-size="15" fill="#888">${g > 0 ? '+' : ''}${g.toFixed(1)}</text>`; });
+  s += `<line x1="${cx.toFixed(1)}" y1="${y0}" x2="${cx.toFixed(1)}" y2="${y1}" stroke="rgba(10,10,10,0.35)" stroke-width="1.5"/>`;
+  rows.forEach((r, i) => {
+    const midY = y0 + i * band + band / 2, bx = xOf(r.val), left = Math.min(cx, bx), w = Math.abs(bx - cx);
+    s += `<rect x="${left.toFixed(1)}" y="${(midY - barH / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${barH.toFixed(1)}" rx="3" fill="${r.color}"/>`;
+    s += `<text x="${x0 - 12}" y="${(midY + 5).toFixed(1)}" text-anchor="end" font-size="16" font-weight="600" fill="#333">${r.label}</text>`;
+    const vt = (r.val > 0 ? '+' : '') + r.val.toFixed(2), tx = r.val >= 0 ? bx + 6 : bx - 6, anc = r.val >= 0 ? 'start' : 'end';
+    s += `<text x="${tx.toFixed(1)}" y="${(midY + 5).toFixed(1)}" text-anchor="${anc}" font-size="15" font-weight="700" fill="${r.color}">${vt}</text>`;
+  });
+  s += `<text x="${cx.toFixed(1)}" y="${H - 10}" text-anchor="middle" font-size="15" fill="#555">Difference vs. managers (meta-analytic r)</text>`;
+  s += `</svg>`;
+  el.innerHTML = s;
+}
+
+/* === Slide 38 — Roy-model ability sorting: two earnings lines crossing at a* === */
+function renderAbilityChart() {
+  const el = document.getElementById('abilityChart');
+  if (!el) return;
+  const BLUE = '#4361ee', ORANGE = '#e69f00', VERM = '#d55e00', GREY = '#555', AX = '#999';
+  // illustrative parameters: w_E = 40 + 8a, w_S = 20 + 16a  =>  a* = 2.5
+  const wE = a => 40 + 8 * a, wS = a => 20 + 16 * a, aStar = 2.5, aMax = 5, yMax = 120;
+  const W = 640, H = 520, mL = 54, mR = 26, mT = 30, mB = 58;
+  const x0 = mL, x1 = W - mR, y0 = mT, y1 = H - mB;
+  const px = a => x0 + (a / aMax) * (x1 - x0);
+  const py = v => y1 - (v / yMax) * (y1 - y0);
+  const rx = px(aStar);
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Earnings by ability: employee versus entrepreneur, crossing at the ability threshold">`;
+  // shade a > a* (entrepreneurship region)
+  s += `<rect x="${rx.toFixed(1)}" y="${y0}" width="${(x1 - rx).toFixed(1)}" height="${(y1 - y0).toFixed(1)}" fill="rgba(67,97,238,0.07)"/>`;
+  // axes
+  s += `<defs><marker id="abAr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="${AX}"/></marker></defs>`;
+  s += `<line x1="${x0}" y1="${y1}" x2="${x1 + 8}" y2="${y1}" stroke="${AX}" stroke-width="2" marker-end="url(#abAr)"/>`;
+  s += `<line x1="${x0}" y1="${y1}" x2="${x0}" y2="${y0 - 8}" stroke="${AX}" stroke-width="2" marker-end="url(#abAr)"/>`;
+  // a* dashed
+  s += `<line x1="${rx.toFixed(1)}" y1="${y1}" x2="${rx.toFixed(1)}" y2="${py(wS(aStar)).toFixed(1)}" stroke="${VERM}" stroke-width="2" stroke-dasharray="6 5"/>`;
+  // lines
+  s += `<line x1="${px(0).toFixed(1)}" y1="${py(wE(0)).toFixed(1)}" x2="${px(aMax).toFixed(1)}" y2="${py(wE(aMax)).toFixed(1)}" stroke="${ORANGE}" stroke-width="4"/>`;
+  s += `<line x1="${px(0).toFixed(1)}" y1="${py(wS(0)).toFixed(1)}" x2="${px(aMax).toFixed(1)}" y2="${py(wS(aMax)).toFixed(1)}" stroke="${BLUE}" stroke-width="4"/>`;
+  // crossing dot
+  s += `<circle cx="${rx.toFixed(1)}" cy="${py(wS(aStar)).toFixed(1)}" r="6" fill="${VERM}"/>`;
+  // line labels
+  s += `<text x="${px(aMax).toFixed(1)}" y="${(py(wS(aMax)) - 10).toFixed(1)}" text-anchor="end" font-size="19" font-weight="700" fill="${BLUE}">Entrepreneur w<tspan baseline-shift="sub" font-size="13">S</tspan></text>`;
+  s += `<text x="${px(aMax).toFixed(1)}" y="${(py(wE(aMax)) - 10).toFixed(1)}" text-anchor="end" font-size="19" font-weight="700" fill="${ORANGE}">Employee w<tspan baseline-shift="sub" font-size="13">E</tspan></text>`;
+  // a* + region labels
+  s += `<text x="${rx.toFixed(1)}" y="${y1 + 24}" text-anchor="middle" font-size="19" font-style="italic" fill="${VERM}">a*</text>`;
+  s += `<text x="${((rx + x1) / 2).toFixed(1)}" y="${y0 + 22}" text-anchor="middle" font-size="15" fill="${GREY}">sort into entrepreneurship</text>`;
+  s += `<text x="${((x0 + rx) / 2).toFixed(1)}" y="${y1 - 12}" text-anchor="middle" font-size="15" fill="${GREY}">sort into wage work</text>`;
+  // axis titles
+  s += `<text x="${(x0 + x1) / 2}" y="${H - 8}" text-anchor="middle" font-size="17" fill="${GREY}">Ability  a  &#8594;</text>`;
+  s += `<text transform="translate(18 ${(y0 + y1) / 2}) rotate(-90)" text-anchor="middle" font-size="16" fill="${GREY}">Earnings</text>`;
+  s += `</svg>`;
+  el.innerHTML = s;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadEdits();
+  renderKLChart();
+  renderReasonsChart();
+  renderSkewChart();
+  renderOverconfChart();
+  renderBigFiveChart();
+  renderAbilityChart();
+  new SlidePresentation();
+});
+</script>
+</body>
+</html>
