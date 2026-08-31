@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecture 03 — The Role of Context in Shaping Entrepreneurship</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   LECTURE 03 — THE ROLE OF CONTEXT IN SHAPING ENTREPRENEURSHIP
+   Built on lecture-template.html. House rules kept intact:
+   1. Colour-blind-safe palette only (brand blue + Okabe–Ito).
+   2. Every slide is height:100vh; overflow:hidden. Size with clamp().
+   3. Inline SVG uses LITERAL hex colours, never var(--…).
+   4. The @media print block at the bottom is what makes the PDF work.
+   ========================================================================== */
+
+/* === VIEWPORT FITTING: MANDATORY BASE === */
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide { width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; position: relative; }
+.slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-height: 100%; overflow: hidden; padding: var(--slide-padding); }
+
+:root {
+  --title-size: clamp(1.5rem, 5vw, 4rem);
+  --h2-size: clamp(1.25rem, 3.3vw, 2.45rem);
+  --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+  --body-size: clamp(1.05rem, 1.95vw, 1.55rem);
+  --small-size: clamp(0.64rem, 1vw, 0.92rem);
+  --slide-padding: clamp(0.9rem, 2.9vw, 2.9rem);
+  --content-gap: clamp(0.5rem, 1.8vw, 1.7rem);
+  --element-gap: clamp(0.25rem, 1vw, 1rem);
+  --bg-dark: #0a0a0a;
+  --bg-white: #ffffff;
+  --text-dark: #0a0a0a;
+  --text-light: #ffffff;
+  /* ---- COLOUR-BLIND-SAFE PALETTE (brand blue + Okabe–Ito) ---- */
+  --accent-blue:   #4361ee; /* brand / primary series          */
+  --accent-orange: #e69f00; /* Okabe–Ito orange  (2nd series)  */
+  --accent-green:  #009e73; /* Okabe–Ito bluish-green (3rd)    */
+  --accent-sky:    #56b4e9; /* Okabe–Ito sky-blue (4th)        */
+  --accent-verm:   #d55e00; /* Okabe–Ito vermillion            */
+  /* darker text-safe variants of the light hues */
+  --ink-orange: #a06f00;
+  --ink-sky:    #1f7fb8;
+}
+@media screen and (max-height: 800px) { :root { --body-size: clamp(0.85rem, 1.5vw, 1.15rem); } }
+@media screen and (max-height: 700px) { :root { --slide-padding: clamp(0.75rem, 2.6vw, 2rem); --content-gap: clamp(0.4rem, 1.4vw, 1rem); --title-size: clamp(1.25rem, 4.5vw, 2.5rem); --h2-size: clamp(1rem, 2.7vw, 1.6rem); } }
+@media screen and (max-height: 600px) { :root { --slide-padding: clamp(0.5rem, 2.2vw, 1.4rem); --content-gap: clamp(0.3rem, 1vw, 0.7rem); --title-size: clamp(1.1rem, 4vw, 2rem); --body-size: clamp(0.75rem, 1.3vw, 1rem); } .nav-dots, .keyboard-hint { display: none; } }
+@media screen and (max-width: 768px) { .split-text-image, .two-col, .compare-2 { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; } html { scroll-behavior: auto; } }
+
+/* === GLOBAL === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: var(--bg-dark); color: var(--text-dark); }
+h1, h2, h3 { font-family: 'Archivo Black', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; }
+h1 { font-size: var(--title-size); line-height: 1.1; }
+h2 { font-size: var(--h2-size); line-height: 1.15; }
+h3 { font-size: var(--h3-size); line-height: 1.2; }
+p, li { font-size: var(--body-size); line-height: 1.5; }
+a { color: var(--accent-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h2 + * { margin-top: var(--content-gap); }
+
+/* === SLIDE BACKGROUNDS === */
+.slide--full-white { background: var(--bg-white); color: var(--text-dark); }
+.slide--full-blue  { background: var(--accent-blue); color: var(--text-light); }
+.slide--full-dark  { background: var(--bg-dark); color: var(--text-light); }
+.slide--full-blue .slide-content,
+.slide--full-dark .slide-content { justify-content: center; align-items: center; text-align: center; }
+
+/* === TITLE SLIDE === */
+.title-slide { background: var(--bg-white); color: var(--text-dark); }
+.title-bar { padding: clamp(0.9rem, 3vh, 2.2rem) var(--slide-padding); text-align: center; position: relative; z-index: 2; }
+.title-bar--top { font-size: var(--small-size); font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent-blue); }
+.title-bar--bottom { border-top: 2px solid rgba(10,10,10,0.08); }
+.title-name { font-family: 'Archivo Black', sans-serif; font-size: var(--body-size); text-transform: uppercase; letter-spacing: 0.04em; }
+.title-main { font-size: clamp(1.9rem, 6.6vw, 4.6rem); position: relative; z-index: 2; max-width: 20ch; }
+.title-lecture { margin-top: var(--content-gap); letter-spacing: 0.1em; }
+.title-deco { position: absolute; border-radius: 50%; z-index: 1; pointer-events: none; }
+.title-deco--1 { width: 44vw; height: 44vw; background: rgba(67,97,238,0.07); top: -14vw; right: -12vw; }
+.title-deco--2 { width: 30vw; height: 30vw; border: 2px solid rgba(67,97,238,0.16); bottom: -9vw; left: -7vw; }
+
+/* === SECTION DIVIDER === */
+.section-word { font-size: clamp(2.2rem, 9.5vw, 7rem); letter-spacing: 0.02em; max-width: 100%; }
+/* long section titles need a smaller size so they never push past the viewport */
+.section-word--long { font-size: clamp(1.6rem, 6.2vw, 4.4rem); max-width: 16ch; }
+
+/* === BULLETS === */
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: clamp(0.4rem, 1.5vh, 1.1rem); }
+.bullet-list li { position: relative; padding-left: 1.5em; }
+.bullet-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 0.55em; height: 0.55em; border-radius: 50%; background: var(--accent-blue); }
+.bullet-list--tight { gap: clamp(0.3rem, 1vh, 0.75rem); }
+.bullet-list--tight li { font-size: clamp(0.95rem, 1.72vw, 1.35rem); }
+.sub-bullets { list-style: none; margin-top: 0.4em; display: flex; flex-direction: column; gap: 0.3em; }
+.sub-bullets li { position: relative; padding-left: 1.4em; font-size: 0.9em; opacity: 0.9; }
+.sub-bullets li::before { content: ''; position: absolute; left: 0.1em; top: 0.5em; width: 0.45em; height: 0.45em; border-radius: 50%; border: 2px solid var(--accent-blue); }
+.lede { font-size: clamp(1rem, 1.8vw, 1.42rem); font-weight: 600; }
+
+/* === QUOTES === */
+blockquote { border-left: 5px solid var(--accent-blue); padding-left: clamp(0.7rem, 1.6vw, 1.2rem); font-style: italic; }
+blockquote p { font-size: clamp(0.92rem, 1.62vw, 1.28rem); line-height: 1.45; }
+cite { display: block; margin-top: 0.5em; font-size: var(--small-size); opacity: 0.75; font-style: normal; }
+.quote-card { background: rgba(67,97,238,0.06); border-left: 5px solid var(--accent-blue); border-radius: 0 10px 10px 0; padding: clamp(0.7rem, 1.9vw, 1.3rem); }
+.quote-card p { font-style: italic; font-size: clamp(0.92rem, 1.62vw, 1.28rem); line-height: 1.45; }
+.quote-card cite { font-style: normal; }
+
+/* === CARDS / STATEMENTS === */
+.def-card { background: rgba(67,97,238,0.06); border-left: 5px solid var(--accent-blue); border-radius: 0 10px 10px 0; padding: clamp(0.7rem, 2vw, 1.4rem); }
+.def-card .term { font-family: 'Archivo Black', sans-serif; color: var(--accent-blue); font-size: var(--h3-size); }
+.statement { font-family: 'Archivo Black', sans-serif; text-transform: none; font-size: clamp(1.1rem, 2.45vw, 1.95rem); line-height: 1.25; color: var(--accent-blue); }
+.statement--boxed { background: rgba(67,97,238,0.07); border-radius: 12px; padding: clamp(0.6rem, 1.6vw, 1.1rem) clamp(0.8rem, 2vw, 1.4rem); }
+.callout { font-size: clamp(1rem, 1.82vw, 1.45rem); font-weight: 700; }
+
+/* === IMAGES === */
+.split-text-image { display: grid; grid-template-columns: 1fr 1.2fr; gap: var(--content-gap); flex: 1; min-height: 0; margin-top: var(--content-gap); align-items: center; }
+.split-text-image .text-col { display: flex; flex-direction: column; justify-content: center; gap: var(--element-gap); min-height: 0; }
+.split-text-image .img-col { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; gap: 0.35em; }
+.split-text-image .img-col img { max-width: 100%; max-height: min(80vh, 760px); width: auto; object-fit: contain; border-radius: 8px; background: #fff; border: 1px solid rgba(10,10,10,0.1); box-shadow: 0 6px 24px rgba(10,10,10,0.08); }
+.split--wide-img { grid-template-columns: 0.85fr 1.5fr; }
+.split--wide-text { grid-template-columns: 1.25fr 1fr; }
+.split--even { grid-template-columns: 1fr 1fr; }
+
+.single-image { display: flex; align-items: center; justify-content: center; flex: 1; min-height: 0; margin-top: var(--content-gap); }
+.single-image img { max-width: 100%; max-height: min(86vh, 860px); object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid rgba(10,10,10,0.1); box-shadow: 0 6px 24px rgba(10,10,10,0.08); }
+.single-image--bleed img { max-height: min(92vh, 940px); border: none; box-shadow: 0 10px 40px rgba(10,10,10,0.18); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--content-gap); flex: 1; min-height: 0; margin-top: var(--content-gap); align-items: start; }
+
+.source { font-size: var(--small-size); opacity: 0.62; margin-top: var(--element-gap); font-style: italic; line-height: 1.35; }
+.img-caption { font-size: var(--small-size); opacity: 0.62; font-style: italic; text-align: center; line-height: 1.3; }
+.instruction { font-size: clamp(1rem, 1.82vw, 1.45rem); font-weight: 600; color: var(--accent-blue); }
+
+/* === TAGS === */
+.tag { display: inline-block; padding: 0.2em 0.8em; border-radius: 100px; font-size: var(--small-size); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.tag--blue { background: var(--accent-blue); color: var(--text-light); }
+
+/* === DATA TABLES === */
+.data-table { width: 100%; border-collapse: collapse; font-size: clamp(0.82rem, 1.48vw, 1.2rem); }
+.data-table th, .data-table td { text-align: left; padding: clamp(0.3rem, 0.85vh, 0.7rem) clamp(0.4rem, 0.9vw, 0.9rem); vertical-align: top; line-height: 1.35; border-bottom: 1px solid rgba(10,10,10,0.10); }
+.data-table thead th { font-family: 'Archivo Black', sans-serif; font-weight: 400; text-transform: uppercase; font-size: clamp(0.68rem, 1.18vw, 0.95rem); letter-spacing: 0.05em; color: var(--accent-blue); border-bottom: 2px solid var(--accent-blue); }
+.data-table tbody tr:nth-child(odd) { background: rgba(67,97,238,0.035); }
+.data-table--dense { font-size: clamp(0.68rem, 1.2vw, 1rem); }
+.data-table--dense th, .data-table--dense td { padding: clamp(0.18rem, 0.55vh, 0.42rem) clamp(0.3rem, 0.7vw, 0.7rem); line-height: 1.28; }
+.table-wrap { flex: 1; min-height: 0; display: flex; align-items: center; margin-top: var(--content-gap); }
+
+/* === 2×2 MATRIX (recurring backbone of the lecture) ===
+   Cell colours are fixed and reused every time the matrix returns.
+   Colour is never the only cue: row/column labels carry the meaning too. */
+.matrix { display: grid; grid-template-columns: minmax(6em, 0.55fr) 1fr 1fr; gap: clamp(0.3rem, 0.9vw, 0.7rem); flex: 1; min-height: 0; margin-top: var(--content-gap); }
+.matrix-cell { border-radius: 12px; padding: clamp(0.5rem, 1.6vw, 1.2rem); display: flex; flex-direction: column; justify-content: center; gap: 0.3em; min-height: 0; }
+.matrix-head { font-family: 'Archivo Black', sans-serif; font-size: clamp(0.85rem, 1.8vw, 1.45rem); text-transform: uppercase; letter-spacing: 0.03em; display: flex; align-items: center; justify-content: center; text-align: center; }
+.matrix-head--row { justify-content: flex-start; text-align: left; }
+.matrix-cell p { font-size: clamp(0.88rem, 1.65vw, 1.35rem); line-height: 1.35; }
+.matrix-cell .cell-tag { font-family: 'Archivo Black', sans-serif; font-size: clamp(0.62rem, 1.05vw, 0.88rem); text-transform: uppercase; letter-spacing: 0.06em; }
+.m-sn { background: rgba(230,159,0,0.14); border-top: 5px solid var(--accent-orange); }
+.m-sn .cell-tag { color: var(--ink-orange); }
+.m-se { background: rgba(86,180,233,0.16); border-top: 5px solid var(--accent-sky); }
+.m-se .cell-tag { color: var(--ink-sky); }
+.m-tn { background: rgba(213,94,0,0.12); border-top: 5px solid var(--accent-verm); }
+.m-tn .cell-tag { color: var(--accent-verm); }
+.m-te { background: rgba(0,158,115,0.13); border-top: 5px solid var(--accent-green); }
+.m-te .cell-tag { color: var(--accent-green); }
+/* inline chips that point back to a matrix cell */
+.chip { display: inline-block; padding: 0.15em 0.7em; border-radius: 100px; font-size: clamp(0.62rem, 1.05vw, 0.9rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+.chip--sn { background: rgba(230,159,0,0.22); color: var(--ink-orange); }
+.chip--se { background: rgba(86,180,233,0.26); color: var(--ink-sky); }
+.chip--tn { background: rgba(213,94,0,0.18); color: var(--accent-verm); }
+.chip--te { background: rgba(0,158,115,0.20); color: var(--accent-green); }
+
+/* === COMPARISON PANELS (Fairchild vs Xerox, etc.) === */
+.compare-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--content-gap); min-height: 0; margin-top: var(--content-gap); }
+.panel { border-radius: 14px; padding: clamp(0.6rem, 1.8vw, 1.3rem); display: flex; flex-direction: column; min-height: 0; }
+.panel--a { background: rgba(67,97,238,0.07); border-top: 5px solid var(--accent-blue); }
+.panel--b { background: rgba(230,159,0,0.10); border-top: 5px solid var(--accent-orange); }
+.panel-head { font-family: 'Archivo Black', sans-serif; font-size: clamp(0.95rem, 2vw, 1.55rem); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 0.15em; }
+.panel--a .panel-head { color: var(--accent-blue); }
+.panel--b .panel-head { color: var(--ink-orange); }
+.panel-sub { font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; opacity: 0.7; margin-bottom: 0.6em; }
+.panel-items { list-style: none; display: flex; flex-direction: column; gap: clamp(0.3rem, 0.95vh, 0.7rem); }
+/* NOTE: the marker is absolutely positioned, NOT a flex item — a flex li would
+   turn inline <strong>/<em> into separate flex columns and shred the sentence. */
+.panel-items li { position: relative; padding-left: 1.35em; font-size: clamp(0.9rem, 1.6vw, 1.3rem); line-height: 1.35; }
+.panel-items li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 7px; height: 7px; border-radius: 50%; }
+.panel--a .panel-items li::before { background: var(--accent-blue); }
+.panel--b .panel-items li::before { background: var(--accent-orange); }
+
+/* === PROCESS / PIPELINE DIAGRAMS === */
+.process { display: flex; align-items: stretch; justify-content: center; gap: clamp(0.3rem, 1.2vw, 1rem); flex: 1; min-height: 0; margin-top: var(--content-gap); }
+.process-step { flex: 1; border-radius: 14px; padding: clamp(0.6rem, 1.8vw, 1.4rem); display: flex; flex-direction: column; justify-content: center; gap: 0.4em; text-align: center; min-height: 0; }
+.process-step .step-num { font-family: 'Archivo Black', sans-serif; font-size: var(--small-size); letter-spacing: 0.1em; opacity: 0.6; }
+.process-step h3 { font-size: clamp(1rem, 2.2vw, 1.75rem); }
+.process-step p { font-size: clamp(0.88rem, 1.6vw, 1.28rem); line-height: 1.35; }
+.step--1 { background: rgba(67,97,238,0.08); border-top: 5px solid var(--accent-blue); }
+.step--1 h3 { color: var(--accent-blue); }
+.step--2 { background: rgba(230,159,0,0.11); border-top: 5px solid var(--accent-orange); }
+.step--2 h3 { color: var(--ink-orange); }
+.step--3 { background: rgba(0,158,115,0.11); border-top: 5px solid var(--accent-green); }
+.step--3 h3 { color: var(--accent-green); }
+.process-arrow { display: flex; align-items: center; font-family: 'Archivo Black', sans-serif; font-size: clamp(1rem, 2.6vw, 2rem); color: var(--accent-blue); opacity: 0.55; }
+
+/* thin horizontal chain (slide 38, 43) */
+.chain { display: flex; align-items: center; justify-content: center; gap: clamp(0.25rem, 0.9vw, 0.7rem); flex-wrap: nowrap; }
+.chain-node { flex: 1; background: rgba(67,97,238,0.08); border: 2px solid rgba(67,97,238,0.25); border-radius: 10px; padding: clamp(0.5rem, 1.3vw, 1rem) clamp(0.3rem, 0.8vw, 0.7rem); text-align: center; font-weight: 700; font-size: clamp(0.82rem, 1.45vw, 1.18rem); line-height: 1.25; }
+.chain-node--accent { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+.chain-arrow { font-family: 'Archivo Black', sans-serif; color: var(--accent-blue); opacity: 0.5; font-size: clamp(0.85rem, 1.8vw, 1.3rem); }
+.bundle { margin-top: var(--element-gap); background: rgba(67,97,238,0.05); border: 2px dashed rgba(67,97,238,0.3); border-radius: 12px; padding: clamp(0.5rem, 1.4vw, 1rem); text-align: center; }
+.bundle-label { font-family: 'Archivo Black', sans-serif; font-size: var(--small-size); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-blue); }
+.bundle-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.35em 0.7em; margin-top: 0.35em; }
+.bundle-items span { font-size: clamp(0.82rem, 1.5vw, 1.2rem); font-weight: 600; }
+.bundle-items span:not(:last-child)::after { content: ' ·'; opacity: 0.45; }
+
+/* two competing causal paths (slide 24) */
+.paths { display: flex; flex-direction: column; gap: clamp(0.5rem, 1.6vh, 1.1rem); justify-content: center; min-height: 0; }
+.path { border-radius: 12px; padding: clamp(0.5rem, 1.4vw, 1rem); }
+.path--selection { background: rgba(230,159,0,0.11); border-left: 5px solid var(--accent-orange); }
+.path--treatment { background: rgba(0,158,115,0.11); border-left: 5px solid var(--accent-green); }
+.path-label { font-family: 'Archivo Black', sans-serif; font-size: clamp(0.68rem, 1.18vw, 0.98rem); text-transform: uppercase; letter-spacing: 0.07em; }
+.path--selection .path-label { color: var(--ink-orange); }
+.path--treatment .path-label { color: var(--accent-green); }
+.path-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 0.35em; margin-top: 0.35em; font-size: clamp(0.85rem, 1.5vw, 1.2rem); font-weight: 700; line-height: 1.25; }
+.path-flow .arr { opacity: 0.5; font-family: 'Archivo Black', sans-serif; }
+
+/* === RECAP TRADE-OFF LIST === */
+.tradeoffs { display: flex; flex-direction: column; gap: clamp(0.4rem, 1.3vh, 0.9rem); margin-top: var(--content-gap); }
+.tradeoff { border-radius: 12px; padding: clamp(0.6rem, 1.6vw, 1.2rem) clamp(0.7rem, 1.9vw, 1.5rem); font-size: clamp(0.92rem, 1.68vw, 1.35rem); line-height: 1.4; }
+.tradeoff b { font-family: 'Archivo Black', sans-serif; font-weight: 400; }
+.tradeoff--1 { background: rgba(67,97,238,0.07); border-left: 5px solid var(--accent-blue); }
+.tradeoff--2 { background: rgba(230,159,0,0.10); border-left: 5px solid var(--accent-orange); }
+.tradeoff--3 { background: rgba(0,158,115,0.10); border-left: 5px solid var(--accent-green); }
+
+/* === REFERENCES === */
+.ref-block { margin-top: var(--element-gap); display: flex; flex-direction: column; gap: 0.35em; }
+.ref-line { font-size: var(--small-size); line-height: 1.35; padding-left: 2.2em; text-indent: -2.2em; opacity: 0.7; }
+
+/* === BIG QUESTION === */
+.big-question { max-width: 22ch; position: relative; z-index: 1; }
+.q-deco { position: absolute; font-family: 'Archivo Black', sans-serif; font-size: clamp(12rem, 40vw, 32rem); line-height: 1; opacity: 0.08; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+
+/* === CLOSING === */
+.closing-link { font-family: 'Archivo Black', sans-serif; color: var(--text-light); font-size: clamp(0.85rem, 2vw, 1.4rem); text-decoration: underline; text-underline-offset: 4px; word-break: break-word; margin-top: 0.4em; display: inline-block; }
+
+/* === ANIMATIONS === */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.slide.visible .reveal { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; } .reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; } .reveal-d4 { transition-delay: 0.4s; }
+.reveal-d5 { transition-delay: 0.5s; } .reveal-d6 { transition-delay: 0.6s; }
+.reveal-d7 { transition-delay: 0.7s; } .reveal-d8 { transition-delay: 0.8s; }
+
+/* === NAV / PROGRESS / COUNTER === */
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent-blue); z-index: 1000; transition: width 0.3s ease; width: 0%; }
+.slide-counter { position: fixed; bottom: clamp(0.5rem, 2vh, 1.5rem); right: clamp(0.5rem, 2vw, 1.5rem); font-size: var(--small-size); font-weight: 700; color: rgba(120,120,120,0.8); z-index: 1000; background: rgba(255,255,255,0.7); padding: 0.3em 0.8em; border-radius: 100px; backdrop-filter: blur(10px); }
+.nav-dots { position: fixed; right: clamp(0.3rem, 1vw, 0.8rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 5px; z-index: 1000; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(67,97,238,0.25); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; }
+.nav-dot.active { background: var(--accent-blue); transform: scale(1.4); }
+.nav-dot:hover { background: rgba(67,97,238,0.55); }
+.keyboard-hint { position: fixed; bottom: clamp(0.5rem, 2vh, 1.5rem); left: 50%; transform: translateX(-50%); font-size: var(--small-size); color: rgba(120,120,120,0.7); z-index: 1000; animation: fadeOut 3s 5s forwards; }
+@keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+/* === EDIT MODE === */
+.edit-hotzone { position: fixed; top: 0; left: 0; width: 60px; height: 60px; z-index: 2000; cursor: pointer; opacity: 0; transition: opacity 0.3s ease; }
+.edit-hotzone.show { opacity: 1; }
+.edit-hotzone-indicator { position: absolute; top: 10px; left: 10px; width: 36px; height: 36px; background: var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 700; box-shadow: 0 2px 10px rgba(67,97,238,0.5); }
+.edit-toolbar { position: fixed; top: 10px; left: 70px; z-index: 2000; background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 8px 12px; display: none; gap: 8px; align-items: center; }
+.edit-toolbar.active { display: flex; }
+.edit-toolbar button { background: var(--accent-blue); color: white; border: none; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 600; }
+.edit-toolbar button:hover { filter: brightness(1.2); }
+.edit-toolbar .edit-status { color: rgba(255,255,255,0.7); font-size: 11px; }
+body.edit-mode [contenteditable="true"] { outline: 2px dashed var(--accent-blue); outline-offset: 2px; cursor: text; border-radius: 4px; }
+
+/* === PER-SLIDE TUNING === */
+#slide-9 .table-wrap { align-items: stretch; }
+#slide-15 .single-image img { max-height: min(86vh, 900px); }
+#slide-21 .split-text-image { grid-template-columns: 1.35fr 1fr; }
+#slide-26 .split-text-image { grid-template-columns: 1.35fr 1fr; }
+#slide-36 .split-text-image { grid-template-columns: 1fr 1.35fr; }
+/* Text-only slides that would otherwise leave large empty bands: scale the
+   type up so the content actually fills the slide (see the script's general note). */
+#slide-13 .bullet-list li, #slide-27 .bullet-list li { font-size: clamp(1.05rem, 2vw, 1.62rem); }
+#slide-13 .quote-card p, #slide-27 .quote-card p { font-size: clamp(1rem, 1.86vw, 1.52rem); }
+#slide-13 .bullet-list, #slide-27 .bullet-list { gap: clamp(0.5rem, 1.8vh, 1.3rem); }
+#slide-38 .chain-node { font-size: clamp(0.95rem, 1.7vw, 1.4rem); padding: clamp(0.9rem, 2.3vw, 1.9rem) clamp(0.35rem, 0.9vw, 0.8rem); }
+#slide-38 .bundle-items span { font-size: clamp(0.92rem, 1.65vw, 1.35rem); }
+#slide-38 .bundle { padding: clamp(0.9rem, 2.4vw, 1.9rem); }
+#slide-38 .bullet-list li { font-size: clamp(1.05rem, 1.95vw, 1.55rem); }
+
+/* long two-line title — trim the figure so the caption still fits */
+#slide-32 .split-text-image .img-col img { max-height: min(64vh, 520px); }
+
+/* ============================================================================
+   PRINT / PDF EXPORT — 16:9 landscape, one slide per page.
+   ========================================================================== */
+@media print {
+  @page { size: 1280px 720px; margin: 0; }
+  html, body { width: 1280px; height: auto; overflow: visible !important; }
+  html { scroll-snap-type: none !important; scroll-behavior: auto !important; }
+  .slide { width: 1280px !important; height: 720px !important; overflow: hidden !important;
+           scroll-snap-align: none !important; page-break-after: always; break-after: page;
+           page-break-inside: avoid; break-inside: avoid; }
+  .slide:last-of-type { page-break-after: avoid; break-after: avoid; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .split-text-image { grid-template-columns: 1fr 1.2fr !important; }
+  .split--wide-img { grid-template-columns: 0.85fr 1.5fr !important; }
+  .split--wide-text { grid-template-columns: 1.25fr 1fr !important; }
+  .split--even, .two-col, .compare-2 { grid-template-columns: 1fr 1fr !important; }
+  .progress-bar, .slide-counter, .nav-dots, .keyboard-hint,
+  .edit-hotzone, .edit-toolbar { display: none !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-counter" id="slideCounter">1 / 47</div>
+<div class="nav-dots" id="navDots"></div>
+<div class="keyboard-hint">Use arrow keys or scroll to navigate</div>
+
+<div class="edit-hotzone" id="editHotzone">
+  <div class="edit-hotzone-indicator">E</div>
+</div>
+<div class="edit-toolbar" id="editToolbar">
+  <span class="edit-status">Edit Mode</span>
+  <button onclick="saveEdits()">Save</button>
+  <button onclick="exportPresentation()">Export</button>
+  <button onclick="toggleEditMode()">Close</button>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: Title                                               -->
+<!-- ============================================================ -->
+<section class="slide title-slide" id="slide-1">
+  <span class="title-deco title-deco--1"></span>
+  <span class="title-deco title-deco--2"></span>
+  <header class="title-bar title-bar--top reveal">
+    Foundations of Entrepreneurship &amp; New Business Development
+  </header>
+  <div class="slide-content" style="align-items:center; text-align:center;">
+    <h1 class="title-main reveal reveal-d2">The role of context in shaping entrepreneurship</h1>
+    <span class="tag tag--blue title-lecture reveal reveal-d4">Lecture 3</span>
+  </div>
+  <footer class="title-bar title-bar--bottom reveal reveal-d5">
+    <span class="title-name">Jeroen Mahieu</span>
+  </footer>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: When do people become self-employed?                -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-2">
+  <div class="slide-content">
+    <h2 class="reveal">When do people become self-employed?</h2>
+    <p class="instruction reveal reveal-d2" style="margin-top:var(--element-gap)">
+      These are all men who become self-employed between age 20 and 43. What do you notice?
+    </p>
+    <div class="single-image reveal reveal-d3">
+      <img src="assets/humphries figure 1.png"
+           alt="Career states by age of Swedish males born in 1970 who are ever self-employed"
+           onerror="this.style.opacity=0.15;this.alt='(image not found: assets/humphries figure 1.png)'">
+    </div>
+    <p class="source reveal reveal-d4">
+      Source: Humphries, J. E. (2017). <em>The causes and consequences of self-employment over the life cycle</em>.
+      Doctoral dissertation, The University of Chicago. Figure shows the career states of Swedish males born in 1970
+      who are ever self-employed between 1990 and 2013.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Give students a minute to inspect the figure before interpreting it. The sample contains men who are EVER self-employed, so this is not the occupational distribution of all Swedish men. Each bar shows where members of this selected group are at a particular age: school, paid employment, incorporated self-employment, unincorporated self-employment, or non-employment. Ask which colour dominates in the early career and how the self-employment shares change with age. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: Most future entrepreneurs are employees first       -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-3">
+  <div class="slide-content">
+    <h2 class="reveal">Most future entrepreneurs are employees first</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">At ages 20&ndash;25, most people in the sample are still in <strong>school or paid employment</strong></li>
+          <li class="reveal reveal-d3">Paid employment remains the largest career state throughout the observed age range</li>
+          <li class="reveal reveal-d4">Incorporated and unincorporated self-employment become more common as the cohort gets older</li>
+          <li class="reveal reveal-d5">But entrepreneurship is also transitory: only <strong>45&ndash;50%</strong> of those who ever became self-employed are still so by age 43</li>
+          <li class="reveal reveal-d6">Entrepreneurship therefore often looks less like a first job and more like a <strong>career transition</strong></li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/humphries figure 2.png" alt="Humphries (2017), Figure 2: transitions into and out of self-employment"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/humphries figure 2.png)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">Source: Humphries (2017), Figure 2.</p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The figure is descriptive, not causal. It does not tell us why entry happens later, and it does not say that paid employment necessarily prepares people for entrepreneurship. It establishes the empirical puzzle for this lecture: if entrepreneurship usually comes after employment, what does the employment context do to future entry and performance? -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: Successful founders are usually middle-aged too     -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-4">
+  <div class="slide-content">
+    <h2 class="reveal">Successful founders are usually middle-aged too</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Recall the figure from the previous lecture:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">The share of all U.S. startup founders peaks around <strong>age 40</strong></li>
+          <li class="reveal reveal-d4">The founders of the fastest-growing ventures are older still</li>
+          <li class="reveal reveal-d5">For the <strong>1-in-1,000 fastest-growing ventures</strong>, mean founder age is <strong>45</strong></li>
+        </ul>
+        <p class="callout reveal reveal-d6" style="margin-top:var(--element-gap)">
+          The popular image of the 20-year-old founder is memorable but not representative.
+        </p>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/azoulay et al figure 1.png" alt="Azoulay et al. (2020), Figure 1: founder age distributions"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/azoulay et al figure 1.png)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">
+      Azoulay, P., Jones, B. F., Kim, J. D., &amp; Miranda, J. (2020). Age and high-growth entrepreneurship.
+      <em>American Economic Review: Insights</em>, 2(1), 65&ndash;82.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Connect this explicitly to Lecture 2. Age is not valuable by itself. It stands in for accumulated experience, knowledge, credibility and relationships. Azoulay et al. also find that prior experience in the startup's specific industry strongly predicts success. Today we unpack where some of that experience comes from. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: Entrepreneurs usually come from organizations       -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-5">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurs usually come from organizations</h2>
+    <div class="split-text-image split--even" style="align-items:center">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">New ventures are rarely founded by people arriving directly from school or from outside the labor market</li>
+          <li class="reveal reveal-d3">Reviews of the evidence suggest that <strong>at least nine in ten entrepreneurs have previously worked for another organization</strong></li>
+          <li class="reveal reveal-d4">Their current employer is therefore part of the entrepreneurial process, even before a new firm exists</li>
+        </ul>
+      </div>
+      <div class="text-col reveal reveal-d3">
+        <table class="data-table data-table--dense">
+          <thead>
+            <tr><th>What the organization provides</th><th>How it may matter</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Skills and knowledge</strong></td><td>Technical, commercial, managerial and regulatory knowledge; exposure to unmet customer needs, technology and rejected projects</td></tr>
+            <tr><td><strong>Beliefs and values</strong></td><td>Demystify entrepreneurship, reduce stigma, spur a taste for autonomy</td></tr>
+            <tr><td><strong>Relationships</strong></td><td>Future cofounders, employees, customers, suppliers and investors</td></tr>
+            <tr><td><strong>A career alternative</strong></td><td>Promotion prospects and wages determine the cost of leaving</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="statement reveal reveal-d6" style="margin-top:var(--content-gap)">
+      The same employer may simultaneously <em>prepare people to leave</em> and <em>give them reasons to stay</em>.
+    </p>
+    <p class="source reveal reveal-d6">
+      S&oslash;rensen, J. B., &amp; Fassiotto, M. A. (2011). Organizations as fonts of entrepreneurship.
+      <em>Organization Science</em>, 22(5), 1322&ndash;1331.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Phrase the nine-in-ten number as a reviewed estimate, not as a new population statistic established by Sørensen and Fassiotto. Also distinguish prior organizational employment from founding directly out of the current job: the evidence establishes that organizational careers precede entrepreneurship, not that every startup is a direct employee spinout. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: Traitorous Eight photo (full bleed)                 -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-6">
+  <div class="slide-content" style="padding:clamp(0.5rem,2vw,1.5rem)">
+    <div class="single-image single-image--bleed reveal">
+      <img src="assets/traitorous eight.jpg" alt="The Traitorous Eight, founders of Fairchild Semiconductor"
+           onerror="this.style.opacity=0.15;this.alt='(image not found: assets/traitorous eight.jpg)'">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: The Traitorous Eight                                -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-7">
+  <div class="slide-content">
+    <h2 class="reveal">The Traitorous Eight</h2>
+    <div class="split-text-image split--wide-text">
+      <div class="text-col">
+        <p class="reveal reveal-d2" style="font-size:clamp(0.9rem,1.58vw,1.28rem)">
+          Eight employees who left <strong>Shockley Semiconductor Laboratory</strong> in 1957&mdash;only two years after its
+          founding&mdash;to found <strong>Fairchild Semiconductor</strong>. This eventually led to numerous spinoffs, including
+          AMD and Intel. Over 20 years, <strong>65 different companies</strong> were started by 1st- or 2nd-generation teams
+          that traced their Silicon Valley origins to Shockley Semiconductor. In 2014, an estimated 92 of 130 listed
+          descendant firms were together worth over <strong>US$2.1 trillion</strong>.
+        </p>
+        <p class="callout reveal reveal-d3" style="margin-top:var(--element-gap)">Why did so much entrepreneurship emerge from one organizational community?</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d4">Did Shockley <strong>select</strong> unusually entrepreneurial people?</li>
+          <li class="reveal reveal-d5">Did working there <strong>develop</strong> valuable capabilities?</li>
+          <li class="reveal reveal-d6">Did alumni keep helping one another through a powerful <strong>network</strong>?</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/fairchildren.png" alt="The &lsquo;Fairchildren&rsquo;: the genealogy of firms spun out of Fairchild Semiconductor"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/fairchildren.png)'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: A map for the evidence (the 2×2 backbone)           -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-8">
+  <div class="slide-content">
+    <h2 class="reveal">A map for the evidence</h2>
+    <div class="matrix">
+      <div></div>
+      <div class="matrix-head reveal reveal-d1">Performance-neutral</div>
+      <div class="matrix-head reveal reveal-d1">Performance-enhancing</div>
+
+      <div class="matrix-head matrix-head--row reveal reveal-d2">Selection</div>
+      <div class="matrix-cell m-sn reveal reveal-d2">
+        <span class="cell-tag">Selection &times; neutral</span>
+        <p>The <strong>same preferences</strong> that made people join Shockley Labs made them eventually enter entrepreneurship</p>
+      </div>
+      <div class="matrix-cell m-se reveal reveal-d3">
+        <span class="cell-tag">Selection &times; enhancing</span>
+        <p><strong>Entrepreneurial ability</strong> influences the choice to join Shockley, and eventually entrepreneurship</p>
+      </div>
+
+      <div class="matrix-head matrix-head--row reveal reveal-d4">Treatment</div>
+      <div class="matrix-cell m-tn reveal reveal-d4">
+        <span class="cell-tag">Treatment &times; neutral</span>
+        <p>Context encourages entry, without demonstrated capability gains</p>
+      </div>
+      <div class="matrix-cell m-te reveal reveal-d5">
+        <span class="cell-tag">Treatment &times; enhancing</span>
+        <p>Context develops <strong>resources or capabilities</strong> that improve outcomes</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Keep the matrix visible as the intellectual backbone of the lecture. A single context can occupy more than one cell. The job of the evidence is not merely to show that context matters, but to clarify how it matters and whether it changes entry, performance, or both. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: Shockley recruited a stellar team                   -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-9">
+  <div class="slide-content">
+    <h2 class="reveal">Shockley recruited a stellar team</h2>
+    <div class="table-wrap reveal reveal-d2">
+      <table class="data-table data-table--dense">
+        <thead>
+          <tr>
+            <th style="width:20%">Name and birth year</th>
+            <th style="width:44%">Expertise Shockley recruited</th>
+            <th style="width:36%">Selected later contribution at Fairchild</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Julius Blank</strong>, 1925</td><td>Mechanical engineering and machining. BA, City College of New York (1950)</td><td>Built facilities and production equipment</td></tr>
+          <tr><td><strong>Victor Grinich</strong>, 1924</td><td>Electrical engineering, electronics. PhD, Stanford University (1953)</td><td>Established device testing, characterization and applications</td></tr>
+          <tr><td><strong>Jean Hoerni</strong>, 1924</td><td>Physics and semiconductor theory. PhD, University of Geneva (1950) and Cambridge University (1952)</td><td>Invented the planar process</td></tr>
+          <tr><td><strong>Eugene Kleiner</strong>, 1923</td><td>Mechanical and production engineering. MA, New York University (1950)</td><td>Developed production capabilities; connected the group to financier Arthur Rock</td></tr>
+          <tr><td><strong>Jay Last</strong>, 1929</td><td>Optics and solid-state physics. PhD, MIT (1956)</td><td>Advanced photolithography; led the first planar integrated-circuit team</td></tr>
+          <tr><td><strong>Gordon Moore</strong>, 1929</td><td>Physical chemistry and materials. PhD, California Institute of Technology</td><td>Led process research and later Fairchild&rsquo;s R&amp;D</td></tr>
+          <tr><td><strong>Robert Noyce</strong>, 1927</td><td>Physics and semiconductor devices. PhD, MIT (1953)</td><td>Became general manager; conceived the monolithic integrated circuit</td></tr>
+          <tr><td><strong>Sheldon Roberts</strong>, 1926</td><td>Metallurgy and materials science. PhD, MIT (1952)</td><td>Established silicon-crystal production</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Ask students what strikes them: these are all very young people with high ability. Coincidence or not? -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: The young and talented?                            -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-10">
+  <div class="slide-content">
+    <h2 class="reveal">The young and talented?</h2>
+    <div class="split-text-image split--even">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">Keep in mind that Shockley Semiconductor Laboratory was still a <strong>small startup</strong>: two years old, about 30 employees</li>
+          <li class="reveal reveal-d3">How could Shockley attract these highly able young scientists (<strong>6 of the 8 had a PhD</strong>) with only the few resources he had? Can this in some way also explain their eventual exit to found their own company?</li>
+        </ul>
+        <div class="quote-card reveal reveal-d4" style="margin-top:var(--element-gap)">
+          <p>&ldquo;Talented people don&rsquo;t need to work for you; they have plenty of options. You should ask yourself a
+             more pointed question: Why would someone join your company as its 20th engineer when she could work at
+             Google for more money and more prestige?&rdquo;</p>
+          <cite>Peter Thiel (2014), <em>Zero to One</em>, p. 20</cite>
+        </div>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/roach sauermann figure 4.png" alt="Roach &amp; Sauermann (2024), Figure 4"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/roach sauermann figure 4.png)'">
+        <p class="img-caption">Roach, M., &amp; Sauermann, H. (2024). Can technology startups hire talented early employees?
+          Ability, preferences, and employee first job choice. <em>Management Science</em>, 70(6), 3619&ndash;3644.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: Ability and preferences                            -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-11">
+  <div class="slide-content">
+    <h2 class="reveal">Ability and preferences</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/roach sauermann figure 1.png" alt="Roach &amp; Sauermann (2024), Figure 1: ability and preferences of startup joiners"
+           onerror="this.style.opacity=0.15;this.alt='(image not found: assets/roach sauermann figure 1.png)'">
+    </div>
+    <p class="source reveal reveal-d3">
+      Roach, M., &amp; Sauermann, H. (2024). Can technology startups hire talented early employees? Ability, preferences,
+      and employee first job choice. <em>Management Science</em>, 70(6), 3619&ndash;3644.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Link to the previous lecture. We know that tech-startup joiners have different preferences than people who work for established firms. If these preferences for challenge and autonomy are sufficiently strong, they might offset the lower compensation and lack of complementary resources that startups can offer. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: Also to bypass the career ladder?                  -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-12">
+  <div class="slide-content">
+    <h2 class="reveal">Also to bypass the career ladder?</h2>
+    <div class="split-text-image split--wide-text">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">Working in a startup like Shockley Semiconductor Lab also gave these young scientists exposure to <strong>tasks normally reserved for more experienced workers</strong></li>
+          <li class="reveal reveal-d3">(Inadvertently) prepared them for entrepreneurship? Entrepreneurs need to be creative (inventive) but also need business skills</li>
+          <li class="reveal reveal-d4">Creativity peaks when you are <strong>young</strong></li>
+          <li class="reveal reveal-d5">Business acumen increases with <strong>experience in high-level positions</strong></li>
+          <li class="reveal reveal-d6">This can also explain the &ldquo;inverted-U&rdquo; relation between entrepreneurship and age (see previous class)</li>
+          <li class="reveal reveal-d7">Implication: having too many older workers in society <strong>slows entrepreneurship</strong>&mdash;older workers occupy key positions and block skill acquisition by young people</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/liang lazear figure 1.png" alt="Liang, Wang &amp; Lazear (2018), Figure 1"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/liang lazear figure 1.png)'">
+        <p class="img-caption">Liang, J., Wang, H., &amp; Lazear, E. P. (2018). Demographics and entrepreneurship.
+          <em>Journal of Political Economy</em>, 126(S1), S140&ndash;S196.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Startups tend to have flat hierarchies and low bureaucracy, giving employees considerable autonomy and task variety (Lazear 2005, Sørensen 2007, Elfenbein et al. 2010). Startups may also offer aspiring founders opportunities to develop skills useful for future transitions to entrepreneurship (Gompers et al. 2005). As startups grow, they may offer early employees rapid career advancement (Neff 2012, Sorenson et al. 2021). Large established firms tend to have greater bureaucracy and routinized practices with formalized career ladders within specialized functional roles (Baron et al. 1996, Cappelli 2008, Bidwell and Briscoe 2010). -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: Tilting the ability-preferences trade-off          -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-13">
+  <div class="slide-content">
+    <h2 class="reveal">Tilting the ability&ndash;preferences trade-off</h2>
+    <ul class="bullet-list bullet-list--tight" style="margin-top:var(--content-gap)">
+      <li class="reveal reveal-d2">While Shockley was a brilliant scientist&mdash;he won the <strong>Nobel Prize in Physics in 1956</strong>&mdash;he was a terrible manager. Instead of inspiring and motivating his hires, he would gradually undermine them and sap their confidence.</li>
+    </ul>
+    <div class="quote-card reveal reveal-d3" style="margin-top:var(--content-gap)">
+      <p>&ldquo;When he hired you, you were the greatest person in the world. Then slowly you worked your way down the
+         line. First you were brilliant. Then, &lsquo;You&rsquo;re doing a good job.&rsquo; Then, &lsquo;You&rsquo;re capable,
+         but I&rsquo;m unsure about you&hellip; Now I&rsquo;m really unsure&hellip; Now I think you&rsquo;re inadequate. I
+         don&rsquo;t think you can do the job for me.&rsquo; He kept a black book on everybody.&rdquo;</p>
+      <cite>Sheldon Roberts, <em>Los Angeles Times</em> (2001)</cite>
+    </div>
+    <ul class="bullet-list bullet-list--tight" style="margin-top:var(--content-gap)">
+      <li class="reveal reveal-d4">Where before <em>preferences &gt; opportunity cost of working elsewhere</em>, this now shifted&mdash;because of the lack of actual challenge, autonomy and creativity</li>
+      <li class="reveal reveal-d5">This will particularly affect the <strong>most able employees</strong>, because for them the trade-off is the steepest</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: Who leaves? Where to? Why worry?                   -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-14">
+  <div class="slide-content">
+    <h2 class="reveal">Who leaves? Where to? Why worry?</h2>
+    <div class="split-text-image split--wide-text">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">The relative bargaining power of firm and employee depends on whether the firm&rsquo;s <strong>complementary assets</strong> (IP, physical capital, reputation, routines, tacit knowledge) are important for value creation <em>and</em> whether the employee can walk away with them&mdash;or recreate them cheaply after exit</li>
+          <li class="reveal reveal-d3">High-ability workers benefit most from these assets, but are also the ones who can most easily recreate them. Shockley thought he was in the <strong>&ldquo;firm advantage&rdquo;</strong> bracket whereas there was actually an <strong>&ldquo;employee advantage&rdquo;</strong></li>
+          <li class="reveal reveal-d4">When these high performers leave, they are more likely to <strong>found a new company</strong> instead of moving to another firm&mdash;and to compete with the parent firm</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/campbell et al figure 1.png" alt="Campbell et al. (2012), Figure 1: employee mobility and source-firm performance"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/campbell et al figure 1.png)'">
+        <p class="img-caption">Campbell, B. A., Ganco, M., Franco, A. M., &amp; Agarwal, R. (2012). Who leaves, where to,
+          and why worry? Employee mobility, entrepreneurship and effects on source firm performance.
+          <em>Strategic Management Journal</em>, 33(1), 65&ndash;87.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: Anthropic spinout tweet                            -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-15">
+  <div class="slide-content" style="padding:clamp(0.5rem,2vw,1.5rem)">
+    <div class="single-image reveal">
+      <img src="assets/orosz tweet anthropic.jpeg" alt="Gergely Orosz post on the seven OpenAI researchers who founded Anthropic"
+           onerror="this.style.opacity=0.15;this.alt='(image not found: assets/orosz tweet anthropic.jpeg)'">
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The seven co-founders are Dario Amodei (CEO, formerly VP of Research at OpenAI); Daniela Amodei (President, formerly VP of Policy); Jack Clark (Head of Policy, formerly Policy Director); Chris Olah (formerly a research scientist working on interpretability); Jared Kaplan (formerly an AI researcher at OpenAI and physics professor at Johns Hopkins); Sam McCandlish (formerly an AI researcher at OpenAI); Tom Brown (formerly an engineer and researcher, lead author of the GPT-3 paper). -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: Why people leave also matters                      -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-16">
+  <div class="slide-content">
+    <h2 class="reveal">Why people leave also matters</h2>
+    <div class="split-text-image split--even">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">Lee et al. (2024) find that founders who leave their parent firm due to <strong>organizational misalignment motives</strong> (frustration with bureaucracy, strategic disagreement, &hellip;) tend to found successful initial ventures, whereas founders who leave for other reasons rarely do</li>
+          <li class="reveal reveal-d3">This is because founders with organizational misalignment motives engage in <strong>&ldquo;venture crafting&rdquo;</strong>&mdash;carefully considering and implementing organizational activities to build well-functioning organizations, so that the issues that colored their experiences at their parent firms do not derail their ventures</li>
+          <li class="reveal reveal-d4">Put differently: founders acted deliberately to ensure their ventures were organized <em>differently</em> from the firms they had chosen to leave, and chose not to carry certain practices forward</li>
+        </ul>
+      </div>
+      <div class="text-col reveal reveal-d3">
+        <div class="quote-card">
+          <p>&ldquo;[&hellip;] the idea that you needed something in addition to just scaling the models up, which is
+             alignment or safety. You don&rsquo;t tell the models what their values are just by pouring more compute into
+             them. And so there were a set of people who believed in those two ideas. We really trusted each other and
+             wanted to work together. And so we went off and started our own company with that idea in mind.&rdquo;</p>
+          <cite>Dario Amodei, on leaving OpenAI to found Anthropic</cite>
+        </div>
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">
+      Lee, H., Shah, S. K., &amp; Agarwal, R. (2024). Spinning an entrepreneurial career: Motivation, attribution, and the
+      development of organizational capabilities. <em>Strategic Management Journal</em>, 45(3), 463&ndash;506.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: Does bureaucracy breed entrepreneurship?           -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-17">
+  <div class="slide-content">
+    <h2 class="reveal">Does bureaucracy breed entrepreneurship?</h2>
+    <p class="reveal reveal-d2" style="font-size:clamp(0.92rem,1.62vw,1.3rem); margin-top:var(--element-gap)">
+      If changes in job design and amenities (more routine work, less challenging tasks, top-down decision making) and
+      organizational misalignment drive people to consider entrepreneurship and craft better ventures, shouldn&rsquo;t we
+      expect many entrepreneurs to come from <strong>large, bureaucratic organizations</strong>?
+    </p>
+    <div class="compare-2">
+      <div class="panel panel--a reveal reveal-d3">
+        <span class="panel-head">The Fairchild view</span>
+        <span class="panel-sub">Young entrepreneurial firms</span>
+        <ul class="panel-items">
+          <li>Learn about the entrepreneurial process</li>
+          <li>Exposure to a network of suppliers of labor, goods, capital &amp; customers</li>
+          <li>Self-selection on risk</li>
+        </ul>
+      </div>
+      <div class="panel panel--b reveal reveal-d4">
+        <span class="panel-head">The Xerox view</span>
+        <span class="panel-sub">Large bureaucratic firms</span>
+        <ul class="panel-items">
+          <li>Incapable of responding to radical innovations that upset established ways of organizing (<strong>inertia</strong>)</li>
+          <li>Incapable of evaluating employees&rsquo; ideas as they fall outside the core business (<strong>myopia</strong>)</li>
+          <li>Focus on the core business (the diversification discount)</li>
+        </ul>
+      </div>
+    </div>
+    <p class="statement reveal reveal-d5" style="margin-top:var(--content-gap); text-align:center">Which &ldquo;view&rdquo; is more prevalent?</p>
+    <p class="source reveal reveal-d6">
+      Gompers, P., Lerner, J., &amp; Scharfstein, D. (2005). Entrepreneurial spawning: Public corporations and the genesis
+      of new ventures, 1986 to 1999. <em>The Journal of Finance</em>, 60(2), 577&ndash;614.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE (from Gompers et al.): In one view, young firms prepare employees to be entrepreneurs by educating them about the entrepreneurial process and exposing them to a network of entrepreneurs and venture capitalists. Fairchild and its descendants are the prominent example. Between 1957 and 1976, at least 23 of 67 entrants to the semiconductor industry had at least one founder who had worked for Fairchild, including AMD, Intel and National Semiconductor. — Another view is that individuals become entrepreneurs because the large bureaucratic companies they work for are reluctant to fund their ideas. Xerox PARC invented laser printing, ethernet, the GUI and personal distributed computing, but Rochester-based executives resisted commercializing them. The bulk of the value was captured by employees who left to found Adobe and 3Com, and by licensees such as Apple. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: Bureaucratic employers spawn fewer entrepreneurs   -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-18">
+  <div class="slide-content">
+    <h2 class="reveal">Bureaucratic employers spawn fewer entrepreneurs</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Using Danish employer&ndash;employee data, S&oslash;rensen (2007) finds:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Employees of <strong>larger and older organizations</strong> are less likely to enter entrepreneurship</li>
+          <li class="reveal reveal-d4">True for (individual) self-employment <em>and</em> for larger startups (multiple joiners in the first year)</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/sorenson 2007 figure 2.png" alt="S&oslash;rensen (2007), Figure 2: entrepreneurial entry by employer size and age"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/sorenson 2007 figure 2.png)'">
+        <p class="img-caption">S&oslash;rensen, J. B. (2007). Bureaucracy and entrepreneurship: Workplace effects on
+          entrepreneurial entry. <em>Administrative Science Quarterly</em>, 52(3), 387&ndash;412.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: Small firms generate disproportionate founders     -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-19">
+  <div class="slide-content">
+    <h2 class="reveal">Small firms generate disproportionate numbers of founders</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Elfenbein et al. (2010) study U.S. scientists and engineers:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Employees of small firms are much more likely to transition into self-employment</li>
+          <li class="reveal reveal-d4">For employees in firms with <strong>1&ndash;25 workers</strong>, entry is more than <strong>three times</strong> the sample average</li>
+          <li class="reveal reveal-d5">Prior small-firm employment is also associated with stronger early entrepreneurial outcomes</li>
+        </ul>
+        <p class="statement reveal reveal-d6" style="margin-top:var(--element-gap)">This is the <em>small-firm effect</em>.</p>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/elfenbein et al 2010 figure 1.png" alt="Elfenbein, Hamilton &amp; Zenger (2010), Figure 1: entry rates by employer size"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/elfenbein et al 2010 figure 1.png)'">
+        <p class="img-caption">Elfenbein, D. W., Hamilton, B. H., &amp; Zenger, T. R. (2010). The small firm effect and the
+          entrepreneurial spawning of scientists and engineers. <em>Management Science</em>, 56(4), 659&ndash;681.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: One pattern, four possible explanations            -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-20">
+  <div class="slide-content">
+    <h2 class="reveal">One small-firm pattern, four possible explanations</h2>
+    <div class="table-wrap reveal reveal-d2">
+      <table class="data-table">
+        <thead>
+          <tr><th style="width:24%">Explanation</th><th style="width:48%">Mechanism</th><th style="width:28%">Matrix location</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Preference sorting</strong></td>
+            <td>People who value autonomy choose small firms and later entrepreneurship</td>
+            <td><span class="chip chip--sn">Selection / neutral</span></td>
+          </tr>
+          <tr>
+            <td><strong>Ability sorting</strong></td>
+            <td>High-ability workers prefer stronger pay-for-performance and later exploit their ability</td>
+            <td><span class="chip chip--se">Selection / potentially enhancing</span></td>
+          </tr>
+          <tr>
+            <td><strong>Opportunity cost</strong></td>
+            <td>Workers with less to lose leave paid work more readily</td>
+            <td><span class="chip chip--sn">Selection / neutral</span></td>
+          </tr>
+          <tr>
+            <td><strong>Entrepreneurial human capital</strong></td>
+            <td>Broad tasks and proximity to founders teach workers how to build firms</td>
+            <td><span class="chip chip--te">Treatment / enhancing</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="statement reveal reveal-d5">
+      Elfenbein et al. find evidence consistent with several mechanisms&mdash;not one pure treatment effect.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: This is the reason for the 2×2. A single correlation between employer size and later entrepreneurship can combine different types of people, different internal career options and genuine workplace learning. The evidence also suggests entry from both the high and low ends of the ability distribution: "stars" may exploit upside, while workers with weak wage prospects face lower opportunity costs. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: Firm closure removes the internal career option    -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-21">
+  <div class="slide-content">
+    <h2 class="reveal">Firm closure removes the internal career option</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Kacperczyk &amp; Marx revisit the small-firm effect in the automatic speech-recognition industry:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Among <strong>continuing</strong> firms, smaller employers spawn more entrepreneurs</li>
+          <li class="reveal reveal-d4">At <strong>firm dissolution</strong>, internal opportunities disappear for everyone</li>
+          <li class="reveal reveal-d5">The relationship <strong>reverses</strong>: employees leaving larger dissolved firms are more likely to become entrepreneurs</li>
+          <li class="reveal reveal-d6">A one-standard-deviation increase in logged firm size is associated with about <strong>15% higher odds</strong> of entrepreneurship in the dissolution sample
+            <ul class="sub-bullets">
+              <li>If 5 in 100 leavers from an average-sized dissolved firm found a venture, then among leavers from a firm one SD larger it is roughly <strong>5.7 in 100</strong></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/kacperczyk marx 2016 figure 2.png" alt="Kacperczyk &amp; Marx (2016), Figure 2: predicted probabilities by firm size and parent-firm characteristics"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/kacperczyk marx 2016 figure 2.png)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">
+      Kacperczyk, A., &amp; Marx, M. (2016). Revisiting the small-firm effect on entrepreneurship: Evidence from firm
+      dissolutions. <em>Organization Science</em>, 27(4), 893&ndash;910.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Firm dissolution creates a useful setting because it extinguishes internal opportunities. The result supports a retention mechanism: large firms may possess more opportunities with which to keep entrepreneurial workers. Panel A plots the marginal effect of defunct firm size at low, medium and high values of patents per technical worker — the effect of firm size on entry increases most strongly in the most innovative parent firms. Panel B shows the effect is more positive when the parent firm was itself an intra-industry spin-off, likewise suggestive that large firms can "mold" entrepreneurs. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: Organizations can mold entrepreneurs               -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-22">
+  <div class="slide-content">
+    <h2 class="reveal">Organizations can mold entrepreneurs&mdash;and keep them inside</h2>
+    <div class="single-image reveal reveal-d2">
+      <img src="assets/large firm mechanisms.jpg" alt="Large-firm mechanisms: molding entrepreneurs versus retaining them"
+           onerror="this.style.opacity=0.15;this.alt='(image not found: assets/large firm mechanisms.jpg)'">
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Point out the selection-on-the-dependent-variable problem. We observe only those who leave. A context might create valuable skills while offering such attractive internal opportunities that the most capable employees rarely found external ventures. Also note that the bureaucracy and internal-opportunities explanations can coexist: "large and old" can proxy for bureaucracy OR for ample internal resources and career opportunities. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: Employment creates portable entrepreneurial capital-->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-23">
+  <div class="slide-content">
+    <h2 class="reveal">Employment can create portable entrepreneurial capital</h2>
+    <div class="table-wrap reveal reveal-d2">
+      <table class="data-table">
+        <thead>
+          <tr><th style="width:42%">What employees learn</th><th style="width:58%">What it allows a founder to do</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Industry and customer knowledge</strong></td><td>Recognize valuable, feasible problems</td></tr>
+          <tr><td><strong>Technical knowledge</strong></td><td>Build or adapt products and processes</td></tr>
+          <tr><td><strong>Regulatory and institutional knowledge</strong></td><td>Navigate approval, reimbursement and legal constraints</td></tr>
+          <tr><td><strong>Commercial knowledge</strong></td><td>Price, sell, finance and scale</td></tr>
+          <tr><td><strong>Managerial knowledge</strong></td><td>Hire, coordinate and build routines</td></tr>
+          <tr><td><strong>Relational knowledge</strong></td><td>Identify whom to recruit, trust or approach</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: What do workers learn?                             -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-24">
+  <div class="slide-content">
+    <h2 class="reveal">What do workers learn?</h2>
+    <div class="split-text-image split--even">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Chatterji (2009) studies new medical-device ventures:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3"><strong>Spawns</strong> founded by former employees of industry incumbents outperform other entrants (higher valuations, shorter time to funding)</li>
+          <li class="reveal reveal-d4">Their advantage does not appear to come mainly from copying the parent&rsquo;s patented technology</li>
+          <li class="reveal reveal-d5">Interviews instead emphasize regulatory strategy, reimbursement, marketing and managerial knowledge</li>
+        </ul>
+        <p class="statement reveal reveal-d6" style="margin-top:var(--element-gap)">
+          However: talented employees may select into strong parent firms <em>and</em> later into entrepreneurship.
+        </p>
+      </div>
+      <div class="text-col">
+        <div class="paths">
+          <div class="path path--selection reveal reveal-d3">
+            <span class="path-label">Selection</span>
+            <div class="path-flow">
+              <span>Founder ability</span><span class="arr">&rarr;</span>
+              <span>Parent employment</span><span class="arr">&rarr;</span>
+              <span>Spinoff performance</span>
+            </div>
+          </div>
+          <div class="path path--treatment reveal reveal-d4">
+            <span class="path-label">Treatment</span>
+            <div class="path-flow">
+              <span>Parent employment</span><span class="arr">&rarr;</span>
+              <span>Nontechnical knowledge</span><span class="arr">&rarr;</span>
+              <span>Spinoff performance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">
+      Chatterji, A. K. (2009). Spawned with a silver spoon? Entrepreneurial performance and innovation in the medical
+      device industry. <em>Strategic Management Journal</em>, 30(2), 185&ndash;206.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The paper examines 191 venture-backed medical-device firms. Better performance among spawns is consistent with valuable inherited knowledge, but unobserved ability sorting can produce the same association. This is an ideal example of why performance comparisons conditional on entry remain vulnerable to selection. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: The idea is often discovered at work               -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-25">
+  <div class="slide-content">
+    <h2 class="reveal">The idea is often discovered at work</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">From a nationally representative survey in the US (so both growth and subsistence entrepreneurship):</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Most business ideas (<strong>40%</strong>) are &ldquo;discovered&rdquo; at work, next to personal use of a product</li>
+          <li class="reveal reveal-d4">Customer problems, technologies, market gaps and rejected internal projects can all become entrepreneurial opportunities</li>
+          <li class="reveal reveal-d5">Employment does more than pay a wage&mdash;it changes <strong>what people are able to notice</strong></li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/bennett chatterji 2017 table 5.png" alt="Bennett &amp; Chatterji (2017), Table 5: sources of business ideas"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/bennett chatterji 2017 table 5.png)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">
+      Bennett, V. M., &amp; Chatterji, A. K. (2017). <em>The entrepreneurial process: Evidence from a nationally
+      representative survey</em>. Working Paper.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: Professional experience shapes WHICH ideas         -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-26">
+  <div class="slide-content">
+    <h2 class="reveal">Professional experience also shapes <em>which</em> ideas you discover</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">Shane (2000) looked at startups that exploited <strong>3D printing</strong>, invented at MIT. Despite the technology being well known at the time (patent applications, publications, industry consortium meetings), only <strong>eight applications</strong> were identified by the end of the 1990s</li>
+          <li class="reveal reveal-d3">None of these applications were obvious from knowledge about the technology <em>alone</em></li>
+        </ul>
+        <div class="quote-card reveal reveal-d4" style="margin-top:var(--element-gap)">
+          <p>&ldquo;All of the 3DP lab&rsquo;s work was in one ceramic powder and one fluid, and medical applications require
+             multiple fluids and multiple powders, specifically polymers. You couldn&rsquo;t just look at the 3DP process and
+             know that you could use it for medical purposes. To make use of the 3DP process for drug delivery, you had to
+             know something about what drugs and drug delivery systems are made from and how drug manufacture
+             operates.&rdquo;</p>
+          <cite>Walter Flamenbaum &mdash; Therics</cite>
+        </div>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/shane 2000 table 1.png" alt="Shane (2000), Table 1: the eight 3D-printing opportunities and the prior knowledge behind each"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/shane 2000 table 1.png)'">
+        <p class="img-caption">Shane, S. (2000). Prior knowledge and the discovery of entrepreneurial opportunities.
+          <em>Organization Science</em>, 11(4), 448&ndash;469.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 27: Recognition, not search                            -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-27">
+  <div class="slide-content">
+    <h2 class="reveal">Recognition, not search</h2>
+    <ul class="bullet-list bullet-list--tight" style="margin-top:var(--content-gap)">
+      <li class="reveal reveal-d2">The eight entrepreneurs described a discovery process that involved <strong>recognition</strong>, rather than a search for information. In none of the cases did an entrepreneur indicate that he or she was searching for the opportunity prior to its discovery</li>
+      <li class="reveal reveal-d3">Entrepreneurs are not better than others at searching for and discovering opportunities <em>in general</em></li>
+    </ul>
+    <div class="quote-card reveal reveal-d4" style="margin-top:var(--content-gap)">
+      <p>&ldquo;If Bob Cohn, who has been responsible for drug delivery systems and product development at J&amp;J had looked
+         at it, it would have been different&hellip; [H]e would have turned around and said, &lsquo;holy cow!&rsquo; This is a
+         platform that&rsquo;s wonderful for drug delivery systems. If you had showed it to someone who does tissue
+         engineering, they would have said, &lsquo;holy cow!&rsquo; This is wonderful for tissue healing matrices for our
+         biological development of tissues and organs. <strong>It&rsquo;s a matter of mind set and background.</strong>&rdquo;</p>
+      <cite>Walter Flamenbaum &mdash; Therics</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 28: Recap — organizations as fonts of entrepreneurship -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-28">
+  <div class="slide-content">
+    <h2 class="reveal">Recap: organizations as fonts of entrepreneurship</h2>
+    <p class="lede reveal reveal-d2" style="margin-top:var(--content-gap)">
+      Where you work and what you do influences your likelihood of becoming an entrepreneur&mdash;and how successful you
+      will be. There are important trade-offs:
+    </p>
+    <div class="tradeoffs">
+      <div class="tradeoff tradeoff--1 reveal reveal-d3">
+        <b>Large, innovative firm.</b> Provides many resources and new technologies, but these companies are very good at
+        retaining you&mdash;voluntarily through high opportunity costs, or involuntarily through non-competes, for example.
+      </div>
+      <div class="tradeoff tradeoff--2 reveal reveal-d4">
+        <b>Large, bureaucratic firm.</b> Offers fewer resources and less skill development useful in entrepreneurship, but
+        these firms will care less if you want to spin off.
+      </div>
+      <div class="tradeoff tradeoff--3 reveal reveal-d5">
+        <b>Small firm.</b> Exposes you to many of the tasks entrepreneurs do, but you are less likely to be exposed to the
+        technological frontier, and the chance of involuntary exit through firm failure is higher.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 29: Section divider — Social networks                  -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-29">
+  <div class="slide-content">
+    <h1 class="section-word reveal">Social networks</h1>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 30: Recognize, evaluate, exploit                       -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-30">
+  <div class="slide-content">
+    <h2 class="reveal">An opportunity must be recognized, evaluated and exploited</h2>
+    <div class="process">
+      <div class="process-step step--1 reveal reveal-d2">
+        <span class="step-num">Stage 1</span>
+        <h3>Recognition</h3>
+        <p>Notice a problem or new combination</p>
+      </div>
+      <div class="process-arrow reveal reveal-d3">&rarr;</div>
+      <div class="process-step step--2 reveal reveal-d3">
+        <span class="step-num">Stage 2</span>
+        <h3>Evaluation</h3>
+        <p>Judge whether it is valuable and feasible</p>
+      </div>
+      <div class="process-arrow reveal reveal-d4">&rarr;</div>
+      <div class="process-step step--3 reveal reveal-d4">
+        <span class="step-num">Stage 3</span>
+        <h3>Exploitation</h3>
+        <p>Mobilize a team, finance, customers and suppliers</p>
+      </div>
+    </div>
+    <p class="statement reveal reveal-d5" style="margin-top:var(--content-gap); text-align:center">
+      Networks can shape <em>all three stages</em>, but different relationships may be useful at each one.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Opportunity recognition is not purely a trait such as individual alertness. What people notice depends on the information and interpretations available in their social context. Exploitation is even more visibly relational, because a founder rarely controls all required resources alone. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 31: Opportunity recognition has social sources         -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-31">
+  <div class="slide-content">
+    <h2 class="reveal">Opportunity recognition has social sources</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Ozgen &amp; Baron (2007) study three sources of information:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3"><strong>Mentors</strong> help interpret experience and build useful cognitive frameworks (&ldquo;schemas&rdquo;)</li>
+          <li class="reveal reveal-d4"><strong>Professional forums</strong> expose people to varied information and analogies</li>
+          <li class="reveal reveal-d5"><strong>Informal industry contacts</strong> reveal problems, practices and changing demand</li>
+        </ul>
+        <p class="callout reveal reveal-d6" style="margin-top:var(--element-gap)">
+          These sources are positively associated with recognizing more opportunities.
+        </p>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/ozgen baron 2007 figure 1.jpg" alt="Ozgen &amp; Baron (2007), Figure 1: social sources of information in opportunity recognition"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/ozgen baron 2007 figure 1.jpg)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d6">
+      Ozgen, E., &amp; Baron, R. A. (2007). Social sources of information in opportunity recognition: Effects of mentors,
+      industry networks, and professional forums. <em>Journal of Business Venturing</em>, 22(2), 174&ndash;192.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Schemas are mental representations of the world that individuals develop through experience — cognitive, knowledge-based structures that process bits of information and link them into causal relationships (Larrick and Feiler, 2015). Individuals with high-fidelity schemas recognize the most relevant cues in a large set of information and retrieve from memory how to act, responding quickly and accurately. IMPORTANT: this study uses survey evidence. It helps specify plausible mechanisms, but it does not establish that randomly adding a mentor or forum CAUSES opportunity recognition. People who are more entrepreneurial may actively construct these networks. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 32: The importance of schemas                          -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-32">
+  <div class="slide-content">
+    <h2 class="reveal">The importance of schemas: opportunity recognition as pattern recognition</h2>
+    <div class="split-text-image split--even">
+      <div class="text-col">
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d2">Experienced entrepreneurs have a more clearly defined <strong>prototype (schema)</strong> of an opportunity</li>
+          <li class="reveal reveal-d3">Opportunity prototypes of experienced entrepreneurs are <strong>richer in content</strong> (they contain more dimensions)</li>
+          <li class="reveal reveal-d4">They focus more on factors related to <strong>starting and running new ventures</strong> (see table)</li>
+          <li class="reveal reveal-d5">Mentors might <strong>substitute</strong> for such entrepreneurial experience</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/baron ensley 2006 table 5.png" alt="Baron &amp; Ensley (2006), Table 5: content of opportunity prototypes of novice versus experienced entrepreneurs"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/baron ensley 2006 table 5.png)'">
+        <p class="img-caption">Baron, R. A., &amp; Ensley, M. D. (2006). Opportunity recognition as the detection of
+          meaningful patterns: Evidence from comparisons of novice and experienced entrepreneurs.
+          <em>Management Science</em>, 52(9), 1331&ndash;1344.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Chatterji et al. (2023), "Taste Before Production: The Role of Judgment in Entrepreneurial Idea Generation", find that such schemas can be trained. Their experimental intervention improves subjects' ability to evaluate an idea's market potential; improved judgment leads subjects to generate ideas 15% higher in quality and more complete, with stronger effects among initially poorly-calibrated subjects. The mechanism: individuals with developed judgment mentally test more ideas and better filter them before committing. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 33: Entrepreneurship can spread through peers          -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-33">
+  <div class="slide-content">
+    <h2 class="reveal">Entrepreneurship can spread through peers</h2>
+    <p class="lede reveal reveal-d2" style="margin-top:var(--element-gap)">Two settings show social transmission of entrepreneurial entry:</p>
+    <div class="compare-2">
+      <div class="panel panel--a reveal reveal-d3">
+        <span class="panel-head">Workplace peers</span>
+        <span class="panel-sub">Nanda &amp; S&oslash;rensen (2010)</span>
+        <ul class="panel-items">
+          <li>Employees are more likely to become entrepreneurs when coworkers have prior entrepreneurial experience</li>
+          <li>The association is strongest when people have <strong>less entrepreneurial exposure elsewhere</strong></li>
+          <li>Patterns are consistent with <strong>information and practical know-how</strong>, as well as <strong>role models and demystifying failure</strong></li>
+        </ul>
+      </div>
+      <div class="panel panel--b reveal reveal-d4">
+        <span class="panel-head">University peers</span>
+        <span class="panel-sub">Kacperczyk (2013)</span>
+        <ul class="panel-items">
+          <li>Among hedge-fund professionals, prior entrepreneurship among university peers predicts entry</li>
+          <li>Effects are stronger for <strong>nearby</strong> and <strong>same-gender</strong> peers</li>
+          <li>Consistent with <strong>information exchange and social referencing</strong> that reduces uncertainty</li>
+        </ul>
+      </div>
+    </div>
+    <p class="statement reveal reveal-d5" style="margin-top:var(--content-gap)">
+      But neither study observes the mediators directly or isolates one mechanism.
+    </p>
+    <div class="ref-block reveal reveal-d6">
+      <p class="ref-line">Nanda, R., &amp; S&oslash;rensen, J. B. (2010). Workplace peers and entrepreneurship. <em>Management Science</em>, 56(7), 1116&ndash;1126.</p>
+      <p class="ref-line">Kacperczyk, A. J. (2013). Social influence and entrepreneurship: The effect of university peers on entrepreneurial entry. <em>Organization Science</em>, 24(3), 664&ndash;683.</p>
+    </div>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Both papers provide indirect, pattern-based evidence, not direct mediation tests. Neither observes information being transferred, skills being learned, role-model identification, or uncertainty declining. Nanda and Sørensen theorize several channels: skills and knowledge about starting a venture, access to resources, role models and changed aspirations, demystification, and reduced stigma of failure. Their main mechanism evidence is SUBSTITUTION: coworker exposure matters less for people who already have entrepreneurial parents or work in a more entrepreneurial region. Both failed and more successful former entrepreneurs among coworkers predict entry; the result for failed entrepreneurs is interpreted as consistent with reducing fear or stigma of failure. Kacperczyk theorizes information about opportunities and reduced uncertainty through social referencing; proximity and same-gender moderators establish that interpersonal influence is more plausible than a shared university-level institutional effect, but do not separate information from uncertainty reduction. Peers are not randomly assigned as they are in the business-school sections on the next slide. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 34: Informed peers may talk you out of a bad startup   -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-34">
+  <div class="slide-content">
+    <h2 class="reveal">Informed peers may talk you out of a bad startup</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Lerner &amp; Malmendier exploit the assignment of Harvard MBA students to sections:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Sections differed in the share of classmates with prior entrepreneurial experience</li>
+          <li class="reveal reveal-d4">More experienced entrepreneurial peers <strong>reduced</strong> later entrepreneurial entry</li>
+          <li class="reveal reveal-d5">The reduction came from <strong>fewer unsuccessful ventures</strong></li>
+          <li class="reveal reveal-d6">The effect on successful ventures was substantially more positive</li>
+        </ul>
+        <p class="statement reveal reveal-d7" style="margin-top:var(--element-gap)">
+          Better information can improve selection by preventing weak entry.
+        </p>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/lerner malmendier 2013 figure 3.jpg" alt="Lerner &amp; Malmendier (2013), Figure 3: peer effects on post-MBA entrepreneurship"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/lerner malmendier 2013 figure 3.jpg)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d7">
+      Lerner, J., &amp; Malmendier, U. (2013). With a little help from my (random) friends: Success and failure in
+      post-business school entrepreneurship. <em>Review of Financial Studies</em>, 26(10), 2411&ndash;2452.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The section assignment provides unusually credible variation in peer exposure. This result overturns a simplistic "more entrepreneurial peers create more entrepreneurs" story. Context can improve entrepreneurial outcomes by screening out bad ideas, even while the number of entrants falls. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 35: Advice quality matters more than advice quantity   -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-35">
+  <div class="slide-content">
+    <h2 class="reveal">Advice quality matters more than advice quantity</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Chatterji et al. (2019) randomly matched 100 Indian technology startups with experienced peer advisers:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Advisers differed in whether they used <strong>active, formal people management</strong>&mdash;regular meetings, goals and feedback</li>
+          <li class="reveal reveal-d4">Advice from active managers produced ventures that were <strong>28% larger</strong> after two years</li>
+          <li class="reveal reveal-d5">These ventures were <strong>10 percentage points less likely to fail</strong></li>
+          <li class="reveal reveal-d6">Founders with an MBA or incubator/accelerator experience did <em>not</em> show the same response</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/chatterji et al 2019 figure 2.jpg" alt="Chatterji et al. (2019), Figure 2: effect of adviser management practices on venture size"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/chatterji et al 2019 figure 2.jpg)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d7">
+      Chatterji, A., Delecourt, S., Hasan, S., &amp; Koning, R. (2019). When does advice impact startup performance?
+      <em>Strategic Management Journal</em>, 40(3), 331&ndash;356.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The experiment identifies the effect of advice from active/formal rather than passive/informal managers; it is not a clean comparison of advice versus no advice. The weaker response among MBA- or accelerator-trained founders suggests that overlapping knowledge can make advice redundant. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 36: Repeated peer interaction improves performance     -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-36">
+  <div class="slide-content">
+    <h2 class="reveal">Repeated peer interaction can improve firm performance</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Cai &amp; Szeidl randomized <strong>2,820</strong> young Chinese firms:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Treated owner-managers met monthly in ten-person business groups for one year</li>
+          <li class="reveal reveal-d4">Meetings increased firm revenue by <strong>8.1%</strong> during the intervention</li>
+          <li class="reveal reveal-d5">Effects persisted one year after the meetings ended</li>
+          <li class="reveal reveal-d6">Profits, management practices, borrowing, clients and suppliers also improved</li>
+        </ul>
+        <p class="callout reveal reveal-d7" style="margin-top:var(--element-gap)">
+          Additional interventions point to <strong>peer learning</strong> and <strong>supplier&ndash;customer matching</strong> as mechanisms.
+        </p>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/cai szeidl 2018 figure 1.jpeg" alt="Cai &amp; Szeidl (2018), Figure 1: effect of business-group meetings on firm outcomes"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/cai szeidl 2018 figure 1.jpeg)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d7">
+      Cai, J., &amp; Szeidl, A. (2018). Interfirm relationships and business performance.
+      <em>Quarterly Journal of Economics</em>, 133(3), 1229&ndash;1282.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: This is strong treatment-enhancing evidence because meeting assignment was randomized after firms expressed interest. The estimates apply to firms willing to participate in business associations; non-responding firms were smaller, so external validity should be discussed separately from internal validity. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 37: Section divider — Incubators and programs          -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-37">
+  <div class="slide-content">
+    <h1 class="section-word section-word--long reveal">Incubators and entrepreneurship programs</h1>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 38: An incubator is a bundle—and a selection device    -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-38">
+  <div class="slide-content">
+    <h2 class="reveal">An incubator is a bundle&mdash;and a selection device</h2>
+    <div class="chain reveal reveal-d2" style="margin-top:var(--content-gap)">
+      <div class="chain-node">Applicants</div>
+      <span class="chain-arrow">&rarr;</span>
+      <div class="chain-node">Selection</div>
+      <span class="chain-arrow">&rarr;</span>
+      <div class="chain-node chain-node--accent">Program bundle</div>
+      <span class="chain-arrow">&rarr;</span>
+      <div class="chain-node">Entrepreneurial entry<br>and performance</div>
+    </div>
+    <div class="bundle reveal reveal-d3">
+      <span class="bundle-label">Program bundle</span>
+      <div class="bundle-items">
+        <span>training</span><span>mentors</span><span>cohort peers</span><span>finance</span>
+        <span>workspace</span><span>investor access</span><span>affiliation signal</span>
+      </div>
+    </div>
+    <ul class="bullet-list bullet-list--tight" style="margin-top:var(--content-gap)">
+      <li class="reveal reveal-d4">Did the program <strong>improve</strong> the founder?</li>
+      <li class="reveal reveal-d5">Did it simply <strong>admit</strong> founders who would have succeeded anyway?</li>
+      <li class="reveal reveal-d6">Which <strong>component</strong> produced the outcome? For whom?</li>
+    </ul>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Incubators and accelerators combine multiple treatments. Comparing participants with non-participants bundles program effects with applicant motivation and administrator selection. Even a credible average effect does not reveal whether cash, education, mentors, peers, legitimacy or investor introductions produced it. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 39: The Next 36                                        -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-39">
+  <div class="slide-content">
+    <h2 class="reveal">Incubators are associated with more entrepreneurship</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Lyons &amp; Zhang evaluate a Canadian technology-entrepreneurship program combining education, mentors, cohort ties, investors and potential seed capital:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">They compare <strong>335 accepted participants</strong> with unaccepted applicants who reached the finalist stage</li>
+          <li class="reveal reveal-d4">Program participation is associated with <strong>+24 percentage points</strong> in later startup-related activity</li>
+          <li class="reveal reveal-d5">&hellip;and <strong>+23 percentage points</strong> in later startup founding</li>
+          <li class="reveal reveal-d6">&hellip;plus stronger venture survival, funding and employment outcomes</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/next 36 program.png" alt="The Next 36 programme"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/next 36 program.png)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d7">
+      Lyons, E., &amp; Zhang, L. (2018). Who does (not) benefit from entrepreneurship programs?
+      <em>Strategic Management Journal</em>, 39(1), 85&ndash;112.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Finalist comparisons, matching, controls and sensitivity checks make the comparison more credible than comparing participants with the general population. However, acceptance was NOT randomized. The authors explicitly interpret the estimates as associations rather than definitive causal effects, because unobserved differences between accepted and rejected finalists may remain. The program targets developing individuals into potential entrepreneurs rather than nurturing existing businesses. Participants receive formal education (entrepreneurial finance, entrepreneurial strategy, international business) taught by faculty from Harvard, Georgetown, MIT and Toronto, and each venture is eligible for up to $95,000 for 4–6% of equity. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 40: The largest gains among technology-founding novices-->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-40">
+  <div class="slide-content">
+    <h2 class="reveal">The largest gains appear among technology-founding novices</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">For applicants <strong>without prior entrepreneurship</strong>, participation is associated with approximately:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3"><strong>+41 percentage points</strong> in later entrepreneurial activity</li>
+          <li class="reveal reveal-d4"><strong>+38 percentage points</strong> in later startup founding</li>
+          <li class="reveal reveal-d5">Prior entrepreneurial experience reduces these estimated relationships by about <strong>33</strong> and <strong>30</strong> percentage points</li>
+          <li class="reveal reveal-d6">The reduction is concentrated among applicants who had already founded a <strong>technology company</strong></li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/lyons zhang 2018 novice vs experienced.png" alt="Program association for applicants with and without prior entrepreneurship, based on Lyons &amp; Zhang (2018), Table 6"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/lyons zhang 2018 novice vs experienced.png)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d7">
+      Lyons, E., &amp; Zhang, L. (2018). Who does (not) benefit from entrepreneurship programs?
+      <em>Strategic Management Journal</em>, 39(1), 85&ndash;112. Figure recreated from Table 6.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The result is not "experienced entrepreneurs cannot learn." It says that the marginal association is smaller when participants already possess experience closely matched to what the program teaches. This is a substitution pattern, and it is still subject to the non-random-participation caveat. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 41: The program fills knowledge and network gaps       -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-41">
+  <div class="slide-content">
+    <h2 class="reveal">The program appears to fill knowledge and network gaps</h2>
+    <div class="compare-2">
+      <div class="panel panel--a reveal reveal-d2">
+        <span class="panel-head">Participation increased</span>
+        <span class="panel-sub">Lyons &amp; Zhang&rsquo;s mechanism evidence</span>
+        <ul class="panel-items">
+          <li>Knowledge about evaluating and developing technology startups</li>
+          <li>Access to investors and entrepreneurship-relevant relationships</li>
+        </ul>
+      </div>
+      <div class="panel panel--b reveal reveal-d3">
+        <span class="panel-head">Less evidence of change in</span>
+        <span class="panel-sub">What did not clearly move</span>
+        <ul class="panel-items">
+          <li>Preferences for entrepreneurship</li>
+          <li>Risk tolerance</li>
+          <li>Confidence</li>
+        </ul>
+      </div>
+    </div>
+    <p class="statement statement--boxed reveal reveal-d5" style="margin-top:var(--content-gap)">
+      The program seems to expand what participants <em>know</em> and <em>whom they can reach</em>&mdash;not simply how
+      entrepreneurial they feel.
+    </p>
+    <p class="source reveal reveal-d6">
+      Lyons, E., &amp; Zhang, L. (2018). Who does (not) benefit from entrepreneurship programs?
+      <em>Strategic Management Journal</em>, 39(1), 85&ndash;112.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The mechanism survey is smaller and should be treated as suggestive. It nevertheless aligns with the heterogeneity result: the program is most valuable to those who lack technology-startup knowledge and networks at entry. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 42: Cash and workspace ≠ entrepreneurial learning      -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-42">
+  <div class="slide-content">
+    <h2 class="reveal">Cash and workspace are not the same as entrepreneurial learning</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Gonzalez-Uribe &amp; Leatherbee study <strong>Start-Up Chile</strong> using score cutoffs:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3"><strong>Basic services</strong> combined cash and coworking space &rarr; no detectable effect on fundraising, employment or survival for ventures near the admission cutoff</li>
+          <li class="reveal reveal-d4"><strong>Entrepreneurship schooling</strong> bundled with those services &rarr; increased follow-on finance and venture scale</li>
+        </ul>
+        <p class="statement reveal reveal-d5" style="margin-top:var(--element-gap)">
+          Structured learning&mdash;not the incubator label by itself&mdash;appears to be the active treatment.
+        </p>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/gonzalez-uribe leatherbee 2018 figure.png" alt="Start-Up Chile regression-discontinuity estimates: basic services versus entrepreneurship schooling"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/gonzalez-uribe leatherbee 2018 figure.png)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d7">
+      Gonzalez-Uribe, J., &amp; Leatherbee, M. (2018). The effects of business accelerators on venture performance:
+      Evidence from Start-Up Chile. <em>Review of Financial Studies</em>, 31(4), 1566&ndash;1603. Figure recreated from Tables 6 and 7.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: The regression-discontinuity design identifies LOCAL effects for ventures close to the relevant score cutoffs. It does not imply that money or workspace can never matter, nor that the same bundle will work for every accelerator population. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 43: Some accelerators accelerate learning              -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-43">
+  <div class="slide-content">
+    <h2 class="reveal">Some accelerators accelerate learning; others do not</h2>
+    <div class="split-text-image split--even">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Hallen, Cohen &amp; Bingham compare accepted and &ldquo;almost accepted&rdquo; ventures across early accelerators:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Some programs substantially accelerate venture development</li>
+          <li class="reveal reveal-d4">Other programs show little evidence of doing so</li>
+          <li class="reveal reveal-d5">Sorting and signaling explain part&mdash;but not all&mdash;of the observed differences</li>
+        </ul>
+        <p class="callout reveal reveal-d6" style="margin-top:var(--element-gap)">
+          Their qualitative evidence identifies a distinctive learning mechanism:
+          <span class="statement" style="display:block">Broad, intensive and paced consultation</span>
+        </p>
+      </div>
+      <div class="text-col">
+        <div class="paths">
+          <div class="path path--treatment reveal reveal-d3">
+            <span class="path-label">Broad</span>
+            <div class="path-flow"><span>Many perspectives from many advisers</span></div>
+          </div>
+          <div class="path path--treatment reveal reveal-d4">
+            <span class="path-label">Intensive</span>
+            <div class="path-flow"><span>Concentrated, repeated engagement</span></div>
+          </div>
+          <div class="path path--treatment reveal reveal-d5">
+            <span class="path-label">Paced</span>
+            <div class="path-flow"><span>External deadlines and milestone sequences</span></div>
+          </div>
+          <div class="path path--selection reveal reveal-d6" style="border-left-color:var(--accent-blue); background:rgba(67,97,238,0.09)">
+            <span class="path-label" style="color:var(--accent-blue)">Result</span>
+            <div class="path-flow"><span>Faster learning cycles</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="source reveal reveal-d7">
+      Hallen, B. L., Cohen, S. L., &amp; Bingham, C. B. (2020). Do accelerators work? If so, how?
+      <em>Organization Science</em>, 31(2), 378&ndash;414.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Broad means founders encounter many perspectives; intensive means concentrated interaction; paced means external deadlines and sequences. The study uses mixed methods and carefully chosen comparisons, but it is not one randomized program treatment. Its main contribution here is to unpack WHY program design matters. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 44: Incubation can help disadvantaged entrepreneurs    -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-44">
+  <div class="slide-content">
+    <h2 class="reveal">Incubation can help disadvantaged entrepreneurs scale</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Assenova studies a South African incubator for socially and educationally disadvantaged entrepreneurs:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Incubated firms are compared with similar, <strong>also-selected but non-incubated</strong> firms</li>
+          <li class="reveal reveal-d4">Over six months, incubated firms grew <strong>22% more in revenue</strong></li>
+          <li class="reveal reveal-d5">They also grew <strong>15% more in employment</strong></li>
+          <li class="reveal reveal-d6">The pattern suggests that incubation can help close gaps in prior knowledge and access</li>
+        </ul>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/assenova 2020 incubation effect.png" alt="Assenova (2020): six-month growth of incubated versus also-selected non-incubated firms"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/assenova 2020 incubation effect.png)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d7">
+      Assenova, V. A. (2020). Early-stage venture incubation and mentoring promote learning, scaling, and profitability
+      among disadvantaged entrepreneurs. <em>Organization Science</em>, 31(6), 1560&ndash;1578. Figure recreated from Table 1.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: This overall incubation comparison uses a matched two-period case-control design. Comparing also-selected firms helps, but participation in incubation was NOT randomly assigned. Note also the honest nulls in the figure: operating costs and business registration did not differ. The next slide provides cleaner causal leverage on one component: mentor quality. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 45: Mentor quality matters most when knowledge is scarce-->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-45">
+  <div class="slide-content">
+    <h2 class="reveal">Mentor quality matters most when prior knowledge is scarce</h2>
+    <div class="split-text-image">
+      <div class="text-col">
+        <p class="lede reveal reveal-d2">Within the same incubator, participants were <strong>randomly assigned to mentors</strong>:</p>
+        <ul class="bullet-list bullet-list--tight">
+          <li class="reveal reveal-d3">Assignment to a high-ability rather than low-ability mentor produced <strong>3.2% higher revenue</strong> one year later</li>
+          <li class="reveal reveal-d4">Profits were <strong>3.5% higher</strong></li>
+          <li class="reveal reveal-d5">Mentoring generated more learning and larger performance improvements for founders with <strong>less prior knowledge and experience</strong></li>
+        </ul>
+        <p class="statement reveal reveal-d6" style="margin-top:var(--element-gap)">
+          The value of advice depends on the match between what the mentor provides and what the founder lacks.
+        </p>
+      </div>
+      <div class="img-col reveal reveal-d3">
+        <img src="assets/assenova 2020 mentor quality interaction.png" alt="Assenova (2020): marginal effect of mentor ability on learning, by the founder's pre-entry knowledge"
+             onerror="this.style.opacity=0.15;this.alt='(image not found: assets/assenova 2020 mentor quality interaction.png)'">
+      </div>
+    </div>
+    <p class="source reveal reveal-d7">
+      Assenova, V. A. (2020). Early-stage venture incubation and mentoring promote learning, scaling, and profitability
+      among disadvantaged entrepreneurs. <em>Organization Science</em>, 31(6), 1560&ndash;1578. Figure recreated from Table 3, Model (9).
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Random mentor assignment makes this component analysis more credible than the overall incubator comparison. The estimates compare HIGH- with LOW-ability mentors; they do not estimate mentoring versus no mentoring. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 46: Context is most valuable when it fills a gap       -->
+<!-- ============================================================ -->
+<section class="slide slide--full-white" id="slide-46">
+  <div class="slide-content">
+    <h2 class="reveal">Context is most valuable when it fills a gap</h2>
+    <div class="table-wrap reveal reveal-d2">
+      <table class="data-table">
+        <thead>
+          <tr><th style="width:48%">Evidence</th><th style="width:52%">Who benefits most?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Entrepreneurial coworkers (Nanda &amp; S&oslash;rensen)</td><td>People with less exposure to entrepreneurship elsewhere</td></tr>
+          <tr><td>Active peer advice (Chatterji et al.)</td><td>Founders without overlapping MBA or accelerator experience</td></tr>
+          <tr><td>The Next 36 (Lyons &amp; Zhang)</td><td>Applicants without prior technology-founding experience</td></tr>
+          <tr><td>High-quality mentors (Assenova)</td><td>Founders with less prior knowledge and experience</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="statement statement--boxed reveal reveal-d5">
+      Support often <em>substitutes</em> for missing human and social capital rather than uniformly amplifying existing advantage.
+    </p>
+  </div>
+</section>
+<!-- SPEAKER NOTE: Substitution is a recurring empirical pattern, not an iron law. Some resources can be complementary — for example, experienced founders may exploit investor access better. The key program-design question is whether the offered resource is novel, relevant and usable for the intended participant. -->
+
+<!-- ============================================================ -->
+<!-- SLIDE 47: Closing                                            -->
+<!-- ============================================================ -->
+<section class="slide slide--full-blue" id="slide-47">
+  <div class="slide-content">
+    <h1 class="reveal">Entrepreneurs do not emerge from a vacuum.</h1>
+    <p class="reveal reveal-d2" style="margin-top:var(--content-gap); max-width:44ch">
+      Organizations, networks and programs shape who enters&mdash;and what they can do after entry.
+    </p>
+    <p class="reveal reveal-d4" style="margin-top:calc(var(--content-gap) * 1.6); font-size:var(--small-size); opacity:0.85">
+      Slides and the data underlying the graphs:
+    </p>
+    <a class="closing-link reveal reveal-d5" href="https://github.com/jmahieu/foundations-of-entrepreneurship">github.com/jmahieu/foundations-of-entrepreneurship</a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- JAVASCRIPT                                                   -->
+<!-- ============================================================ -->
+<script>
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll('.slide');
+    this.currentSlide = 0;
+    this.totalSlides = this.slides.length;
+    this.touchStartY = 0; this.touchStartX = 0;
+    this.initObserver(); this.initKeyboard(); this.initTouch();
+    this.initNavDots(); this.updateProgress(); this.updateCounter();
+  }
+  initObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const i = Array.from(this.slides).indexOf(entry.target);
+          if (i !== -1) { this.currentSlide = i; this.updateProgress(); this.updateCounter(); this.updateNavDots(); }
+        }
+      });
+    }, { threshold: 0.5 });
+    this.slides.forEach(s => observer.observe(s));
+  }
+  initKeyboard() {
+    document.addEventListener('keydown', (e) => {
+      if (document.body.classList.contains('edit-mode') && e.key !== 'Escape' && e.key !== 'e') return;
+      switch (e.key) {
+        case 'ArrowDown': case 'ArrowRight': case ' ': case 'PageDown': e.preventDefault(); this.next(); break;
+        case 'ArrowUp': case 'ArrowLeft': case 'PageUp': e.preventDefault(); this.prev(); break;
+        case 'Home': e.preventDefault(); this.goTo(0); break;
+        case 'End': e.preventDefault(); this.goTo(this.totalSlides - 1); break;
+        case 'e': case 'E': if (!e.ctrlKey && !e.metaKey) toggleEditMode(); break;
+      }
+    });
+  }
+  initTouch() {
+    document.addEventListener('touchstart', (e) => { this.touchStartY = e.touches[0].clientY; this.touchStartX = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      const dY = this.touchStartY - e.changedTouches[0].clientY, dX = this.touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(dY) > Math.abs(dX) && Math.abs(dY) > 50) { dY > 0 ? this.next() : this.prev(); }
+    }, { passive: true });
+  }
+  initNavDots() {
+    const c = document.getElementById('navDots');
+    for (let i = 0; i < this.totalSlides; i++) {
+      const d = document.createElement('button');
+      d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.addEventListener('click', () => this.goTo(i));
+      c.appendChild(d);
+    }
+  }
+  next() { if (this.currentSlide < this.totalSlides - 1) this.goTo(this.currentSlide + 1); }
+  prev() { if (this.currentSlide > 0) this.goTo(this.currentSlide - 1); }
+  goTo(i) { if (i >= 0 && i < this.totalSlides) { this.slides[i].scrollIntoView({ behavior: 'smooth' }); this.currentSlide = i; this.updateProgress(); this.updateCounter(); this.updateNavDots(); } }
+  updateProgress() { document.getElementById('progressBar').style.width = (this.currentSlide / Math.max(1, this.totalSlides - 1)) * 100 + '%'; }
+  updateCounter() { document.getElementById('slideCounter').textContent = (this.currentSlide + 1) + ' / ' + this.totalSlides; }
+  updateNavDots() { document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === this.currentSlide)); }
+}
+
+/* === Edit Mode === */
+let editMode = false;
+let hoverTimer = null;
+const hotzone = document.getElementById('editHotzone');
+const toolbar = document.getElementById('editToolbar');
+
+hotzone.addEventListener('mouseenter', () => { hoverTimer = setTimeout(() => { hotzone.classList.add('show'); }, 400); });
+hotzone.addEventListener('mouseleave', () => { clearTimeout(hoverTimer); if (!editMode) hotzone.classList.remove('show'); });
+hotzone.addEventListener('click', toggleEditMode);
+
+function toggleEditMode() {
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode', editMode);
+  toolbar.classList.toggle('active', editMode);
+  hotzone.classList.toggle('show', editMode);
+  const editables = document.querySelectorAll('.slide h1, .slide h2, .slide h3, .slide p, .slide li, .slide td, .slide th, .slide span:not(.nav-dot)');
+  editables.forEach(el => {
+    if (editMode) { el.setAttribute('contenteditable', 'true'); } else { el.removeAttribute('contenteditable'); }
+  });
+  if (!editMode) saveEdits();
+}
+function saveEdits() {
+  const slides = document.querySelectorAll('.slide');
+  const data = {};
+  slides.forEach((slide, i) => { data[`slide-${i}`] = slide.innerHTML; });
+  localStorage.setItem('lecture-03-context-edits', JSON.stringify(data));
+}
+function loadEdits() {
+  const data = JSON.parse(localStorage.getItem('lecture-03-context-edits') || 'null');
+  if (data) {
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, i) => { if (data[`slide-${i}`]) slide.innerHTML = data[`slide-${i}`]; });
+  }
+}
+function exportPresentation() {
+  const html = document.documentElement.outerHTML;
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'lecture-03-context-edited.html'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadEdits();
+  new SlidePresentation();
+});
+</script>
+</body>
+</html>
