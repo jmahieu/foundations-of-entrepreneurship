@@ -1,0 +1,51 @@
+"""Country Code"",Country,Year,""Percentage of 18-64 population who are either a nascent entrepreneur or owner-manager of a new business"",""Percentage of those involved in TEA who indicate that their product or service is new to at least some customers AND that few/no businesses offer the same product"""
+"code,economy,year,""Total early-stage Entrepreneurial Activity (TEA)"",Innovation"
+244,Angola,2018,40.84,17.80
+54,Argentina,2018,9.11,32.17
+43,Austria,2018,10.90,37.02
+55,Brazil,2018,17.88,3.71
+359,Bulgaria,2018,6.00,14.89
+101,Canada,2018,18.71,41.30
+56,Chile,2018,25.06,47.58
+86,China,2018,10.39,33.06
+57,Colombia,2018,21.19,16.07
+385,Croatia,2018,9.61,24.59
+357,Cyprus,2018,3.86,38.63
+20,Egypt,2018,9.84,27.52
+33,France,2018,6.13,28.07
+49,Germany,2018,4.97,30.53
+30,Greece,2018,6.35,28.44
+502,Guatemala,2018,27.52,39.16
+91,India,2018,11.42,46.88
+62,Indonesia,2018,14.09,15.36
+98,Iran,2018,9.71,17.23
+353,Ireland,2018,9.64,35.75
+972,Israel,2018,12.70,32.90
+39,Italy,2018,4.18,24.27
+81,Japan,2018,5.34,27.74
+961,Lebanon,2018,24.08,41.89
+352,Luxembourg,2018,10.72,47.94
+261,Madagascar,2018,20.74,13.38
+212,Morocco,2018,6.65,14.88
+31,Netherlands,2018,12.29,23.83
+507,Panama,2018,13.83,10.47
+51,Peru,2018,22.39,21.90
+48,Poland,2018,5.24,12.17
+"787,""Puerto Rico"",2018,11.61,26.06"
+974,Qatar,2018,8.52,26.95
+7,Russia,2018,5.55,8.09
+"966,""Saudi Arabia"",2018,12.09,23.26"
+421,Slovakia,2018,12.12,21.96
+386,Slovenia,2018,6.37,25.54
+"82,""South Korea"",2018,14.65,29.94"
+34,Spain,2018,6.39,22.33
+249,Sudan,2018,22.17,13.37
+46,Sweden,2018,6.82,33.71
+41,Switzerland,2018,7.37,31.68
+886,Taiwan,2018,9.48,18.76
+66,Thailand,2018,19.68,17.80
+90,Turkey,2018,14.24,30.80
+"971,""United Arab Emirates"",2018,10.72,28.24"
+"44,""United Kingdom"",2018,8.24,21.63"
+"1,""United States"",2018,15.59,33.99"
+598,Uruguay,2018,15.70,25.28

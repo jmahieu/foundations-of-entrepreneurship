@@ -1,0 +1,47 @@
+"""Country Code"",Country,Year,""Percentage of 18-64 population who are either a nascent entrepreneur or owner-manager of a new business"""
+"code,economy,year,""Total early-stage Entrepreneurial Activity (TEA)"""
+55,Brazil,2023,18.62
+101,Canada,2023,19.76
+56,Chile,2023,31.05
+86,China,2023,6.82
+57,Colombia,2023,23.57
+385,Croatia,2023,13.15
+357,Cyprus,2023,11.04
+593,Ecuador,2023,32.65
+372,Estonia,2023,13.09
+33,France,2023,10.75
+49,Germany,2023,7.69
+30,Greece,2023,6.74
+502,Guatemala,2023,32.39
+36,Hungary,2023,9.88
+91,India,2023,12.00
+98,Iran,2023,9.75
+972,Israel,2023,8.74
+39,Italy,2023,8.33
+962,Jordan,2023,15.70
+371,Latvia,2023,14.34
+370,Lithuania,2023,6.68
+352,Luxembourg,2023,9.67
+52,Mexico,2023,16.84
+212,Morocco,2023,6.29
+31,Netherlands,2023,13.69
+47,Norway,2023,6.92
+968,Oman,2023,10.64
+507,Panama,2023,31.31
+48,Poland,2023,2.59
+"787,""Puerto Rico"",2023,22.30"
+974,Qatar,2023,14.26
+40,Romania,2023,5.85
+"966,""Saudi Arabia"",2023,25.34"
+421,Slovakia,2023,10.75
+386,Slovenia,2023,7.07
+"27,""South Africa"",2023,11.11"
+"82,""South Korea"",2023,10.23"
+34,Spain,2023,6.79
+46,Sweden,2023,9.25
+41,Switzerland,2023,10.29
+66,Thailand,2023,23.62
+"44,""United Kingdom"",2023,11.76"
+"1,""United States"",2023,14.71"
+598,Uruguay,2023,26.24
+58,Venezuela,2023,22.67
